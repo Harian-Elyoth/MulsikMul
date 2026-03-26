@@ -1,0 +1,345 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774521317858,
+  "projectRoot": "/home/harian/PROJECT/mulsikmul",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "react",
+        "version": "19.2.0",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "npm run start",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "assets",
+      "src"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "assets": {
+      "path": "assets",
+      "purpose": "Static assets",
+      "fileCount": 6,
+      "lastAccessed": 1774521317845,
+      "keyFiles": [
+        "android-icon-background.png",
+        "android-icon-foreground.png",
+        "android-icon-monochrome.png",
+        "favicon.png",
+        "icon.png"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 0,
+      "lastAccessed": 1774521317846,
+      "keyFiles": []
+    },
+    "src/api": {
+      "path": "src/api",
+      "purpose": "API routes",
+      "fileCount": 1,
+      "lastAccessed": 1774521317853,
+      "keyFiles": [
+        "perenual.ts"
+      ]
+    },
+    "src/types": {
+      "path": "src/types",
+      "purpose": "Type definitions",
+      "fileCount": 1,
+      "lastAccessed": 1774521317853,
+      "keyFiles": [
+        "plant.ts"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src/types/plant.ts",
+      "accessCount": 9,
+      "lastAccessed": 1774536829499,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 9,
+      "lastAccessed": 1774536841591,
+      "type": "file"
+    },
+    {
+      "path": "src/db/queries.ts",
+      "accessCount": 8,
+      "lastAccessed": 1774536829262,
+      "type": "file"
+    },
+    {
+      "path": "src/api/perenual.ts",
+      "accessCount": 7,
+      "lastAccessed": 1774536828359,
+      "type": "file"
+    },
+    {
+      "path": "jest.config.js",
+      "accessCount": 6,
+      "lastAccessed": 1774529643746,
+      "type": "file"
+    },
+    {
+      "path": "src/notifications/scheduler.ts",
+      "accessCount": 6,
+      "lastAccessed": 1774536732753,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 5,
+      "lastAccessed": 1774521532003,
+      "type": "directory"
+    },
+    {
+      "path": "src/db/schema.ts",
+      "accessCount": 5,
+      "lastAccessed": 1774536837181,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 5,
+      "lastAccessed": 1774536841770,
+      "type": "file"
+    },
+    {
+      "path": "app/_layout.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774536731289,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/add.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774536827900,
+      "type": "file"
+    },
+    {
+      "path": "src/db/__tests__/queries.test.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774529643624,
+      "type": "file"
+    },
+    {
+      "path": "app.json",
+      "accessCount": 3,
+      "lastAccessed": 1774529764436,
+      "type": "file"
+    },
+    {
+      "path": "App.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774529919934,
+      "type": "file"
+    },
+    {
+      "path": "index.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774529920393,
+      "type": "file"
+    },
+    {
+      "path": "app/index.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774529920605,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "accessCount": 3,
+      "lastAccessed": 1774530080039,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/theme.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774536828804,
+      "type": "file"
+    },
+    {
+      "path": "src/config.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774536834652,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/PlantCard.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774536835226,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/EmptyState.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774536835548,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/watering.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774536836125,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/_layout.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774536836442,
+      "type": "file"
+    },
+    {
+      "path": "src/__tests__/perenual.test.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774529588239,
+      "type": "file"
+    },
+    {
+      "path": "src/types/__tests__/plant.test.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774529588437,
+      "type": "file"
+    },
+    {
+      "path": "src/db/__tests__/schema.test.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774529588851,
+      "type": "file"
+    },
+    {
+      "path": "src/notifications/__tests__/scheduler.test.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774529589296,
+      "type": "file"
+    },
+    {
+      "path": "babel.config.js",
+      "accessCount": 2,
+      "lastAccessed": 1774529639130,
+      "type": "file"
+    },
+    {
+      "path": "app/plant/[id].tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774536731900,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/schedule.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774536732117,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/index.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774536732345,
+      "type": "file"
+    },
+    {
+      "path": "src/db/provider.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774536732610,
+      "type": "file"
+    },
+    {
+      "path": "docs/DESIGN.md",
+      "accessCount": 1,
+      "lastAccessed": 1774529965349,
+      "type": "file"
+    },
+    {
+      "path": "eas.json",
+      "accessCount": 1,
+      "lastAccessed": 1774535141742,
+      "type": "file"
+    },
+    {
+      "path": "Makefile",
+      "accessCount": 1,
+      "lastAccessed": 1774535188377,
+      "type": "file"
+    },
+    {
+      "path": "assets/icon.png",
+      "accessCount": 1,
+      "lastAccessed": 1774536777761,
+      "type": "file"
+    },
+    {
+      "path": "assets/splash-icon.png",
+      "accessCount": 1,
+      "lastAccessed": 1774536784775,
+      "type": "file"
+    },
+    {
+      "path": "assets/android-icon-foreground.png",
+      "accessCount": 1,
+      "lastAccessed": 1774536786083,
+      "type": "file"
+    },
+    {
+      "path": "assets/android/mipmap-xxxhdpi/ic_launcher.png",
+      "accessCount": 1,
+      "lastAccessed": 1774537130349,
+      "type": "file"
+    },
+    {
+      "path": "docs/plan.md",
+      "accessCount": 1,
+      "lastAccessed": 1774537254705,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

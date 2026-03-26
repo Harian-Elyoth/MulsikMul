@@ -1,0 +1,4 @@
+{"event_id":"b5f7268f-75c1-4c65-954c-2d31f1ea6aed","team":"make-the-expo-react-native-pro","created_at":"2026-03-26T10:38:05.706Z","type":"team_leader_nudge","worker":"leader-fixed","reason":"start_team_v2: workers=3 tasks=3 panes=3"}
+{"event_id":"d661bc8f-ad17-43aa-a1e5-13cf4f97d253","team":"make-the-expo-react-native-pro","created_at":"2026-03-26T10:39:08.439Z","type":"task_completed","worker":"worker-3","task_id":"3","message_id":null}
+{"event_id":"a9f5fccc-80f6-4f2b-a3e2-e1191146e078","team":"make-the-expo-react-native-pro","created_at":"2026-03-26T10:41:11.009Z","type":"task_completed","worker":"worker-1","task_id":"1","message_id":null}
+{"event_id":"46cfd20e-0c64-4797-923b-9b47c6732609","team":"make-the-expo-react-native-pro","created_at":"2026-03-26T10:41:13.789Z","type":"task_completed","worker":"worker-2","task_id":"2","message_id":null}

@@ -1,0 +1,11 @@
+{
+  "id": "2",
+  "subject": "src/types/plant.ts - mock fetch calls, test all exported functions. Worker 2: Wr",
+  "description": "src/types/plant.ts - mock fetch calls, test all exported functions. Worker 2: Write tests for src/db/queries.ts, src/db/schema.ts, src/notifications/scheduler.ts - mock expo-sqlite",
+  "status": "completed",
+  "owner": "worker-2",
+  "result": null,
+  "created_at": "2026-03-26T10:37:34.272Z",
+  "version": 3,
+  "completed_at": "2026-03-26T10:41:13.786Z"
+}

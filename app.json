@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo_init",
-    "slug": "expo_init",
+    "name": "mulsikmul",
+    "slug": "mulsikmul",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,38 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.harianelyoth.mulsikmul"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-sqlite"
+      ],
+      [
+        "expo-notifications",
+        {
+          "iosDisplayInForeground": true
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow access to your photos to add plant pictures."
+        }
+      ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c495e6e9-e054-4603-b976-ede271786180"
+      }
     }
   }
 }

@@ -1,0 +1,11 @@
+{
+  "id": "1",
+  "subject": "Make the Expo React Native project at /home/harian/PROJECT/mulsikmul production-",
+  "description": "Make the Expo React Native project at /home/harian/PROJECT/mulsikmul production-ready. Project uses Expo ~55, React Native 0.83.2, expo-router, expo-sqlite, expo-notifications. Source files: src/api/perenual.ts (plant API), src/db/queries.ts, src/db/schema.ts (SQLite), src/notifications/scheduler.ts, src/types/plant.ts. WORKER ASSIGNMENTS: Worker 1: Setup jest + @testing-library/react-native + jest-expo, write tests for src/api/perenual.ts",
+  "status": "completed",
+  "owner": "worker-1",
+  "result": null,
+  "created_at": "2026-03-26T10:37:34.271Z",
+  "version": 3,
+  "completed_at": "2026-03-26T10:41:11.006Z"
+}
