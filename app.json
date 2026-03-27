@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "mulsikmul",
+    "name": "물식물",
     "slug": "mulsikmul",
     "version": "1.0.0",
+    "scheme": "mulsikmul",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

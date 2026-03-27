@@ -1,12 +1,15 @@
-import * as Notifications from 'expo-notifications';
-
 export async function requestPermissions(): Promise<boolean> {
-  const { status: existingStatus } = await Notifications.getPermissionsAsync();
-  if (existingStatus === 'granted') {
-    return true;
+  try {
+    const Notifications = await import('expo-notifications');
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    if (existingStatus === 'granted') {
+      return true;
+    }
+    const { status } = await Notifications.requestPermissionsAsync();
+    return status === 'granted';
+  } catch {
+    return false;
   }
-  const { status } = await Notifications.requestPermissionsAsync();
-  return status === 'granted';
 }
 
 export async function scheduleWateringNotification(
@@ -15,6 +18,7 @@ export async function scheduleWateringNotification(
   intervalDays: number,
   lastWateredAt: number | null
 ): Promise<string> {
+  const Notifications = await import('expo-notifications');
   const baseTime = lastWateredAt ?? Date.now();
   const nextWateringMs = baseTime + intervalDays * 24 * 60 * 60 * 1000;
   const nextWateringDate = new Date(nextWateringMs);
@@ -35,5 +39,10 @@ export async function scheduleWateringNotification(
 }
 
 export async function cancelNotification(notificationId: string): Promise<void> {
-  await Notifications.cancelScheduledNotificationAsync(notificationId);
+  try {
+    const Notifications = await import('expo-notifications');
+    await Notifications.cancelScheduledNotificationAsync(notificationId);
+  } catch {
+    // expo-notifications unavailable in this environment (Expo Go)
+  }
 }

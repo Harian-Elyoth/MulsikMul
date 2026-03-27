@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Text } from 'react-native';
 import { colors } from '../../src/ui/theme';
+import { AppLogo } from '../../src/ui/AppLogo';
 
 function TabIcon({ emoji, focused }: { emoji: string; focused: boolean }) {
   return (
@@ -26,21 +27,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'My Plants',
+          title: '내 식물',
+          headerTitle: () => <AppLogo size="sm" layout="horizontal" light />,
           tabBarIcon: ({ focused }) => <TabIcon emoji="🌿" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="schedule"
         options={{
-          title: 'Schedule',
+          title: '물주기 일정',
           tabBarIcon: ({ focused }) => <TabIcon emoji="💧" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="add"
         options={{
-          title: 'Add Plant',
+          title: '식물 추가',
           tabBarIcon: ({ focused }) => <TabIcon emoji="➕" focused={focused} />,
         }}
       />

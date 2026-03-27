@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import { useDatabase } from '../../src/db/provider';
 import { insertPlant, upsertWateringSchedule } from '../../src/db/queries';
 import {
@@ -21,6 +21,8 @@ import {
   scheduleWateringNotification,
 } from '../../src/notifications/scheduler';
 import { borderRadius, colors, fontSize, fontWeight, spacing } from '../../src/ui/theme';
+import PlantSearchModal, { PlantSearchResult } from '../../src/ui/PlantSearchModal';
+import { AppLogo } from '../../src/ui/AppLogo';
 
 export default function AddPlantScreen() {
   const db = useDatabase();
@@ -32,6 +34,9 @@ export default function AddPlantScreen() {
   const [photoUri, setPhotoUri] = useState<string | null>(null);
   const [intervalDays, setIntervalDays] = useState('7');
   const [saving, setSaving] = useState(false);
+  const [searchModalVisible, setSearchModalVisible] = useState(false);
+  const [perenualId, setPerenualId] = useState<number | null>(null);
+  const [autoFilled, setAutoFilled] = useState(false);
 
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -47,6 +52,34 @@ export default function AddPlantScreen() {
       const dest = `${FileSystem.documentDirectory}${filename}`;
       await FileSystem.copyAsync({ from: asset.uri, to: dest });
       setPhotoUri(dest);
+    }
+  }
+
+  async function handleSearchSelect(data: PlantSearchResult) {
+    setName(data.name);
+    setSpecies(data.species);
+    setIntervalDays(String(data.intervalDays));
+    setNotes(data.notes);
+    setPerenualId(data.perenualId);
+    setAutoFilled(true);
+
+    if (data.photoUrl) {
+      try {
+        const filename = `plant_${Date.now()}.jpg`;
+        const dest = `${FileSystem.documentDirectory}${filename}`;
+        await FileSystem.downloadAsync(data.photoUrl, dest);
+        setPhotoUri(dest);
+      } catch {
+        // Photo download failed — continue without photo
+      }
+    }
+  }
+
+  function handleNameChange(text: string) {
+    setName(text);
+    if (autoFilled) {
+      setAutoFilled(false);
+      setPerenualId(null);
     }
   }
 
@@ -69,7 +102,7 @@ export default function AddPlantScreen() {
       const plantId = await insertPlant(db, {
         name: trimmedName,
         species: species.trim() || null,
-        perenual_id: null,
+        perenual_id: perenualId,
         photo_uri: photoUri,
         notes: notes.trim() || null,
         created_at: now,
@@ -107,6 +140,24 @@ export default function AddPlantScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
+        <AppLogo size="lg" layout="vertical" />
+
+        <Pressable
+          style={styles.searchButton}
+          onPress={() => setSearchModalVisible(true)}
+        >
+          <Text style={styles.searchButtonIcon}>🔍</Text>
+          <Text style={styles.searchButtonText}>Search Plant Database</Text>
+        </Pressable>
+
+        {autoFilled && (
+          <View style={styles.autoFilledBadge}>
+            <Text style={styles.autoFilledText}>Auto-filled from database</Text>
+          </View>
+        )}
+
+        <View style={styles.divider} />
+
         <Pressable style={styles.photoButton} onPress={pickImage}>
           {photoUri ? (
             <Image source={{ uri: photoUri }} style={styles.photo} />
@@ -118,27 +169,31 @@ export default function AddPlantScreen() {
           )}
         </Pressable>
 
+        <Text style={styles.sectionHeader}>Plant Info</Text>
+
         <Text style={styles.label}>Name *</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, autoFilled && styles.inputAutoFilled]}
           value={name}
-          onChangeText={setName}
+          onChangeText={handleNameChange}
           placeholder="e.g. My Monstera"
           placeholderTextColor={colors.textMuted}
         />
 
         <Text style={styles.label}>Species</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, autoFilled && styles.inputAutoFilled]}
           value={species}
           onChangeText={setSpecies}
           placeholder="e.g. Monstera deliciosa"
           placeholderTextColor={colors.textMuted}
         />
 
+        <Text style={styles.sectionHeader}>Care Schedule</Text>
+
         <Text style={styles.label}>Watering Interval (days)</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, autoFilled && styles.inputAutoFilled]}
           value={intervalDays}
           onChangeText={setIntervalDays}
           keyboardType="number-pad"
@@ -148,7 +203,7 @@ export default function AddPlantScreen() {
 
         <Text style={styles.label}>Notes</Text>
         <TextInput
-          style={[styles.input, styles.notesInput]}
+          style={[styles.input, styles.notesInput, autoFilled && styles.inputAutoFilled]}
           value={notes}
           onChangeText={setNotes}
           placeholder="Any notes about this plant..."
@@ -167,6 +222,12 @@ export default function AddPlantScreen() {
           </Text>
         </Pressable>
       </ScrollView>
+
+      <PlantSearchModal
+        visible={searchModalVisible}
+        onClose={() => setSearchModalVisible(false)}
+        onSelect={handleSearchSelect}
+      />
     </KeyboardAvoidingView>
   );
 }
@@ -178,6 +239,44 @@ const styles = StyleSheet.create({
   },
   scroll: {
     padding: spacing.lg,
+  },
+  searchButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1.5,
+    borderColor: colors.primary,
+    borderRadius: borderRadius.md,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    gap: spacing.xs,
+    marginBottom: spacing.sm,
+  },
+  searchButtonIcon: {
+    fontSize: fontSize.md,
+  },
+  searchButtonText: {
+    color: colors.primary,
+    fontSize: fontSize.md,
+    fontWeight: fontWeight.semibold,
+  },
+  autoFilledBadge: {
+    backgroundColor: colors.successLight,
+    borderRadius: borderRadius.md,
+    paddingVertical: spacing.xs,
+    paddingHorizontal: spacing.sm,
+    alignSelf: 'center',
+    marginBottom: spacing.sm,
+  },
+  autoFilledText: {
+    color: colors.success,
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.medium,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: colors.divider,
+    marginVertical: spacing.md,
   },
   photoButton: {
     alignSelf: 'center',
@@ -207,6 +306,15 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xs,
     color: colors.textMuted,
   },
+  sectionHeader: {
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.bold,
+    color: colors.textSecondary,
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+    marginTop: spacing.md,
+    marginBottom: spacing.xs,
+  },
   label: {
     fontSize: fontSize.sm,
     fontWeight: fontWeight.semibold,
@@ -222,6 +330,10 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     fontSize: fontSize.md,
     color: colors.text,
+  },
+  inputAutoFilled: {
+    backgroundColor: colors.successLight,
+    borderColor: colors.accent,
   },
   notesInput: {
     minHeight: 80,
