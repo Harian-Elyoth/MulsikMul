@@ -183,6 +183,5 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 7 | CICD-1, CICD-2, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2 |
-| **Partial** | 1 | PLANT-1 (missing acquired_at) |
+| **Done** | 8 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2 |
 | **Todo** | 7 | CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, UI-1, UI-2 |
