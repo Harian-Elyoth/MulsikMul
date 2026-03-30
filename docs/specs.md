@@ -16,6 +16,28 @@
 
 ## 2. Features MVP
 
+### Epic CICD — Pipeline de déploiement (TOP PRIORITÉ)
+
+| Champ | Détail |
+|-------|--------|
+| **CICD-1 : Pipeline CI — tests automatiques sur PR et push** | |
+| Story | En tant que développeur, je veux que les tests soient lancés automatiquement à chaque push/PR afin de détecter les régressions avant merge |
+| Critères d'acceptation | 1. GitHub Actions workflow déclenché sur push (main, develop) et sur PR · 2. Exécute `npm test` et bloque le merge si un test échoue · 3. Temps d'exécution < 3 min |
+| Complexité | S |
+| Dépendances | Aucune |
+| Priorité | **Must** |
+
+| Champ | Détail |
+|-------|--------|
+| **CICD-2 : Pipeline CD — build APK + release GitHub** | |
+| Story | En tant que développeur, je veux qu'un APK soit buildé et attaché à une GitHub Release à chaque tag de version afin de conserver un historique des versions téléchargeables |
+| Critères d'acceptation | 1. Workflow déclenché sur push d'un tag `v*` (ex: `v1.0.0`) · 2. Build APK via EAS Build (profil preview) · 3. APK uploadé comme artifact de la GitHub Release · 4. Release créée automatiquement avec changelog basé sur les commits · 5. Le numéro de version dans `app.json` est cohérent avec le tag |
+| Complexité | M |
+| Dépendances | CICD-1 |
+| Priorité | **Must** |
+
+---
+
 ### Epic PLANT — Gestion des plantes
 
 | Champ | Détail |
@@ -131,7 +153,29 @@
 
 ---
 
-**Total : 11 stories** (9 Must, 2 Should)
+### Epic UI — Refonte visuelle
+
+| Champ | Détail |
+|-------|--------|
+| **UI-1 : Polish visuel et composants réutilisables** | |
+| Story | En tant qu'utilisateur, je veux une interface cohérente et soignée afin que l'app inspire confiance et soit agréable à utiliser |
+| Critères d'acceptation | 1. Toutes les margins hardcodées (2px) remplacées par le spacing system (4/8px) · 2. Composant Badge unifié utilisé sur tous les écrans (statut arrosage) · 3. Composant Input avec états focus/error/disabled · 4. Boutons avec variantes (primary, secondary, danger) et états pressed/disabled · 5. Icônes tab bar et écrans remplacées par @expo/vector-icons (Ionicons) au lieu d'emoji |
+| Complexité | M |
+| Dépendances | Aucune |
+| Priorité | **Must** |
+
+| Champ | Détail |
+|-------|--------|
+| **UI-2 : Animations et transitions** | |
+| Story | En tant qu'utilisateur, je veux des micro-interactions et transitions fluides afin que l'app soit réactive et vivante |
+| Critères d'acceptation | 1. Feedback tactile sur les boutons (scale down on press) · 2. Transition fluide à l'ouverture du détail plante · 3. Animation du badge de statut quand il change (ex: arrosage → vert) · 4. Animation de la modale de recherche (slide up) |
+| Complexité | M |
+| Dépendances | UI-1 |
+| Priorité | **Should** |
+
+---
+
+**Total : 15 stories** (12 Must, 3 Should)
 
 ---
 

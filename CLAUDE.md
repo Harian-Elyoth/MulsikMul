@@ -40,7 +40,12 @@ src/
   utils/
     watering.ts             # Date helpers (getDaysUntilWatering, isOverdue, getWateringStatus)
 
-docs/DESIGN.md              # Design document with feature spec and roadmap
+docs/
+  brief.md                  # Product brief — problem, solution, 3 MVP features
+  specs.md                  # Full specs — epics, stories, user flows, tech requirements, out of scope
+  stories.md                # All user stories with status tracking (Done/Partial/Todo)
+  plan.md                   # Implementation plan — step-by-step with file changes
+  DESIGN.md                 # Design document with feature spec and roadmap
 ```
 
 ## Commands
@@ -116,8 +121,16 @@ Two SQLite tables:
 - Dark mode
 - Cloud sync
 
+## Project Documentation
+Before starting work, consult these docs for context:
+- **`docs/brief.md`** — Product brief: problem, solution, MVP scope, what's excluded
+- **`docs/specs.md`** — Full specs: 6 epics, 15 stories, user flows, tech requirements, out of scope
+- **`docs/stories.md`** — All user stories with acceptance criteria and status (Done/Partial/Todo). Update status here when completing a story.
+- **`docs/plan.md`** — Implementation plan: ordered steps, critical files, verification checklist
+
 ## Guidelines
 - Keep UI components in `src/ui/`, utilities in `src/utils/`
 - Use theme tokens from `src/ui/theme.ts` for all colors, spacing, and typography
 - All new DB queries go in `src/db/queries.ts` following the existing pattern (async function taking db as first param)
 - Types go in `src/types/plant.ts`
+- When completing a story, update its status in `docs/stories.md`
