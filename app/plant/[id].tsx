@@ -13,6 +13,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useDatabase } from '../../src/db/provider';
 import {
   deletePlant,
+  getPlantCareInfo,
   getPlantById,
   getWateringSchedule,
   updateLastWatered,
@@ -23,7 +24,7 @@ import {
   requestPermissions,
   scheduleWateringNotification,
 } from '../../src/notifications/scheduler';
-import { LocalPlant, WateringSchedule } from '../../src/types/plant';
+import { LocalPlant, PlantCareInfo, WateringSchedule } from '../../src/types/plant';
 import {
   formatDaysUntilWatering,
   getWateringStatus,
@@ -49,6 +50,7 @@ export default function PlantDetailScreen() {
 
   const [plant, setPlant] = useState<LocalPlant | null>(null);
   const [schedule, setSchedule] = useState<WateringSchedule | null>(null);
+  const [careInfo, setCareInfo] = useState<PlantCareInfo | null>(null);
   const [watering, setWatering] = useState(false);
 
   useFocusEffect(
@@ -58,6 +60,7 @@ export default function PlantDetailScreen() {
 
       getPlantById(db, plantId).then(setPlant);
       getWateringSchedule(db, plantId).then(setSchedule);
+      getPlantCareInfo(db, plantId).then(setCareInfo);
     }, [db, id])
   );
 
@@ -172,6 +175,27 @@ export default function PlantDetailScreen() {
         <View style={styles.notesSection}>
           <Text style={styles.sectionTitle}>Notes</Text>
           <Text style={styles.notesText}>{plant.notes}</Text>
+        </View>
+      )}
+
+      {careInfo && (careInfo.sunlight || careInfo.poisonous_to_pets !== null || careInfo.care_tips) && (
+        <View style={styles.careSection}>
+          <Text style={styles.sectionTitle}>Infos de soin</Text>
+          {careInfo.sunlight && (
+            <InfoItem label="Lumière" value={careInfo.sunlight} />
+          )}
+          {careInfo.poisonous_to_pets !== null && (
+            <InfoItem
+              label="Toxique pour animaux"
+              value={careInfo.poisonous_to_pets === 1 ? 'Oui' : 'Non'}
+            />
+          )}
+          {careInfo.care_tips && (
+            <View style={styles.careTipsRow}>
+              <Text style={styles.infoLabel}>Conseils</Text>
+              <Text style={styles.careTipsText}>{careInfo.care_tips}</Text>
+            </View>
+          )}
         </View>
       )}
 
@@ -296,6 +320,24 @@ const styles = StyleSheet.create({
     marginTop: spacing.md,
     borderWidth: 1,
     borderColor: colors.border,
+  },
+  careSection: {
+    width: '100%',
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
+    marginTop: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  careTipsRow: {
+    marginTop: spacing.sm,
+  },
+  careTipsText: {
+    fontSize: fontSize.md,
+    color: colors.text,
+    lineHeight: 22,
+    marginTop: 2,
   },
   sectionTitle: {
     fontSize: fontSize.sm,

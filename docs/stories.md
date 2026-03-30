@@ -93,7 +93,7 @@
 | **Complexité** | M |
 | **Dépendances** | CARE-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### CARE-3 : Afficher les infos de soin sur le détail plante
 | | |
@@ -103,7 +103,7 @@
 | **Complexité** | M |
 | **Dépendances** | CARE-2, PLANT-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ---
 
@@ -183,5 +183,5 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 9 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1 |
-| **Todo** | 6 | CARE-2, CARE-3, I18N-1, I18N-2, UI-1, UI-2 |
+| **Done** | 11 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3 |
+| **Todo** | 4 | I18N-1, I18N-2, UI-1, UI-2 |
