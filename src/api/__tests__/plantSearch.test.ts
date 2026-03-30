@@ -19,6 +19,9 @@ describe('HOUSEPLANTS database', () => {
       expect(typeof plant.interval_days).toBe('number');
       expect(plant.interval_days).toBeGreaterThan(0);
       expect(typeof plant.notes).toBe('string');
+      expect(typeof plant.sunlight).toBe('string');
+      expect(plant.sunlight.length).toBeGreaterThan(0);
+      expect(typeof plant.poisonous_to_pets).toBe('boolean');
     }
   });
 
@@ -90,6 +93,8 @@ describe('searchPlants', () => {
         scientific_name: expect.any(String),
         interval_days: expect.any(Number),
         notes: expect.any(String),
+        sunlight: expect.any(String),
+        poisonous_to_pets: expect.any(Boolean),
       })
     );
   });
