@@ -24,6 +24,15 @@ import { borderRadius, colors, fontSize, fontWeight, spacing } from '../../src/u
 import PlantSearchModal, { PlantSearchResult } from '../../src/ui/PlantSearchModal';
 import { AppLogo } from '../../src/ui/AppLogo';
 
+function parseDateDDMMYYYY(value: string): number | null {
+  const match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (!match) return null;
+  const [, dd, mm, yyyy] = match;
+  const date = new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+  if (isNaN(date.getTime())) return null;
+  return date.getTime();
+}
+
 export default function AddPlantScreen() {
   const db = useDatabase();
   const router = useRouter();
@@ -37,6 +46,7 @@ export default function AddPlantScreen() {
   const [searchModalVisible, setSearchModalVisible] = useState(false);
   const [perenualId, setPerenualId] = useState<number | null>(null);
   const [autoFilled, setAutoFilled] = useState(false);
+  const [acquiredAt, setAcquiredAt] = useState('');
 
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -96,6 +106,15 @@ export default function AddPlantScreen() {
       return;
     }
 
+    let acquiredAtTimestamp: number | null = null;
+    if (acquiredAt.trim()) {
+      acquiredAtTimestamp = parseDateDDMMYYYY(acquiredAt.trim());
+      if (acquiredAtTimestamp === null) {
+        Alert.alert('Invalid date', 'Acquisition date must be in DD/MM/YYYY format.');
+        return;
+      }
+    }
+
     setSaving(true);
     try {
       const now = Date.now();
@@ -105,6 +124,7 @@ export default function AddPlantScreen() {
         perenual_id: perenualId,
         photo_uri: photoUri,
         notes: notes.trim() || null,
+        acquired_at: acquiredAtTimestamp,
         created_at: now,
       });
 
@@ -187,6 +207,17 @@ export default function AddPlantScreen() {
           onChangeText={setSpecies}
           placeholder="e.g. Monstera deliciosa"
           placeholderTextColor={colors.textMuted}
+        />
+
+        <Text style={styles.label}>Acquisition date</Text>
+        <TextInput
+          style={styles.input}
+          value={acquiredAt}
+          onChangeText={setAcquiredAt}
+          placeholder="DD/MM/YYYY"
+          placeholderTextColor={colors.textMuted}
+          keyboardType="numbers-and-punctuation"
+          maxLength={10}
         />
 
         <Text style={styles.sectionHeader}>Care Schedule</Text>

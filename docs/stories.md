@@ -39,7 +39,7 @@
 | **Complexité** | M |
 | **Dépendances** | Aucune |
 | **Priorité** | **Must** |
-| **Status** | Partial — missing acquired_at date field |
+| **Status** | Done |
 
 ### PLANT-2 : Rechercher une plante dans la base locale
 | | |

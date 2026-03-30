@@ -16,6 +16,7 @@ const mockPlant: LocalPlant = {
   perenual_id: 42,
   photo_uri: 'file://photo.jpg',
   notes: 'Loves indirect light',
+  acquired_at: 1700000000000,
   created_at: 1700000000000,
 };
 
@@ -86,6 +87,7 @@ describe('insertPlant', () => {
         plantWithoutId.perenual_id,
         plantWithoutId.photo_uri,
         plantWithoutId.notes,
+        plantWithoutId.acquired_at,
         plantWithoutId.created_at,
       ]
     );
@@ -100,6 +102,7 @@ describe('insertPlant', () => {
       perenual_id: null,
       photo_uri: null,
       notes: null,
+      acquired_at: null,
       created_at: 1700000000000,
     };
     await insertPlant(db, minimalPlant);
@@ -108,6 +111,7 @@ describe('insertPlant', () => {
     expect(callArgs[2]).toBeNull(); // perenual_id
     expect(callArgs[3]).toBeNull(); // photo_uri
     expect(callArgs[4]).toBeNull(); // notes
+    expect(callArgs[5]).toBeNull(); // acquired_at
   });
 });
 

@@ -1,6 +1,7 @@
 import {
   CREATE_PLANTS_TABLE,
   CREATE_WATERING_SCHEDULE_TABLE,
+  ADD_ACQUIRED_AT_COLUMN,
   MIGRATIONS,
 } from '../schema';
 
@@ -64,10 +65,18 @@ describe('CREATE_WATERING_SCHEDULE_TABLE', () => {
   });
 });
 
+describe('ADD_ACQUIRED_AT_COLUMN', () => {
+  it('is an ALTER TABLE ADD COLUMN statement for plants', () => {
+    expect(ADD_ACQUIRED_AT_COLUMN).toContain('ALTER TABLE plants');
+    expect(ADD_ACQUIRED_AT_COLUMN).toContain('ADD COLUMN acquired_at');
+    expect(ADD_ACQUIRED_AT_COLUMN).toContain('INTEGER');
+  });
+});
+
 describe('MIGRATIONS', () => {
-  it('is an array with two entries', () => {
+  it('is an array with three entries', () => {
     expect(Array.isArray(MIGRATIONS)).toBe(true);
-    expect(MIGRATIONS).toHaveLength(2);
+    expect(MIGRATIONS).toHaveLength(3);
   });
 
   it('first migration is CREATE_PLANTS_TABLE', () => {
@@ -76,5 +85,9 @@ describe('MIGRATIONS', () => {
 
   it('second migration is CREATE_WATERING_SCHEDULE_TABLE', () => {
     expect(MIGRATIONS[1]).toBe(CREATE_WATERING_SCHEDULE_TABLE);
+  });
+
+  it('third migration is ADD_ACQUIRED_AT_COLUMN', () => {
+    expect(MIGRATIONS[2]).toBe(ADD_ACQUIRED_AT_COLUMN);
   });
 });
