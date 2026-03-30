@@ -15,7 +15,7 @@
 | **Complexité** | S |
 | **Dépendances** | Aucune |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### CICD-2 : Pipeline CD — build APK + release GitHub
 | | |
@@ -25,7 +25,7 @@
 | **Complexité** | M |
 | **Dépendances** | CICD-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ---
 
@@ -183,6 +183,6 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 5 | PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2 |
+| **Done** | 7 | CICD-1, CICD-2, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2 |
 | **Partial** | 1 | PLANT-1 (missing acquired_at) |
-| **Todo** | 9 | CICD-1, CICD-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, UI-1, UI-2 |
+| **Todo** | 7 | CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, UI-1, UI-2 |
