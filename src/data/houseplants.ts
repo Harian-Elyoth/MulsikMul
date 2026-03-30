@@ -5,6 +5,8 @@ export interface HouseplantEntry {
   interval_days: number;
   notes: string;
   thumbnail: string | null;
+  sunlight: string;
+  poisonous_to_pets: boolean;
 }
 
 export const HOUSEPLANTS: HouseplantEntry[] = [
@@ -16,6 +18,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Water when the top 2–3 cm of soil feel dry. Loves bright indirect light and high humidity. Wipe leaves occasionally to keep them dust-free.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'monstera-adansonii',
@@ -24,6 +28,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Keep soil evenly moist but never waterlogged. Prefers bright indirect light and a support to climb.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'monstera-siltepecana',
@@ -32,6 +38,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Water when the top layer of soil dries out. Thrives in bright indirect light and appreciates extra humidity.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'pothos-golden',
@@ -40,6 +48,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Very forgiving — let the soil dry out between waterings. Tolerates low light but grows faster in brighter conditions.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'pothos-marble-queen',
@@ -48,6 +58,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Similar care to Golden Pothos but needs slightly more light to maintain its variegation. Allow soil to dry between waterings.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'pothos-neon',
@@ -56,6 +68,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Bright chartreuse foliage that intensifies in good indirect light. Water when the top inch of soil is dry.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'pothos-cebu-blue',
@@ -64,6 +78,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Silvery-blue leaves that fenestrate as the plant matures. Prefers bright indirect light and well-draining soil.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'scindapsus-pictus',
@@ -72,6 +88,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Allow soil to dry partially between waterings. The silver variegation is more pronounced in bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'philodendron-heartleaf',
@@ -80,6 +98,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Let the top inch of soil dry before watering. Thrives in medium to bright indirect light. A fast grower.',
     thumbnail: null,
+    sunlight: 'medium to bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'philodendron-brasil',
@@ -88,6 +108,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Same care as heartleaf but needs brighter light to keep the yellow-green variegation vivid.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'philodendron-lemon-lime',
@@ -96,6 +118,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top 2 cm of soil are dry. Bright indirect light will keep the neon color vibrant.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'philodendron-gloriosum',
@@ -104,6 +128,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Prefers consistently moist (not wet) soil and high humidity. Slow-growing but stunning velvety leaves.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'philodendron-bipinnatifidum',
@@ -112,6 +138,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water thoroughly then allow the top half of soil to dry. Loves bright indirect light and space to grow.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'philodendron-pink-princess',
@@ -120,6 +148,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Needs bright indirect light to produce pink variegation. Water when the top 2 cm of soil are dry.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'peace-lily',
@@ -128,6 +158,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the plant starts to droop slightly or when the top inch of soil is dry. Tolerates low light.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'zz-plant',
@@ -136,6 +168,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'One of the most drought-tolerant houseplants. Water only when the soil is completely dry. Tolerates neglect and low light.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'alocasia-polly',
@@ -144,6 +178,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Keep soil evenly moist but not soggy. Needs high humidity and bright indirect light. Goes dormant in winter.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'alocasia-zebrina',
@@ -152,6 +188,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top 2 cm of soil dry out. The striking zebra-patterned stems need bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'alocasia-silver-dragon',
@@ -160,6 +198,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Prefers bright indirect light and consistent moisture. High humidity prevents leaf browning.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'caladium',
@@ -168,6 +208,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep the soil evenly moist during the growing season. Goes dormant in autumn — reduce watering then.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'anthurium',
@@ -176,6 +218,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top 2–3 cm of soil are dry. Prefers bright indirect light and high humidity.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'syngonium',
@@ -184,6 +228,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Allow the top inch of soil to dry between waterings. Tolerates lower light but grows faster in medium light.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'dieffenbachia',
@@ -192,6 +238,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Prefers bright indirect light. Note: sap is toxic — keep away from pets and children.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'aglaonema',
@@ -200,6 +248,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Very adaptable — tolerates low light and irregular watering. Water when the top inch of soil feels dry.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'spathiphyllum-sensation',
@@ -208,6 +258,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Largest peace lily variety. Water when leaves begin to wilt slightly or soil is dry. Great air purifier.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
 
   // ── Trailing & Hanging ──────────────────────────────────────────────────
@@ -218,6 +270,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water moderately; allow the soil to dry slightly between waterings. Very easy to care for and produces many "spiderettes".',
     thumbnail: null,
+    sunlight: 'medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'english-ivy',
@@ -226,6 +280,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Keep soil consistently moist but not waterlogged. Prefers cooler temperatures and bright indirect light.',
     thumbnail: null,
+    sunlight: 'medium to bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'tradescantia',
@@ -234,6 +290,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil feels dry. Bright indirect light keeps the purple color vibrant.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'string-of-pearls',
@@ -242,6 +300,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Very succulent — water sparingly and let soil dry completely between waterings. Needs bright light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'string-of-hearts',
@@ -250,6 +310,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Allow soil to dry fully between waterings. A trailing succulent that does well in bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'string-of-turtles',
@@ -258,6 +320,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Water when the top half of soil is dry. Sensitive to overwatering — use well-draining soil.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'burros-tail',
@@ -266,6 +330,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Drought-tolerant succulent. Water deeply and allow soil to dry completely. Handle gently — leaves drop easily.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'lipstick-plant',
@@ -274,6 +340,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Needs bright indirect light to bloom. High humidity is beneficial.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'swedish-ivy',
@@ -282,6 +350,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Keep soil evenly moist. Thrives in bright indirect light. Pinch back to encourage bushy growth.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Succulents ──────────────────────────────────────────────────────────
@@ -292,6 +362,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Water deeply then allow soil to dry completely before watering again. Tolerates bright direct sun.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: true,
   },
   {
     id: 'jade-plant',
@@ -300,6 +372,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Very drought-tolerant. Water when the top half of soil is dry. Needs bright light to thrive.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: true,
   },
   {
     id: 'echeveria',
@@ -308,6 +382,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Water at the base, avoiding the rosette. Let soil dry completely between waterings. Needs full sun.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'haworthia',
@@ -316,6 +392,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'More shade-tolerant than most succulents. Water when the soil is completely dry. Avoid direct harsh sun.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'gasteria',
@@ -324,6 +402,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Tolerates neglect and low light. Water when soil is completely dry. A great beginner succulent.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'kalanchoe',
@@ -332,6 +412,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Allow soil to dry between waterings. Needs bright light to rebloom. Avoid wetting the flowers.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'hens-and-chicks',
@@ -340,6 +422,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Extremely drought-tolerant. Water sparingly and let soil dry completely. Thrives outdoors but tolerates indoors.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'ghost-plant',
@@ -348,6 +432,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Water deeply then allow soil to dry fully. Pastel rosettes blush pink/yellow in bright light.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: false,
   },
   {
     id: 'living-stone',
@@ -356,6 +442,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 30,
     notes: 'Mimic desert conditions — water very rarely, only when leaves are wrinkled. No water at all from autumn to spring.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'baby-toes',
@@ -364,6 +452,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Minimal watering — only when soil is bone dry. Very sensitive to overwatering.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: false,
   },
   {
     id: 'panda-plant',
@@ -372,6 +462,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Fuzzy leaves should not get wet. Water at the base when soil is completely dry.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
 
   // ── Cacti ───────────────────────────────────────────────────────────────
@@ -382,6 +474,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 21,
     notes: 'Water sparingly in spring and summer; withhold water in autumn and winter. Needs full sun.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'bunny-ears-cactus',
@@ -390,6 +484,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 21,
     notes: 'Let soil dry completely between waterings. Bright direct sunlight is ideal. Glochids (tiny spines) can irritate skin.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'christmas-cactus',
@@ -398,6 +494,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'More moisture-loving than true cacti. Water when the top inch is dry. Reduce watering after blooming.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'column-cactus',
@@ -406,6 +504,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 21,
     notes: 'Water when soil is bone dry. Needs full sun and very well-draining soil.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'mistletoe-cactus',
@@ -414,6 +514,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Unlike most cacti, this one likes moisture. Water when the top layer is dry. Tolerates lower light.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Snake Plants & Dracaenas ────────────────────────────────────────────
@@ -424,6 +526,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Extremely drought-tolerant — water only when the soil is completely dry. Tolerates low light and neglect.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'snake-plant-laurentii',
@@ -432,6 +536,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Same care as regular snake plant. Needs slightly more light to maintain the yellow border.',
     thumbnail: null,
+    sunlight: 'medium to bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'corn-plant',
@@ -440,6 +546,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Water when the top inch of soil is dry. Tolerates low light. Fluoride in tap water can cause brown tips.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'dracaena-marginata',
@@ -448,6 +556,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Allow the top half of soil to dry between waterings. Tolerates low light but prefers bright indirect.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'lucky-bamboo',
@@ -456,6 +566,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Grown in water: change water every 7–10 days. Grown in soil: keep slightly moist. Indirect light only.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'cast-iron-plant',
@@ -464,6 +576,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'The toughest houseplant — tolerates neglect, low light, and irregular watering. Water when soil is dry.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Ficus ──────────────────────────────────────────────────────────────
@@ -474,6 +588,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top 2 cm of soil is dry. Needs bright indirect light and consistency — hates being moved.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'rubber-plant',
@@ -482,6 +598,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Allow the top half of soil to dry between waterings. Wipe leaves with a damp cloth to keep them glossy.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'rubber-plant-burgundy',
@@ -490,6 +608,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Same care as regular rubber plant. Deep red leaves intensify in bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'rubber-plant-tineke',
@@ -498,6 +618,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Cream and green variegation needs bright light. Allow soil to dry partially between waterings.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'weeping-fig',
@@ -506,6 +628,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Keep soil evenly moist. Sensitive to drafts and being moved — leaf drop is common after relocation.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
 
   // ── Palms ──────────────────────────────────────────────────────────────
@@ -516,6 +640,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Keep soil moist in spring/summer; reduce watering in autumn/winter. Bright indirect light works well.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'parlor-palm',
@@ -524,6 +650,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. One of the best palms for low-light interiors.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'ponytail-palm',
@@ -532,6 +660,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 21,
     notes: 'Very drought-tolerant — stores water in its bulbous trunk. Water sparingly and let soil dry completely.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: false,
   },
   {
     id: 'kentia-palm',
@@ -540,6 +670,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Allow soil to dry slightly between waterings. One of the most tolerant palms for indoor low light.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'sago-palm',
@@ -548,6 +680,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Water deeply then let soil dry out between waterings. Note: highly toxic to pets.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: true,
   },
 
   // ── Ferns ─────────────────────────────────────────────────────────────
@@ -558,6 +692,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Needs consistently moist soil and high humidity. Mist daily or use a pebble tray. Prefers indirect light.',
     thumbnail: null,
+    sunlight: 'medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'birds-nest-fern',
@@ -566,6 +702,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil moist but not soggy. Never pour water into the central rosette. Good for low to medium light.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'maidenhair-fern',
@@ -574,6 +712,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Requires consistently moist soil and very high humidity. The most delicate fern — do not let it dry out.',
     thumbnail: null,
+    sunlight: 'medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'staghorn-fern',
@@ -582,6 +722,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Soak or mist thoroughly then allow to dry. Often mounted on wood. Prefers bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'asparagus-fern',
@@ -590,6 +732,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil moist during growing season; reduce watering in winter. Mist regularly for humidity.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
 
   // ── Peperomias ────────────────────────────────────────────────────────
@@ -600,6 +744,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Allow soil to dry halfway between waterings. Sensitive to overwatering. Bright indirect light ideal.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'baby-rubber-plant',
@@ -608,6 +754,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Drought-tolerant leaves store water. Water when the top half of soil is dry. Tolerates lower light.',
     thumbnail: null,
+    sunlight: 'medium to bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'ripple-peperomia',
@@ -616,6 +764,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Let soil dry out between waterings. Avoid getting water on the textured leaves. Medium indirect light.',
     thumbnail: null,
+    sunlight: 'medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'coin-leaf-peperomia',
@@ -624,6 +774,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Water when the top inch of soil is dry. Tolerates lower light but grows best in bright indirect conditions.',
     thumbnail: null,
+    sunlight: 'medium to bright indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Hoyas ──────────────────────────────────────────────────────────────
@@ -634,6 +786,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Allow soil to dry completely between waterings. Bright indirect light encourages fragrant blooms.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'hoya-hindu-rope',
@@ -642,6 +796,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Water when soil is dry — the curled leaves store moisture. Thrives with neglect in bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'hoya-kerrii',
@@ -650,6 +806,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Very drought-tolerant. Water when soil is completely dry. Bright indirect light keeps it happy.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'hoya-pubicalyx',
@@ -658,6 +816,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Allow soil to dry between waterings. A fast-growing hoya that blooms easily in bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Calatheas & Marantas ───────────────────────────────────────────────
@@ -668,6 +828,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil consistently moist. Sensitive to fluoride — use filtered or distilled water if possible.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'calathea-ornata',
@@ -676,6 +838,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Water when the top inch of soil is dry. Prefers high humidity and filtered water. No direct sun.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'calathea-lancifolia',
@@ -684,6 +848,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep consistently moist but not waterlogged. Moves its leaves up at night and lowers them by day.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'prayer-plant',
@@ -692,6 +858,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil moist and provide high humidity. Leaves fold up at night like praying hands.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'ctenanthe',
@@ -700,6 +868,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil moist and humidity high. Use filtered water to prevent leaf spots. No direct sun.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Begonias ──────────────────────────────────────────────────────────
@@ -710,6 +880,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Water when the top inch of soil is dry, watering from below to keep leaves dry. Prefers high humidity.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'angel-wing-begonia',
@@ -718,6 +890,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Allow the top inch of soil to dry between waterings. Bright indirect light encourages blooming.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'wax-begonia',
@@ -726,6 +900,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Water when soil surface is dry. Tolerates sun and shade. A very easy-to-grow flowering plant.',
     thumbnail: null,
+    sunlight: 'bright indirect to direct light',
+    poisonous_to_pets: true,
   },
 
   // ── Orchids ──────────────────────────────────────────────────────────
@@ -736,6 +912,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water by soaking the pot then letting it drain fully. Allow roots to dry slightly between waterings. No direct sun.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'dendrobium-orchid',
@@ -744,6 +922,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water generously during growing season; reduce in winter. Bright indirect light and good air circulation.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'oncidium-orchid',
@@ -752,6 +932,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water thoroughly when the potting medium is nearly dry. Needs bright indirect light to bloom.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Air Plants & Bromeliads ────────────────────────────────────────────
@@ -762,6 +944,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Soak in water for 20–30 minutes weekly, or mist 2–3 times per week. Shake off excess water and allow to dry within 4 hours.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'bromeliad',
@@ -770,6 +954,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Keep the central cup filled with water. Water the soil sparingly. Bright indirect light is ideal.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'pineapple-plant',
@@ -778,6 +964,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Let soil dry between waterings. Water into the central cup if it has one. Needs very bright light.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: false,
   },
 
   // ── Pilea ────────────────────────────────────────────────────────────
@@ -788,6 +976,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Rotate regularly for even growth. Bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'friendship-plant',
@@ -796,6 +986,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Keep soil moist but well-drained. High humidity keeps the textured leaves looking their best.',
     thumbnail: null,
+    sunlight: 'medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'aluminum-plant',
@@ -804,6 +996,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil feels dry. The silver markings fade in low light — prefers bright indirect.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── African Violets & Cape Primrose ────────────────────────────────────
@@ -814,6 +1008,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Water from below by placing the pot in a saucer of water. Avoid wetting leaves. Bright indirect light for blooms.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'cape-primrose',
@@ -822,6 +1018,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Keep soil moist but not soggy. Water from below to avoid crown rot. Bright indirect light encourages flowering.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'cyclamen',
@@ -830,6 +1028,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Water from below to avoid rotting the tuber. Prefers cooler temperatures (13–18°C) and bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
 
   // ── Croton & Colourful Foliage ─────────────────────────────────────────
@@ -840,6 +1040,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil consistently moist. Needs very bright light (even some direct sun) to maintain vibrant colors.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: true,
   },
   {
     id: 'polka-dot-plant',
@@ -848,6 +1050,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil evenly moist. Bright indirect light maintains the pink/red spotting. Pinch to stay bushy.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'nerve-plant',
@@ -856,6 +1060,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Needs consistently moist soil and very high humidity. Wilts dramatically when thirsty but recovers quickly.',
     thumbnail: null,
+    sunlight: 'medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'persian-shield',
@@ -864,6 +1070,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil consistently moist. Needs bright indirect light to maintain the iridescent purple shimmer.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'coleus',
@@ -872,6 +1080,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Water when the top inch of soil is dry. More sun = brighter colors. Pinch flower buds to keep foliage lush.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'oxalis',
@@ -880,6 +1090,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Allow the top inch of soil to dry between waterings. Goes dormant in summer — reduce watering when leaves die back.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
 
   // ── Schefflera & Umbrella Plants ───────────────────────────────────────
@@ -890,6 +1102,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Tolerates lower light but prefers bright indirect.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'umbrella-plant',
@@ -898,6 +1112,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Allow the top layer of soil to dry before watering. Needs bright indirect light and occasional pruning.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'money-tree',
@@ -906,6 +1122,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water thoroughly when the top 2–3 cm of soil are dry. Often braided — give it bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
 
   // ── Jasmine & Flowering ─────────────────────────────────────────────────
@@ -916,6 +1134,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 5,
     notes: 'Keep soil moist during the blooming season. Needs cool nights and bright light to encourage flowers.',
     thumbnail: null,
+    sunlight: 'bright indirect to direct light',
+    poisonous_to_pets: false,
   },
   {
     id: 'amaryllis',
@@ -924,6 +1144,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Goes dormant after blooming — reduce watering until new growth appears.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'bird-of-paradise',
@@ -932,6 +1154,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top 2–3 cm of soil are dry. Needs very bright indirect light, even some direct sun.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: true,
   },
   {
     id: 'clivia',
@@ -940,6 +1164,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 10,
     notes: 'Water when the top half of soil is dry. Needs a cool, dry rest period in winter to set flower buds.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'anthurium-clarinervium',
@@ -948,6 +1174,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top 2 cm of soil are dry. Needs high humidity and bright indirect light to thrive.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'poinsettia',
@@ -956,6 +1184,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the soil surface is dry. Avoid drafts and temperature extremes. Needs darkness to rebloom.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
 
   // ── Desert Rose & Exotics ──────────────────────────────────────────────
@@ -966,6 +1196,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Water sparingly — drought-tolerant succulent tree. Full sun and excellent drainage are essential.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: true,
   },
   {
     id: 'crown-of-thorns',
@@ -974,6 +1206,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Allow soil to dry completely between waterings. Full sun and minimal watering keep it blooming year-round.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: true,
   },
   {
     id: 'cactus-mix',
@@ -982,6 +1216,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 21,
     notes: 'Water sparingly in spring/summer; almost none in autumn/winter. Full sun and excellent drainage required.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'succulent-mix',
@@ -990,6 +1226,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 14,
     notes: 'Water when soil is completely dry. Bright light keeps rosettes compact. Well-draining soil is essential.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: false,
   },
 
   // ── Herbs & Edible Plants ──────────────────────────────────────────────
@@ -1000,6 +1238,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 2,
     notes: 'Keep soil consistently moist — wilts quickly when dry. Needs at least 6 hours of direct sun daily.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'mint',
@@ -1008,6 +1248,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Keep soil consistently moist. Thrives in partial shade. Grows aggressively — best kept in its own pot.',
     thumbnail: null,
+    sunlight: 'medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'rosemary',
@@ -1016,6 +1258,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Allow soil to dry between waterings — drought-tolerant once established. Needs full sun.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'lavender',
@@ -1024,6 +1268,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Let soil dry between waterings. Needs full sun (6+ hours). Great air freshener and low-maintenance.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'lemon-tree',
@@ -1032,6 +1278,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Needs maximum sunlight and citrus-specific fertilizer.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: true,
   },
 
   // ── Bonus Popular Plants ───────────────────────────────────────────────
@@ -1042,6 +1290,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Closes its leaves at night and in darkness. Very charming.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'purple-passion',
@@ -1050,6 +1300,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. The purple velvet effect intensifies in bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'cissus',
@@ -1058,6 +1310,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Tolerates lower light conditions than most vining plants.',
     thumbnail: null,
+    sunlight: 'low to medium indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'wandering-jew',
@@ -1066,6 +1320,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Fast-growing and forgiving. Bright indirect light is best.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'inch-plant',
@@ -1074,6 +1330,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Purple leaves need bright indirect light to stay vibrant. Allow soil to dry slightly between waterings.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'oleander',
@@ -1082,6 +1340,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water regularly during growing season; less in winter. Needs full sun. Highly toxic — handle with care.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: true,
   },
   {
     id: 'umbrella-papyrus',
@@ -1090,6 +1350,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Loves water — keep the pot standing in a saucer of water at all times. Bright indirect to direct light.',
     thumbnail: null,
+    sunlight: 'bright indirect to direct light',
+    poisonous_to_pets: false,
   },
   {
     id: 'sensitive-plant',
@@ -1098,6 +1360,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Keep soil consistently moist. Famous for folding leaves when touched. Needs bright indirect light.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: true,
   },
   {
     id: 'venus-flytrap',
@@ -1106,6 +1370,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 3,
     notes: 'Use only distilled or rainwater — never tap water. Keep the tray wet. Needs full sun.',
     thumbnail: null,
+    sunlight: 'full sun',
+    poisonous_to_pets: false,
   },
   {
     id: 'goldfish-plant',
@@ -1114,6 +1380,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 7,
     notes: 'Water when the top inch of soil is dry. Bright indirect light and high humidity promote orange blooms.',
     thumbnail: null,
+    sunlight: 'bright indirect light',
+    poisonous_to_pets: false,
   },
   {
     id: 'leptospermum-scoparium',
@@ -1122,5 +1390,7 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     interval_days: 9,
     notes: 'Let soil dry slightly between waterings — very sensitive to overwatering and root rot. Needs bright direct light, ideally near a south or west-facing window. Use well-drained, slightly acidic soil; tolerates dry air but avoid waterlogged conditions.',
     thumbnail: null,
+    sunlight: 'bright direct light',
+    poisonous_to_pets: false,
   },
 ];
