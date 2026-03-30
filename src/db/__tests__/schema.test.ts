@@ -2,6 +2,7 @@ import {
   CREATE_PLANTS_TABLE,
   CREATE_WATERING_SCHEDULE_TABLE,
   ADD_ACQUIRED_AT_COLUMN,
+  CREATE_PLANT_CARE_INFO_TABLE,
   MIGRATIONS,
 } from '../schema';
 
@@ -73,10 +74,34 @@ describe('ADD_ACQUIRED_AT_COLUMN', () => {
   });
 });
 
+describe('CREATE_PLANT_CARE_INFO_TABLE', () => {
+  it('creates plant_care_info table with IF NOT EXISTS guard', () => {
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain(
+      'CREATE TABLE IF NOT EXISTS plant_care_info'
+    );
+  });
+
+  it('defines plant_id as NOT NULL UNIQUE with foreign key reference', () => {
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain('plant_id');
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain('NOT NULL UNIQUE');
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain('REFERENCES plants(id)');
+  });
+
+  it('cascades delete on plant removal', () => {
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain('ON DELETE CASCADE');
+  });
+
+  it('includes sunlight, poisonous_to_pets, and care_tips columns', () => {
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain('sunlight');
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain('poisonous_to_pets');
+    expect(CREATE_PLANT_CARE_INFO_TABLE).toContain('care_tips');
+  });
+});
+
 describe('MIGRATIONS', () => {
-  it('is an array with three entries', () => {
+  it('is an array with four entries', () => {
     expect(Array.isArray(MIGRATIONS)).toBe(true);
-    expect(MIGRATIONS).toHaveLength(3);
+    expect(MIGRATIONS).toHaveLength(4);
   });
 
   it('first migration is CREATE_PLANTS_TABLE', () => {
@@ -89,5 +114,9 @@ describe('MIGRATIONS', () => {
 
   it('third migration is ADD_ACQUIRED_AT_COLUMN', () => {
     expect(MIGRATIONS[2]).toBe(ADD_ACQUIRED_AT_COLUMN);
+  });
+
+  it('fourth migration is CREATE_PLANT_CARE_INFO_TABLE', () => {
+    expect(MIGRATIONS[3]).toBe(CREATE_PLANT_CARE_INFO_TABLE);
   });
 });

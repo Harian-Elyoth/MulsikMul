@@ -24,6 +24,8 @@ export interface PlantSearchResult {
   notes: string;
   photoUrl: string | null;
   perenualId: number | null;
+  sunlight: string | null;
+  poisonous_to_pets: boolean | null;
 }
 
 interface Props {
@@ -56,6 +58,8 @@ export default function PlantSearchModal({ visible, onClose, onSelect }: Props) 
       notes: item.notes,
       photoUrl: item.thumbnail,
       perenualId: null,
+      sunlight: item.sunlight,
+      poisonous_to_pets: item.poisonous_to_pets,
     });
     handleClose();
   }

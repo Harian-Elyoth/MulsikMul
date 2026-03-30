@@ -101,3 +101,11 @@ export interface PlantWithSchedule extends LocalPlant {
   notification_id: string | null;
   schedule_id: number | null;
 }
+
+export interface PlantCareInfo {
+  id: number;
+  plant_id: number;
+  sunlight: string | null;
+  poisonous_to_pets: number | null;
+  care_tips: string | null;
+}

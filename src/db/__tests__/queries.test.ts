@@ -6,8 +6,10 @@ import {
   getWateringSchedule,
   upsertWateringSchedule,
   updateLastWatered,
+  insertPlantCareInfo,
+  getPlantCareInfo,
 } from '../queries';
-import { LocalPlant, WateringSchedule } from '../../types/plant';
+import { LocalPlant, PlantCareInfo, WateringSchedule } from '../../types/plant';
 
 const mockPlant: LocalPlant = {
   id: 1,
@@ -198,5 +200,62 @@ describe('updateLastWatered', () => {
     await updateLastWatered(db, 2, 1700000000000);
     const callArgs = db.runAsync.mock.calls[0][1];
     expect(callArgs[1]).toBeNull();
+  });
+});
+
+const mockCareInfo: PlantCareInfo = {
+  id: 1,
+  plant_id: 1,
+  sunlight: 'bright indirect light',
+  poisonous_to_pets: 1,
+  care_tips: 'Water when top soil is dry.',
+};
+
+describe('insertPlantCareInfo', () => {
+  it('calls runAsync with INSERT OR REPLACE SQL and correct values', async () => {
+    const db = makeMockDb();
+    const { id, ...infoWithoutId } = mockCareInfo;
+    await insertPlantCareInfo(db, infoWithoutId);
+    expect(db.runAsync).toHaveBeenCalledWith(
+      expect.stringContaining('INSERT OR REPLACE INTO plant_care_info'),
+      [
+        infoWithoutId.plant_id,
+        infoWithoutId.sunlight,
+        infoWithoutId.poisonous_to_pets,
+        infoWithoutId.care_tips,
+      ]
+    );
+  });
+
+  it('uses null for optional fields when null', async () => {
+    const db = makeMockDb();
+    await insertPlantCareInfo(db, {
+      plant_id: 2,
+      sunlight: null,
+      poisonous_to_pets: null,
+      care_tips: null,
+    });
+    const callArgs = db.runAsync.mock.calls[0][1];
+    expect(callArgs[1]).toBeNull(); // sunlight
+    expect(callArgs[2]).toBeNull(); // poisonous_to_pets
+    expect(callArgs[3]).toBeNull(); // care_tips
+  });
+});
+
+describe('getPlantCareInfo', () => {
+  it('calls getFirstAsync with correct SQL and plantId', async () => {
+    const db = makeMockDb({ getFirstAsync: jest.fn().mockResolvedValue(mockCareInfo) });
+    const result = await getPlantCareInfo(db, 1);
+    expect(db.getFirstAsync).toHaveBeenCalledWith(
+      'SELECT * FROM plant_care_info WHERE plant_id = ?',
+      [1]
+    );
+    expect(result).toEqual(mockCareInfo);
+  });
+
+  it('returns null when no care info exists', async () => {
+    const db = makeMockDb({ getFirstAsync: jest.fn().mockResolvedValue(null) });
+    const result = await getPlantCareInfo(db, 99);
+    expect(result).toBeNull();
   });
 });

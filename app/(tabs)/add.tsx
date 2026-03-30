@@ -15,7 +15,7 @@ import { useRouter } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useDatabase } from '../../src/db/provider';
-import { insertPlant, upsertWateringSchedule } from '../../src/db/queries';
+import { insertPlant, insertPlantCareInfo, upsertWateringSchedule } from '../../src/db/queries';
 import {
   requestPermissions,
   scheduleWateringNotification,
@@ -47,6 +47,7 @@ export default function AddPlantScreen() {
   const [perenualId, setPerenualId] = useState<number | null>(null);
   const [autoFilled, setAutoFilled] = useState(false);
   const [acquiredAt, setAcquiredAt] = useState('');
+  const [careInfo, setCareInfo] = useState<{ sunlight: string | null; poisonous_to_pets: boolean | null } | null>(null);
 
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -72,6 +73,7 @@ export default function AddPlantScreen() {
     setNotes(data.notes);
     setPerenualId(data.perenualId);
     setAutoFilled(true);
+    setCareInfo({ sunlight: data.sunlight, poisonous_to_pets: data.poisonous_to_pets });
 
     if (data.photoUrl) {
       try {
@@ -90,6 +92,7 @@ export default function AddPlantScreen() {
     if (autoFilled) {
       setAutoFilled(false);
       setPerenualId(null);
+      setCareInfo(null);
     }
   }
 
@@ -145,6 +148,17 @@ export default function AddPlantScreen() {
         last_watered_at: now,
         notification_id: notificationId,
       });
+
+      if (careInfo !== null) {
+        await insertPlantCareInfo(db, {
+          plant_id: plantId,
+          sunlight: careInfo.sunlight,
+          poisonous_to_pets: careInfo.poisonous_to_pets !== null
+            ? (careInfo.poisonous_to_pets ? 1 : 0)
+            : null,
+          care_tips: notes.trim() || null,
+        });
+      }
 
       router.navigate('/(tabs)');
     } catch (error) {

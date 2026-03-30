@@ -1,5 +1,5 @@
 import { SQLiteDatabase } from 'expo-sqlite';
-import { LocalPlant, PlantWithSchedule, WateringSchedule } from '../types/plant';
+import { LocalPlant, PlantCareInfo, PlantWithSchedule, WateringSchedule } from '../types/plant';
 
 export async function getAllPlants(db: SQLiteDatabase): Promise<LocalPlant[]> {
   return db.getAllAsync<LocalPlant>('SELECT * FROM plants ORDER BY created_at DESC');
@@ -85,5 +85,26 @@ export async function getAllPlantsWithSchedule(
      FROM plants p
      LEFT JOIN watering_schedule ws ON ws.plant_id = p.id
      ORDER BY p.created_at DESC`
+  );
+}
+
+export async function insertPlantCareInfo(
+  db: SQLiteDatabase,
+  info: Omit<PlantCareInfo, 'id'>
+): Promise<void> {
+  await db.runAsync(
+    `INSERT OR REPLACE INTO plant_care_info (plant_id, sunlight, poisonous_to_pets, care_tips)
+     VALUES (?, ?, ?, ?)`,
+    [info.plant_id, info.sunlight ?? null, info.poisonous_to_pets ?? null, info.care_tips ?? null]
+  );
+}
+
+export async function getPlantCareInfo(
+  db: SQLiteDatabase,
+  plantId: number
+): Promise<PlantCareInfo | null> {
+  return db.getFirstAsync<PlantCareInfo>(
+    'SELECT * FROM plant_care_info WHERE plant_id = ?',
+    [plantId]
   );
 }
