@@ -128,6 +128,9 @@ export default function PlantDetailScreen() {
   const lastWatered = schedule?.last_watered_at
     ? new Date(schedule.last_watered_at).toLocaleDateString()
     : 'Never';
+  const acquiredDate = plant.acquired_at
+    ? new Date(plant.acquired_at).toLocaleDateString('fr-FR')
+    : null;
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scroll}>
@@ -157,6 +160,11 @@ export default function PlantDetailScreen() {
             <InfoItem label="Interval" value={`Every ${schedule.interval_days} days`} />
             <InfoItem label="Last Watered" value={lastWatered} />
           </View>
+          {acquiredDate && (
+            <View style={[styles.infoRow, styles.infoRowTop]}>
+              <InfoItem label="Acquired" value={acquiredDate} />
+            </View>
+          )}
         </View>
       )}
 
@@ -260,6 +268,12 @@ const styles = StyleSheet.create({
   infoRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  infoRowTop: {
+    marginTop: spacing.sm,
+    paddingTop: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.divider,
   },
   infoItem: {
     alignItems: 'center',

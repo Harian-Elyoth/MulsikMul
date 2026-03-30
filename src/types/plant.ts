@@ -83,6 +83,7 @@ export interface LocalPlant {
   perenual_id: number | null;
   photo_uri: string | null;
   notes: string | null;
+  acquired_at: number | null;
   created_at: number;
 }
 

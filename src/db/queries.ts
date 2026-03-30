@@ -14,14 +14,15 @@ export async function insertPlant(
   plant: Omit<LocalPlant, 'id'>
 ): Promise<number> {
   const result = await db.runAsync(
-    `INSERT INTO plants (name, species, perenual_id, photo_uri, notes, created_at)
-     VALUES (?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO plants (name, species, perenual_id, photo_uri, notes, acquired_at, created_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`,
     [
       plant.name,
       plant.species ?? null,
       plant.perenual_id ?? null,
       plant.photo_uri ?? null,
       plant.notes ?? null,
+      plant.acquired_at ?? null,
       plant.created_at,
     ]
   );

@@ -23,8 +23,13 @@ export function DatabaseProvider({ children }: { children: React.ReactNode }) {
       const database = await openDatabaseAsync(DB_NAME);
       await database.execAsync('PRAGMA journal_mode = WAL;');
       await database.execAsync('PRAGMA foreign_keys = ON;');
-      for (const migration of MIGRATIONS) {
-        await database.execAsync(migration);
+      const versionResult = await database.getFirstAsync<{ user_version: number }>(
+        'PRAGMA user_version'
+      );
+      const currentVersion = versionResult?.user_version ?? 0;
+      for (let i = currentVersion; i < MIGRATIONS.length; i++) {
+        await database.execAsync(MIGRATIONS[i]);
+        await database.execAsync(`PRAGMA user_version = ${i + 1}`);
       }
       if (mounted) {
         setDb(database);

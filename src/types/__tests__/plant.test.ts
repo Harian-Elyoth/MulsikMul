@@ -19,6 +19,7 @@ describe('LocalPlant', () => {
       perenual_id: 42,
       photo_uri: 'file://photo.jpg',
       notes: 'Loves indirect light',
+      acquired_at: 1700000000000,
       created_at: 1700000000000,
     };
     expect(plant.id).toBe(1);
@@ -34,12 +35,14 @@ describe('LocalPlant', () => {
       perenual_id: null,
       photo_uri: null,
       notes: null,
+      acquired_at: null,
       created_at: 1700000000001,
     };
     expect(plant.species).toBeNull();
     expect(plant.perenual_id).toBeNull();
     expect(plant.photo_uri).toBeNull();
     expect(plant.notes).toBeNull();
+    expect(plant.acquired_at).toBeNull();
   });
 });
 
