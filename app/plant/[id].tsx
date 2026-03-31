@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import {
-  Alert,
   Image,
+  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import i18n from '../../src/i18n';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDatabase } from '../../src/db/provider';
 import {
@@ -48,6 +49,7 @@ export default function PlantDetailScreen() {
   const [schedule, setSchedule] = useState<WateringSchedule | null>(null);
   const [careInfo, setCareInfo] = useState<PlantCareInfo | null>(null);
   const [watering, setWatering] = useState(false);
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -94,25 +96,17 @@ export default function PlantDetailScreen() {
 
   function handleDelete() {
     if (!plant) return;
+    setDeleteModalVisible(true);
+  }
 
-    Alert.alert(
-      t('plantDetail.deleteTitle'),
-      t('plantDetail.deleteMessage', { name: plant.name }),
-      [
-        { text: t('common.cancel'), style: 'cancel' },
-        {
-          text: t('common.delete'),
-          style: 'destructive',
-          onPress: async () => {
-            if (schedule?.notification_id) {
-              await cancelNotification(schedule.notification_id);
-            }
-            await deletePlant(db, plant.id);
-            router.back();
-          },
-        },
-      ]
-    );
+  async function confirmDelete() {
+    if (!plant) return;
+    setDeleteModalVisible(false);
+    if (schedule?.notification_id) {
+      await cancelNotification(schedule.notification_id);
+    }
+    await deletePlant(db, plant.id);
+    router.back();
   }
 
   if (!plant) {
@@ -132,7 +126,8 @@ export default function PlantDetailScreen() {
     : null;
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.scroll}>
+    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.scroll}>
       {plant.photo_uri ? (
         <Image source={{ uri: plant.photo_uri }} style={styles.photo} />
       ) : (
@@ -167,14 +162,7 @@ export default function PlantDetailScreen() {
         </View>
       )}
 
-      {plant.notes && (
-        <View style={styles.notesSection}>
-          <Text style={styles.sectionTitle}>{t('common.notes')}</Text>
-          <Text style={styles.notesText}>{plant.notes}</Text>
-        </View>
-      )}
-
-      {careInfo && (careInfo.sunlight || careInfo.poisonous_to_pets !== null || careInfo.care_tips) && (
+      {careInfo && (careInfo.sunlight || careInfo.poisonous_to_pets !== null || careInfo.care_tips || careInfo.care_tips_fr || careInfo.care_tips_ko) && (
         <View style={styles.careSection}>
           <Text style={styles.sectionTitle}>{t('plantDetail.careInfo')}</Text>
           {careInfo.sunlight && (
@@ -186,10 +174,16 @@ export default function PlantDetailScreen() {
               value={careInfo.poisonous_to_pets === 1 ? t('common.yes') : t('common.no')}
             />
           )}
-          {careInfo.care_tips && (
+          {(careInfo.care_tips || careInfo.care_tips_fr || careInfo.care_tips_ko) && (
             <View style={styles.careTipsRow}>
               <Text style={styles.infoLabel}>{t('plantDetail.tips')}</Text>
-              <Text style={styles.careTipsText}>{careInfo.care_tips}</Text>
+              <Text style={styles.careTipsText}>
+                {i18n.language === 'fr'
+                  ? (careInfo.care_tips_fr ?? careInfo.care_tips)
+                  : i18n.language === 'ko'
+                  ? (careInfo.care_tips_ko ?? careInfo.care_tips)
+                  : careInfo.care_tips}
+              </Text>
             </View>
           )}
         </View>
@@ -209,6 +203,37 @@ export default function PlantDetailScreen() {
         <Text style={styles.deleteButtonText}>{t('plantDetail.deletePlant')}</Text>
       </Pressable>
     </ScrollView>
+
+    <Modal
+      visible={deleteModalVisible}
+      transparent
+      animationType="fade"
+      onRequestClose={() => setDeleteModalVisible(false)}
+    >
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalCard}>
+          <Text style={styles.modalTitle}>{t('plantDetail.deleteTitle')}</Text>
+          <Text style={styles.modalMessage}>
+            {t('plantDetail.deleteMessage', { name: plant.name })}
+          </Text>
+          <View style={styles.modalButtons}>
+            <Pressable
+              style={[styles.modalButton, styles.modalButtonCancel]}
+              onPress={() => setDeleteModalVisible(false)}
+            >
+              <Text style={styles.modalButtonCancelText}>{t('common.cancel')}</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.modalButton, styles.modalButtonDelete]}
+              onPress={confirmDelete}
+            >
+              <Text style={styles.modalButtonDeleteText}>{t('common.delete')}</Text>
+            </Pressable>
+          </View>
+        </View>
+      </View>
+    </Modal>
+    </View>
   );
 }
 
@@ -308,15 +333,6 @@ const styles = StyleSheet.create({
     fontWeight: fontWeight.medium,
     color: colors.text,
   },
-  notesSection: {
-    width: '100%',
-    backgroundColor: colors.surface,
-    borderRadius: borderRadius.lg,
-    padding: spacing.lg,
-    marginTop: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
   careSection: {
     width: '100%',
     backgroundColor: colors.surface,
@@ -340,11 +356,6 @@ const styles = StyleSheet.create({
     fontWeight: fontWeight.semibold,
     color: colors.textMuted,
     marginBottom: spacing.sm,
-  },
-  notesText: {
-    fontSize: fontSize.md,
-    color: colors.text,
-    lineHeight: 22,
   },
   waterButton: {
     width: '100%',
@@ -375,5 +386,58 @@ const styles = StyleSheet.create({
     color: colors.danger,
     fontSize: fontSize.md,
     fontWeight: fontWeight.medium,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: '#00000066',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: spacing.lg,
+  },
+  modalCard: {
+    width: '100%',
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
+  },
+  modalTitle: {
+    fontSize: fontSize.lg,
+    fontWeight: fontWeight.bold,
+    color: colors.text,
+    marginBottom: spacing.sm,
+  },
+  modalMessage: {
+    fontSize: fontSize.md,
+    color: colors.textSecondary,
+    lineHeight: 22,
+    marginBottom: spacing.lg,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  modalButton: {
+    flex: 1,
+    borderRadius: borderRadius.md,
+    padding: spacing.md,
+    alignItems: 'center',
+  },
+  modalButtonCancel: {
+    backgroundColor: colors.surfaceElevated,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  modalButtonDelete: {
+    backgroundColor: colors.danger,
+  },
+  modalButtonCancelText: {
+    fontSize: fontSize.md,
+    fontWeight: fontWeight.medium,
+    color: colors.text,
+  },
+  modalButtonDeleteText: {
+    fontSize: fontSize.md,
+    fontWeight: fontWeight.medium,
+    color: colors.textLight,
   },
 });

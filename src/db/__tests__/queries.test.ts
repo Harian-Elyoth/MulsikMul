@@ -209,6 +209,8 @@ const mockCareInfo: PlantCareInfo = {
   sunlight: 'bright indirect light',
   poisonous_to_pets: 1,
   care_tips: 'Water when top soil is dry.',
+  care_tips_fr: 'Arroser quand le substrat est sec en surface.',
+  care_tips_ko: '흙 표면이 건조해지면 물을 주세요.',
 };
 
 describe('insertPlantCareInfo', () => {
@@ -223,6 +225,8 @@ describe('insertPlantCareInfo', () => {
         infoWithoutId.sunlight,
         infoWithoutId.poisonous_to_pets,
         infoWithoutId.care_tips,
+        infoWithoutId.care_tips_fr,
+        infoWithoutId.care_tips_ko,
       ]
     );
   });
@@ -234,11 +238,15 @@ describe('insertPlantCareInfo', () => {
       sunlight: null,
       poisonous_to_pets: null,
       care_tips: null,
+      care_tips_fr: null,
+      care_tips_ko: null,
     });
     const callArgs = db.runAsync.mock.calls[0][1];
     expect(callArgs[1]).toBeNull(); // sunlight
     expect(callArgs[2]).toBeNull(); // poisonous_to_pets
     expect(callArgs[3]).toBeNull(); // care_tips
+    expect(callArgs[4]).toBeNull(); // care_tips_fr
+    expect(callArgs[5]).toBeNull(); // care_tips_ko
   });
 });
 

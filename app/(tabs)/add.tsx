@@ -49,7 +49,7 @@ export default function AddPlantScreen() {
   const [perenualId, setPerenualId] = useState<number | null>(null);
   const [autoFilled, setAutoFilled] = useState(false);
   const [acquiredAt, setAcquiredAt] = useState('');
-  const [careInfo, setCareInfo] = useState<{ sunlight: string | null; poisonous_to_pets: boolean | null } | null>(null);
+  const [careInfo, setCareInfo] = useState<{ sunlight: string | null; poisonous_to_pets: boolean | null; notes_fr: string | null; notes_ko: string | null } | null>(null);
 
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -75,7 +75,7 @@ export default function AddPlantScreen() {
     setNotes(data.notes);
     setPerenualId(data.perenualId);
     setAutoFilled(true);
-    setCareInfo({ sunlight: data.sunlight, poisonous_to_pets: data.poisonous_to_pets });
+    setCareInfo({ sunlight: data.sunlight, poisonous_to_pets: data.poisonous_to_pets, notes_fr: data.notes_fr, notes_ko: data.notes_ko });
 
     if (data.photoUrl) {
       try {
@@ -159,6 +159,8 @@ export default function AddPlantScreen() {
             ? (careInfo.poisonous_to_pets ? 1 : 0)
             : null,
           care_tips: notes.trim() || null,
+          care_tips_fr: careInfo.notes_fr,
+          care_tips_ko: careInfo.notes_ko,
         });
       }
 

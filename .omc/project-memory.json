@@ -190,8 +190,26 @@
   "hotPaths": [
     {
       "path": "app/plant/[id].tsx",
+      "accessCount": 38,
+      "lastAccessed": 1774944831872,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/add.tsx",
+      "accessCount": 19,
+      "lastAccessed": 1774944810479,
+      "type": "file"
+    },
+    {
+      "path": "docs/stories.md",
+      "accessCount": 19,
+      "lastAccessed": 1774945854789,
+      "type": "file"
+    },
+    {
+      "path": "src/data/houseplants.ts",
       "accessCount": 17,
-      "lastAccessed": 1774932633452,
+      "lastAccessed": 1774945788552,
       "type": "file"
     },
     {
@@ -207,21 +225,15 @@
       "type": "file"
     },
     {
-      "path": "app/(tabs)/add.tsx",
-      "accessCount": 13,
-      "lastAccessed": 1774932759041,
-      "type": "file"
-    },
-    {
-      "path": "docs/stories.md",
-      "accessCount": 13,
-      "lastAccessed": 1774932855302,
-      "type": "file"
-    },
-    {
       "path": "src/i18n/LanguageProvider.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1774944400748,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n/index.ts",
       "accessCount": 9,
-      "lastAccessed": 1774932633239,
+      "lastAccessed": 1774944400369,
       "type": "file"
     },
     {
@@ -243,28 +255,64 @@
       "type": "file"
     },
     {
+      "path": "src/i18n/fr.ts",
+      "accessCount": 7,
+      "lastAccessed": 1774943953037,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 7,
+      "lastAccessed": 1774944391899,
+      "type": "directory"
+    },
+    {
+      "path": "src/db/queries.ts",
+      "accessCount": 7,
+      "lastAccessed": 1774944776763,
+      "type": "file"
+    },
+    {
       "path": "src/ui/PlantCard.tsx",
       "accessCount": 6,
       "lastAccessed": 1774925633657,
       "type": "file"
     },
     {
-      "path": "src/i18n/index.ts",
-      "accessCount": 6,
-      "lastAccessed": 1774929739525,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 6,
-      "lastAccessed": 1774929767627,
-      "type": "directory"
-    },
-    {
       "path": "package.json",
       "accessCount": 5,
       "lastAccessed": 1774930035689,
       "type": "file"
+    },
+    {
+      "path": "src/ui/theme.ts",
+      "accessCount": 5,
+      "lastAccessed": 1774943954213,
+      "type": "file"
+    },
+    {
+      "path": "src",
+      "accessCount": 5,
+      "lastAccessed": 1774944396551,
+      "type": "directory"
+    },
+    {
+      "path": "src/types/plant.ts",
+      "accessCount": 5,
+      "lastAccessed": 1774944764420,
+      "type": "file"
+    },
+    {
+      "path": "src/db/schema.ts",
+      "accessCount": 5,
+      "lastAccessed": 1774944771048,
+      "type": "file"
+    },
+    {
+      "path": "src/db/__tests__/queries.test.ts",
+      "accessCount": 5,
+      "lastAccessed": 1774945835580,
+      "type": "directory"
     },
     {
       "path": "src/ui/LanguageToggle.tsx",
@@ -274,20 +322,20 @@
     },
     {
       "path": "src/utils/watering.ts",
-      "accessCount": 3,
-      "lastAccessed": 1774925268721,
+      "accessCount": 4,
+      "lastAccessed": 1774943742299,
       "type": "file"
     },
     {
-      "path": "src/ui/theme.ts",
-      "accessCount": 3,
-      "lastAccessed": 1774927544540,
+      "path": "src/i18n/ko.ts",
+      "accessCount": 4,
+      "lastAccessed": 1774943959552,
       "type": "file"
     },
     {
-      "path": "src/i18n/fr.ts",
-      "accessCount": 3,
-      "lastAccessed": 1774932637003,
+      "path": "src/ui/PlantSearchModal.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774944791006,
       "type": "file"
     },
     {
@@ -303,12 +351,6 @@
       "type": "file"
     },
     {
-      "path": "src/i18n/ko.ts",
-      "accessCount": 2,
-      "lastAccessed": 1774925903296,
-      "type": "file"
-    },
-    {
       "path": "src/db/provider.tsx",
       "accessCount": 2,
       "lastAccessed": 1774927422728,
@@ -321,15 +363,15 @@
       "type": "file"
     },
     {
-      "path": "docs/specs.md",
-      "accessCount": 1,
-      "lastAccessed": 1774924885008,
+      "path": "src/db/__tests__/schema.test.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774945899460,
       "type": "file"
     },
     {
-      "path": "src/types/plant.ts",
+      "path": "docs/specs.md",
       "accessCount": 1,
-      "lastAccessed": 1774924888992,
+      "lastAccessed": 1774924885008,
       "type": "file"
     },
     {
@@ -354,12 +396,6 @@
       "path": "src/utils/careNotes.ts",
       "accessCount": 1,
       "lastAccessed": 1774932750517,
-      "type": "file"
-    },
-    {
-      "path": "src/data/houseplants.ts",
-      "accessCount": 1,
-      "lastAccessed": 1774932759607,
       "type": "file"
     }
   ],

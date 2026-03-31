@@ -34,9 +34,19 @@ export const CREATE_PLANT_CARE_INFO_TABLE = `
   );
 `;
 
+export const ADD_CARE_TIPS_FR_COLUMN = `
+  ALTER TABLE plant_care_info ADD COLUMN care_tips_fr TEXT;
+`;
+
+export const ADD_CARE_TIPS_KO_COLUMN = `
+  ALTER TABLE plant_care_info ADD COLUMN care_tips_ko TEXT;
+`;
+
 export const MIGRATIONS = [
   CREATE_PLANTS_TABLE,
   CREATE_WATERING_SCHEDULE_TABLE,
   ADD_ACQUIRED_AT_COLUMN,
   CREATE_PLANT_CARE_INFO_TABLE,
+  ADD_CARE_TIPS_FR_COLUMN,
+  ADD_CARE_TIPS_KO_COLUMN,
 ];

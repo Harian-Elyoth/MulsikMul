@@ -93,9 +93,16 @@ export async function insertPlantCareInfo(
   info: Omit<PlantCareInfo, 'id'>
 ): Promise<void> {
   await db.runAsync(
-    `INSERT OR REPLACE INTO plant_care_info (plant_id, sunlight, poisonous_to_pets, care_tips)
-     VALUES (?, ?, ?, ?)`,
-    [info.plant_id, info.sunlight ?? null, info.poisonous_to_pets ?? null, info.care_tips ?? null]
+    `INSERT OR REPLACE INTO plant_care_info (plant_id, sunlight, poisonous_to_pets, care_tips, care_tips_fr, care_tips_ko)
+     VALUES (?, ?, ?, ?, ?, ?)`,
+    [
+      info.plant_id,
+      info.sunlight ?? null,
+      info.poisonous_to_pets ?? null,
+      info.care_tips ?? null,
+      info.care_tips_fr ?? null,
+      info.care_tips_ko ?? null,
+    ]
   );
 }
 

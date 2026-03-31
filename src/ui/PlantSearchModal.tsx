@@ -22,6 +22,8 @@ export interface PlantSearchResult {
   species: string;
   intervalDays: number;
   notes: string;
+  notes_fr: string;
+  notes_ko: string;
   photoUrl: string | null;
   perenualId: number | null;
   sunlight: string | null;
@@ -56,6 +58,8 @@ export default function PlantSearchModal({ visible, onClose, onSelect }: Props) 
       species: item.scientific_name,
       intervalDays: item.interval_days,
       notes: item.notes,
+      notes_fr: item.notes_fr,
+      notes_ko: item.notes_ko,
       photoUrl: item.thumbnail,
       perenualId: null,
       sunlight: item.sunlight,

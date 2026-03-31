@@ -108,4 +108,6 @@ export interface PlantCareInfo {
   sunlight: string | null;
   poisonous_to_pets: number | null;
   care_tips: string | null;
+  care_tips_fr: string | null;
+  care_tips_ko: string | null;
 }

@@ -165,7 +165,7 @@
 | **Complexité** | XS |
 | **Dépendances** | I18N-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### BUG-2 : Confirmation de suppression — modale in-app au lieu de l'alerte native
 | | |
@@ -175,7 +175,7 @@
 | **Complexité** | S |
 | **Dépendances** | PLANT-4 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### BUG-3 : Section Notes duplique les Conseils de soin — la supprimer
 | | |
@@ -185,7 +185,7 @@
 | **Complexité** | XS |
 | **Dépendances** | CARE-3 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### BUG-4 : Conseils de soin toujours en anglais — traduire FR/KO
 | | |
@@ -195,7 +195,7 @@
 | **Complexité** | M |
 | **Dépendances** | I18N-1, CARE-3 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ---
 
@@ -227,5 +227,5 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 13 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2 |
+| **Done** | 17 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, BUG-1, BUG-2, BUG-3, BUG-4 |
 | **Todo** | 2 | UI-1, UI-2 |
