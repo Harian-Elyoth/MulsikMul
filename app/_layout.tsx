@@ -1,11 +1,14 @@
+import '../src/i18n';
 import { useEffect } from 'react';
 import { Stack, useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DatabaseProvider } from '../src/db/provider';
 import { colors } from '../src/ui/theme';
 
 export default function RootLayout() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   useEffect(() => {
     let cleanup: (() => void) | undefined;
@@ -52,7 +55,7 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
             name="plant/[id]"
-            options={{ title: 'Plant Details' }}
+            options={{ title: t('plantDetail.title') }}
           />
         </Stack>
       </DatabaseProvider>

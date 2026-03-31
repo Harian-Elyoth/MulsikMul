@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDatabase } from '../../src/db/provider';
 import {
@@ -31,12 +32,6 @@ import {
 } from '../../src/utils/watering';
 import { borderRadius, colors, fontSize, fontWeight, spacing } from '../../src/ui/theme';
 
-const statusLabels = {
-  overdue: 'Overdue',
-  due_soon: 'Due Soon',
-  ok: 'On Track',
-};
-
 const statusColors = {
   overdue: colors.overdue,
   due_soon: colors.dueSoon,
@@ -47,6 +42,7 @@ export default function PlantDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const db = useDatabase();
   const router = useRouter();
+  const { t } = useTranslation();
 
   const [plant, setPlant] = useState<LocalPlant | null>(null);
   const [schedule, setSchedule] = useState<WateringSchedule | null>(null);
@@ -100,12 +96,12 @@ export default function PlantDetailScreen() {
     if (!plant) return;
 
     Alert.alert(
-      'Delete Plant',
-      `Are you sure you want to delete "${plant.name}"? This cannot be undone.`,
+      t('plantDetail.deleteTitle'),
+      t('plantDetail.deleteMessage', { name: plant.name }),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Delete',
+          text: t('common.delete'),
           style: 'destructive',
           onPress: async () => {
             if (schedule?.notification_id) {
@@ -122,7 +118,7 @@ export default function PlantDetailScreen() {
   if (!plant) {
     return (
       <View style={styles.container}>
-        <Text style={styles.loadingText}>Loading...</Text>
+        <Text style={styles.loadingText}>{t('plantDetail.loading')}</Text>
       </View>
     );
   }
@@ -130,7 +126,7 @@ export default function PlantDetailScreen() {
   const status = schedule ? getWateringStatus(schedule) : null;
   const lastWatered = schedule?.last_watered_at
     ? new Date(schedule.last_watered_at).toLocaleDateString()
-    : 'Never';
+    : t('plantDetail.never');
   const acquiredDate = plant.acquired_at
     ? new Date(plant.acquired_at).toLocaleDateString('fr-FR')
     : null;
@@ -152,20 +148,20 @@ export default function PlantDetailScreen() {
         <View style={styles.statusSection}>
           <View style={styles.statusRow}>
             <Text style={[styles.statusBadge, { color: statusColors[status] }]}>
-              {statusLabels[status]}
+              {t(`plantDetail.status.${status === 'due_soon' ? 'dueSoon' : status === 'ok' ? 'onTrack' : 'overdue'}`)}
             </Text>
             <Text style={styles.statusDetail}>
-              {formatDaysUntilWatering(schedule)}
+              {formatDaysUntilWatering(schedule, t)}
             </Text>
           </View>
 
           <View style={styles.infoRow}>
-            <InfoItem label="Interval" value={`Every ${schedule.interval_days} days`} />
-            <InfoItem label="Last Watered" value={lastWatered} />
+            <InfoItem label={t('plantDetail.interval')} value={t('plantDetail.intervalValue', { days: schedule.interval_days })} />
+            <InfoItem label={t('plantDetail.lastWatered')} value={lastWatered} />
           </View>
           {acquiredDate && (
             <View style={[styles.infoRow, styles.infoRowTop]}>
-              <InfoItem label="Acquired" value={acquiredDate} />
+              <InfoItem label={t('plantDetail.acquired')} value={acquiredDate} />
             </View>
           )}
         </View>
@@ -173,26 +169,26 @@ export default function PlantDetailScreen() {
 
       {plant.notes && (
         <View style={styles.notesSection}>
-          <Text style={styles.sectionTitle}>Notes</Text>
+          <Text style={styles.sectionTitle}>{t('common.notes')}</Text>
           <Text style={styles.notesText}>{plant.notes}</Text>
         </View>
       )}
 
       {careInfo && (careInfo.sunlight || careInfo.poisonous_to_pets !== null || careInfo.care_tips) && (
         <View style={styles.careSection}>
-          <Text style={styles.sectionTitle}>Infos de soin</Text>
+          <Text style={styles.sectionTitle}>{t('plantDetail.careInfo')}</Text>
           {careInfo.sunlight && (
-            <InfoItem label="Lumière" value={careInfo.sunlight} />
+            <InfoItem label={t('plantDetail.light')} value={careInfo.sunlight} />
           )}
           {careInfo.poisonous_to_pets !== null && (
             <InfoItem
-              label="Toxique pour animaux"
-              value={careInfo.poisonous_to_pets === 1 ? 'Oui' : 'Non'}
+              label={t('plantDetail.poisonousForPets')}
+              value={careInfo.poisonous_to_pets === 1 ? t('common.yes') : t('common.no')}
             />
           )}
           {careInfo.care_tips && (
             <View style={styles.careTipsRow}>
-              <Text style={styles.infoLabel}>Conseils</Text>
+              <Text style={styles.infoLabel}>{t('plantDetail.tips')}</Text>
               <Text style={styles.careTipsText}>{careInfo.care_tips}</Text>
             </View>
           )}
@@ -205,12 +201,12 @@ export default function PlantDetailScreen() {
         disabled={watering || !schedule}
       >
         <Text style={styles.waterButtonText}>
-          {watering ? 'Watering...' : '💧 Water Now'}
+          {watering ? t('plantDetail.watering') : t('plantDetail.waterNow')}
         </Text>
       </Pressable>
 
       <Pressable style={styles.deleteButton} onPress={handleDelete}>
-        <Text style={styles.deleteButtonText}>Delete Plant</Text>
+        <Text style={styles.deleteButtonText}>{t('plantDetail.deletePlant')}</Text>
       </Pressable>
     </ScrollView>
   );

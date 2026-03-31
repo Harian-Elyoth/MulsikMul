@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDatabase } from '../../src/db/provider';
 import { getAllPlantsWithSchedule } from '../../src/db/queries';
@@ -12,6 +13,7 @@ import { colors, spacing } from '../../src/ui/theme';
 export default function MyPlantsScreen() {
   const db = useDatabase();
   const router = useRouter();
+  const { t } = useTranslation();
   const [plants, setPlants] = useState<PlantWithSchedule[]>([]);
 
   useFocusEffect(
@@ -35,8 +37,8 @@ export default function MyPlantsScreen() {
     return (
       <View style={styles.container}>
         <EmptyState
-          title="No plants yet"
-          message="Tap the Add Plant tab to register your first plant and start tracking its watering schedule."
+          title={t('myPlants.emptyTitle')}
+          message={t('myPlants.emptyMessage')}
         />
       </View>
     );

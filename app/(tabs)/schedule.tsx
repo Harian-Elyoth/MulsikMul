@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDatabase } from '../../src/db/provider';
 import { getAllPlantsWithSchedule, updateLastWatered } from '../../src/db/queries';
@@ -31,6 +32,7 @@ const statusColors = {
 
 export default function ScheduleScreen() {
   const db = useDatabase();
+  const { t } = useTranslation();
   const [plants, setPlants] = useState<PlantWithSchedule[]>([]);
 
   const loadPlants = useCallback(async () => {
@@ -84,8 +86,8 @@ export default function ScheduleScreen() {
     return (
       <View style={styles.container}>
         <EmptyState
-          title="No schedules yet"
-          message="Add a plant to start tracking watering schedules."
+          title={t('schedule.emptyTitle')}
+          message={t('schedule.emptyMessage')}
         />
       </View>
     );
@@ -112,7 +114,7 @@ export default function ScheduleScreen() {
               <View style={styles.rowInfo}>
                 <Text style={styles.plantName} numberOfLines={1}>{item.name}</Text>
                 <Text style={[styles.statusText, { color: statusColors[status] }]}>
-                  {formatDaysUntilWatering(schedule)}
+                  {formatDaysUntilWatering(schedule, t)}
                 </Text>
               </View>
               <Pressable

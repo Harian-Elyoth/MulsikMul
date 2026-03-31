@@ -26,10 +26,19 @@ export function getWateringStatus(schedule: WateringSchedule): 'overdue' | 'due_
   return 'ok';
 }
 
-export function formatDaysUntilWatering(schedule: WateringSchedule): string {
+export function formatDaysUntilWatering(
+  schedule: WateringSchedule,
+  t?: (key: string, opts?: Record<string, unknown>) => string
+): string {
   const days = getDaysUntilWatering(schedule);
-  if (days < 0) return `${Math.abs(days)}d overdue`;
-  if (days === 0) return 'Water today';
-  if (days === 1) return 'Tomorrow';
-  return `In ${days} days`;
+  if (!t) {
+    if (days < 0) return `${Math.abs(days)}d overdue`;
+    if (days === 0) return 'Water today';
+    if (days === 1) return 'Tomorrow';
+    return `In ${days} days`;
+  }
+  if (days < 0) return t('watering.overdue', { days: Math.abs(days) });
+  if (days === 0) return t('watering.today');
+  if (days === 1) return t('watering.tomorrow');
+  return t('watering.inDays', { days });
 }

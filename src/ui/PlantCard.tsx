@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { LocalPlant, WateringSchedule } from '../types/plant';
 import { formatDaysUntilWatering, getWateringStatus } from '../utils/watering';
 import { borderRadius, colors, fontSize, fontWeight, spacing } from './theme';
@@ -17,6 +18,7 @@ const statusColors = {
 };
 
 export function PlantCard({ plant, schedule, onPress }: PlantCardProps) {
+  const { t } = useTranslation();
   const status = schedule ? getWateringStatus(schedule) : null;
   const statusStyle = status ? statusColors[status] : null;
 
@@ -37,7 +39,7 @@ export function PlantCard({ plant, schedule, onPress }: PlantCardProps) {
         {schedule && statusStyle && (
           <View style={[styles.badge, { backgroundColor: statusStyle.bg }]}>
             <Text style={[styles.badgeText, { color: statusStyle.text }]}>
-              {formatDaysUntilWatering(schedule)}
+              {formatDaysUntilWatering(schedule, t)}
             </Text>
           </View>
         )}

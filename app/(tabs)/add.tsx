@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useDatabase } from '../../src/db/provider';
@@ -36,6 +37,7 @@ function parseDateDDMMYYYY(value: string): number | null {
 export default function AddPlantScreen() {
   const db = useDatabase();
   const router = useRouter();
+  const { t } = useTranslation();
 
   const [name, setName] = useState('');
   const [species, setSpecies] = useState('');
@@ -99,13 +101,13 @@ export default function AddPlantScreen() {
   async function handleSave() {
     const trimmedName = name.trim();
     if (!trimmedName) {
-      Alert.alert('Name required', 'Please enter a name for your plant.');
+      Alert.alert(t('addPlant.errors.nameRequired'), t('addPlant.errors.nameRequiredMsg'));
       return;
     }
 
     const interval = parseInt(intervalDays, 10);
     if (isNaN(interval) || interval < 1) {
-      Alert.alert('Invalid interval', 'Watering interval must be at least 1 day.');
+      Alert.alert(t('addPlant.errors.invalidInterval'), t('addPlant.errors.invalidIntervalMsg'));
       return;
     }
 
@@ -113,7 +115,7 @@ export default function AddPlantScreen() {
     if (acquiredAt.trim()) {
       acquiredAtTimestamp = parseDateDDMMYYYY(acquiredAt.trim());
       if (acquiredAtTimestamp === null) {
-        Alert.alert('Invalid date', 'Acquisition date must be in DD/MM/YYYY format.');
+        Alert.alert(t('addPlant.errors.invalidDate'), t('addPlant.errors.invalidDateMsg'));
         return;
       }
     }
@@ -162,7 +164,7 @@ export default function AddPlantScreen() {
 
       router.navigate('/(tabs)');
     } catch (error) {
-      Alert.alert('Error', 'Failed to save plant. Please try again.');
+      Alert.alert(t('addPlant.errors.saveError'), t('addPlant.errors.saveErrorMsg'));
     } finally {
       setSaving(false);
     }
@@ -181,12 +183,12 @@ export default function AddPlantScreen() {
           onPress={() => setSearchModalVisible(true)}
         >
           <Text style={styles.searchButtonIcon}>🔍</Text>
-          <Text style={styles.searchButtonText}>Search Plant Database</Text>
+          <Text style={styles.searchButtonText}>{t('addPlant.searchDatabase')}</Text>
         </Pressable>
 
         {autoFilled && (
           <View style={styles.autoFilledBadge}>
-            <Text style={styles.autoFilledText}>Auto-filled from database</Text>
+            <Text style={styles.autoFilledText}>{t('addPlant.autoFilled')}</Text>
           </View>
         )}
 
@@ -198,45 +200,45 @@ export default function AddPlantScreen() {
           ) : (
             <View style={styles.photoPlaceholder}>
               <Text style={styles.photoPlaceholderEmoji}>📷</Text>
-              <Text style={styles.photoPlaceholderText}>Add Photo</Text>
+              <Text style={styles.photoPlaceholderText}>{t('addPlant.addPhoto')}</Text>
             </View>
           )}
         </Pressable>
 
-        <Text style={styles.sectionHeader}>Plant Info</Text>
+        <Text style={styles.sectionHeader}>{t('addPlant.plantInfo')}</Text>
 
-        <Text style={styles.label}>Name *</Text>
+        <Text style={styles.label}>{t('addPlant.nameLabel')}</Text>
         <TextInput
           style={[styles.input, autoFilled && styles.inputAutoFilled]}
           value={name}
           onChangeText={handleNameChange}
-          placeholder="e.g. My Monstera"
+          placeholder={t('addPlant.namePlaceholder')}
           placeholderTextColor={colors.textMuted}
         />
 
-        <Text style={styles.label}>Species</Text>
+        <Text style={styles.label}>{t('addPlant.speciesLabel')}</Text>
         <TextInput
           style={[styles.input, autoFilled && styles.inputAutoFilled]}
           value={species}
           onChangeText={setSpecies}
-          placeholder="e.g. Monstera deliciosa"
+          placeholder={t('addPlant.speciesPh')}
           placeholderTextColor={colors.textMuted}
         />
 
-        <Text style={styles.label}>Acquisition date</Text>
+        <Text style={styles.label}>{t('addPlant.acquisitionDate')}</Text>
         <TextInput
           style={styles.input}
           value={acquiredAt}
           onChangeText={setAcquiredAt}
-          placeholder="DD/MM/YYYY"
+          placeholder={t('addPlant.datePlaceholder')}
           placeholderTextColor={colors.textMuted}
           keyboardType="numbers-and-punctuation"
           maxLength={10}
         />
 
-        <Text style={styles.sectionHeader}>Care Schedule</Text>
+        <Text style={styles.sectionHeader}>{t('addPlant.careSchedule')}</Text>
 
-        <Text style={styles.label}>Watering Interval (days)</Text>
+        <Text style={styles.label}>{t('addPlant.wateringInterval')}</Text>
         <TextInput
           style={[styles.input, autoFilled && styles.inputAutoFilled]}
           value={intervalDays}
@@ -246,12 +248,12 @@ export default function AddPlantScreen() {
           placeholderTextColor={colors.textMuted}
         />
 
-        <Text style={styles.label}>Notes</Text>
+        <Text style={styles.label}>{t('common.notes')}</Text>
         <TextInput
           style={[styles.input, styles.notesInput, autoFilled && styles.inputAutoFilled]}
           value={notes}
           onChangeText={setNotes}
-          placeholder="Any notes about this plant..."
+          placeholder={t('addPlant.notesPlaceholder')}
           placeholderTextColor={colors.textMuted}
           multiline
           textAlignVertical="top"
@@ -263,7 +265,7 @@ export default function AddPlantScreen() {
           disabled={saving}
         >
           <Text style={styles.saveButtonText}>
-            {saving ? 'Saving...' : 'Save Plant'}
+            {saving ? t('addPlant.saving') : t('addPlant.savePlant')}
           </Text>
         </Pressable>
       </ScrollView>

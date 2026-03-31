@@ -141,7 +141,7 @@
 | **Complexité** | M |
 | **Dépendances** | Aucune |
 | **Priorité** | **Should** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### I18N-2 : Sélecteur de langue
 | | |
@@ -183,5 +183,5 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 11 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3 |
-| **Todo** | 4 | I18N-1, I18N-2, UI-1, UI-2 |
+| **Done** | 12 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1 |
+| **Todo** | 3 | I18N-2, UI-1, UI-2 |
