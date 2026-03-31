@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Text } from 'react-native';
 import { colors } from '../../src/ui/theme';
 import { AppLogo } from '../../src/ui/AppLogo';
+import { LanguageToggle } from '../../src/ui/LanguageToggle';
 
 function TabIcon({ emoji, focused }: { emoji: string; focused: boolean }) {
   return (
@@ -31,6 +32,7 @@ export default function TabLayout() {
         options={{
           title: t('tabs.myPlants'),
           headerTitle: () => <AppLogo size="sm" layout="horizontal" light />,
+          headerRight: () => <LanguageToggle />,
           tabBarIcon: ({ focused }) => <TabIcon emoji="🌿" focused={focused} />,
         }}
       />

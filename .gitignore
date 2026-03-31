@@ -41,4 +41,10 @@ yarn-error.*
 /android
 
 # ia files
-.omc/
+.omc/*
+
+# build
+*.apk
+
+# logs
+logs/

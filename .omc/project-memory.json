@@ -190,32 +190,56 @@
   "hotPaths": [
     {
       "path": "app/plant/[id].tsx",
-      "accessCount": 14,
-      "lastAccessed": 1774925602131,
-      "type": "file"
-    },
-    {
-      "path": "app/(tabs)/add.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1774925511350,
+      "accessCount": 17,
+      "lastAccessed": 1774932633452,
       "type": "file"
     },
     {
       "path": "app/(tabs)/_layout.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1774925357262,
+      "accessCount": 14,
+      "lastAccessed": 1774929731311,
+      "type": "file"
+    },
+    {
+      "path": "app/_layout.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1774929727784,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/add.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1774932759041,
+      "type": "file"
+    },
+    {
+      "path": "docs/stories.md",
+      "accessCount": 13,
+      "lastAccessed": 1774932855302,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n/LanguageProvider.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1774932633239,
       "type": "file"
     },
     {
       "path": "app/(tabs)/schedule.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1774925428620,
+      "accessCount": 8,
+      "lastAccessed": 1774927377090,
       "type": "file"
     },
     {
+      "path": "logs/03-31 12:59:31.829 1388 9392 I Pageboost",
+      "accessCount": 8,
+      "lastAccessed": 1774929868366,
+      "type": "directory"
+    },
+    {
       "path": "app/(tabs)/index.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1774925405184,
+      "accessCount": 7,
+      "lastAccessed": 1774927377007,
       "type": "file"
     },
     {
@@ -225,21 +249,45 @@
       "type": "file"
     },
     {
-      "path": "app/_layout.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1774925309382,
+      "path": "src/i18n/index.ts",
+      "accessCount": 6,
+      "lastAccessed": 1774929739525,
       "type": "file"
     },
     {
-      "path": "docs/stories.md",
+      "path": "",
+      "accessCount": 6,
+      "lastAccessed": 1774929767627,
+      "type": "directory"
+    },
+    {
+      "path": "package.json",
       "accessCount": 5,
-      "lastAccessed": 1774925711097,
+      "lastAccessed": 1774930035689,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/LanguageToggle.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774932609373,
       "type": "file"
     },
     {
       "path": "src/utils/watering.ts",
       "accessCount": 3,
       "lastAccessed": 1774925268721,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/theme.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774927544540,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n/fr.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774932637003,
       "type": "file"
     },
     {
@@ -255,21 +303,21 @@
       "type": "file"
     },
     {
-      "path": "package.json",
+      "path": "src/i18n/ko.ts",
       "accessCount": 2,
-      "lastAccessed": 1774924933957,
+      "lastAccessed": 1774925903296,
       "type": "file"
     },
     {
-      "path": "",
+      "path": "src/db/provider.tsx",
       "accessCount": 2,
-      "lastAccessed": 1774925077320,
-      "type": "directory"
+      "lastAccessed": 1774927422728,
+      "type": "file"
     },
     {
-      "path": "src/i18n/index.ts",
+      "path": "docs/plan.md",
       "accessCount": 2,
-      "lastAccessed": 1774925659392,
+      "lastAccessed": 1774932637963,
       "type": "file"
     },
     {
@@ -285,27 +333,33 @@
       "type": "file"
     },
     {
-      "path": "src/ui/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1774924889542,
-      "type": "file"
-    },
-    {
       "path": "app",
       "accessCount": 1,
       "lastAccessed": 1774924899834,
       "type": "directory"
     },
     {
-      "path": "src/i18n/fr.ts",
+      "path": "CLAUDE.md",
       "accessCount": 1,
-      "lastAccessed": 1774925224552,
+      "lastAccessed": 1774927391123,
       "type": "file"
     },
     {
-      "path": "src/i18n/ko.ts",
+      "path": "docs/brief.md",
       "accessCount": 1,
-      "lastAccessed": 1774925237578,
+      "lastAccessed": 1774927391185,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/careNotes.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774932750517,
+      "type": "file"
+    },
+    {
+      "path": "src/data/houseplants.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774932759607,
       "type": "file"
     }
   ],

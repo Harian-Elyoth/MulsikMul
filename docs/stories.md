@@ -151,6 +151,50 @@
 | **Complexité** | M |
 | **Dépendances** | I18N-1 |
 | **Priorité** | **Should** |
+| **Status** | Done |
+
+---
+
+## Epic BUG — Correctifs
+
+### BUG-1 : Bouton "Arroser" invisible en français (détail plante)
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux que le bouton "Arroser" affiche son texte en français afin de pouvoir interagir avec l'interface dans ma langue |
+| **Critères d'acceptation** | 1. Le texte "💧 Arroser" s'affiche correctement quand la langue est FR · 2. Le texte "💧 물주기" s'affiche correctement quand la langue est KO · 3. L'état "Arrosage..." s'affiche pendant l'action |
+| **Complexité** | XS |
+| **Dépendances** | I18N-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### BUG-2 : Confirmation de suppression — modale in-app au lieu de l'alerte native
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux que la confirmation de suppression s'affiche dans une modale cohérente avec l'app afin d'avoir une expérience uniforme |
+| **Critères d'acceptation** | 1. La modale in-app remplace le dialogue natif Android · 2. Overlay semi-transparent, carte centrée avec titre + message incluant le nom de la plante · 3. Boutons "Annuler" et "Supprimer" stylés avec les tokens du thème (`colors.danger`) · 4. La suppression effective et le retour arrière fonctionnent comme avant |
+| **Complexité** | S |
+| **Dépendances** | PLANT-4 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### BUG-3 : Section Notes duplique les Conseils de soin — la supprimer
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux que l'écran détail n'affiche pas deux fois les mêmes informations afin que l'interface reste claire |
+| **Critères d'acceptation** | 1. La section "Notes" est supprimée de l'écran détail plante · 2. Les conseils de soin restent visibles dans la section "Infos de soin" · 3. Aucune régression sur les autres informations affichées |
+| **Complexité** | XS |
+| **Dépendances** | CARE-3 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### BUG-4 : Conseils de soin toujours en anglais — traduire FR/KO
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux que les conseils de soin s'affichent dans ma langue afin de comprendre les recommandations sans effort |
+| **Critères d'acceptation** | 1. Les conseils s'affichent en français quand la langue est FR · 2. Les conseils s'affichent en coréen quand la langue est KO · 3. Les 134 entrées de la base locale ont leurs traductions FR et KO · 4. Le changement de langue met à jour l'affichage immédiatement |
+| **Complexité** | M |
+| **Dépendances** | I18N-1, CARE-3 |
+| **Priorité** | **Must** |
 | **Status** | Todo |
 
 ---
@@ -183,5 +227,5 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 12 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1 |
-| **Todo** | 3 | I18N-2, UI-1, UI-2 |
+| **Done** | 13 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2 |
+| **Todo** | 2 | UI-1, UI-2 |

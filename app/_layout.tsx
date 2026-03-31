@@ -4,6 +4,7 @@ import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DatabaseProvider } from '../src/db/provider';
+import { LanguageProvider } from '../src/i18n/LanguageProvider';
 import { colors } from '../src/ui/theme';
 
 export default function RootLayout() {
@@ -44,6 +45,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <DatabaseProvider>
+        <LanguageProvider>
         <Stack
           screenOptions={{
             headerStyle: { backgroundColor: colors.primary },
@@ -58,6 +60,7 @@ export default function RootLayout() {
             options={{ title: t('plantDetail.title') }}
           />
         </Stack>
+        </LanguageProvider>
       </DatabaseProvider>
     </SafeAreaProvider>
   );
