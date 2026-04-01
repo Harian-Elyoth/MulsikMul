@@ -209,7 +209,7 @@
 | **Complexité** | M |
 | **Dépendances** | Aucune |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### UI-2 : Animations et transitions
 | | |
@@ -219,7 +219,7 @@
 | **Complexité** | M |
 | **Dépendances** | UI-1 |
 | **Priorité** | **Should** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ---
 
@@ -227,5 +227,5 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 17 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, BUG-1, BUG-2, BUG-3, BUG-4 |
-| **Todo** | 2 | UI-1, UI-2 |
+| **Done** | 19 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, BUG-1, BUG-2, BUG-3, BUG-4, UI-1, UI-2 |
+| **Todo** | 0 | — |

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Alert,
+  Animated,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -13,8 +14,10 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system/legacy';
+import { Camera, Upload, X } from 'lucide-react-native';
 import { useDatabase } from '../../src/db/provider';
 import { insertPlant, insertPlantCareInfo, upsertWateringSchedule } from '../../src/db/queries';
 import {
@@ -23,7 +26,7 @@ import {
 } from '../../src/notifications/scheduler';
 import { borderRadius, colors, fontSize, fontWeight, spacing } from '../../src/ui/theme';
 import PlantSearchModal, { PlantSearchResult } from '../../src/ui/PlantSearchModal';
-import { AppLogo } from '../../src/ui/AppLogo';
+import { Button } from '../../src/ui/Button';
 
 function parseDateDDMMYYYY(value: string): number | null {
   const match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
@@ -49,7 +52,14 @@ export default function AddPlantScreen() {
   const [perenualId, setPerenualId] = useState<number | null>(null);
   const [autoFilled, setAutoFilled] = useState(false);
   const [acquiredAt, setAcquiredAt] = useState('');
-  const [careInfo, setCareInfo] = useState<{ sunlight: string | null; poisonous_to_pets: boolean | null; notes_fr: string | null; notes_ko: string | null } | null>(null);
+  const [careInfo, setCareInfo] = useState<{
+    sunlight: string | null;
+    poisonous_to_pets: boolean | null;
+    notes_fr: string | null;
+    notes_ko: string | null;
+  } | null>(null);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const photoScale = useRef(new Animated.Value(1)).current;
 
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -75,7 +85,12 @@ export default function AddPlantScreen() {
     setNotes(data.notes);
     setPerenualId(data.perenualId);
     setAutoFilled(true);
-    setCareInfo({ sunlight: data.sunlight, poisonous_to_pets: data.poisonous_to_pets, notes_fr: data.notes_fr, notes_ko: data.notes_ko });
+    setCareInfo({
+      sunlight: data.sunlight,
+      poisonous_to_pets: data.poisonous_to_pets,
+      notes_fr: data.notes_fr,
+      notes_ko: data.notes_ko,
+    });
 
     if (data.photoUrl) {
       try {
@@ -165,241 +180,396 @@ export default function AddPlantScreen() {
       }
 
       router.navigate('/(tabs)');
-    } catch (error) {
+    } catch {
       Alert.alert(t('addPlant.errors.saveError'), t('addPlant.errors.saveErrorMsg'));
     } finally {
       setSaving(false);
     }
   }
 
+  function inputStyle(field: string) {
+    return [
+      styles.input,
+      focusedField === field && styles.inputFocused,
+      autoFilled && ['name', 'species', 'interval'].includes(field) && styles.inputAutoFilled,
+    ];
+  }
+
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    <LinearGradient
+      colors={colors.backgroundGradient}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.gradient}
     >
-      <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-        <AppLogo size="lg" layout="vertical" />
-
-        <Pressable
-          style={styles.searchButton}
-          onPress={() => setSearchModalVisible(true)}
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scroll}
+          keyboardShouldPersistTaps="handled"
         >
-          <Text style={styles.searchButtonIcon}>🔍</Text>
-          <Text style={styles.searchButtonText}>{t('addPlant.searchDatabase')}</Text>
-        </Pressable>
-
-        {autoFilled && (
-          <View style={styles.autoFilledBadge}>
-            <Text style={styles.autoFilledText}>{t('addPlant.autoFilled')}</Text>
+          {/* Title + Search row */}
+          <View style={styles.titleRow}>
+            <Text style={styles.pageTitle}>{t('addPlant.title')}</Text>
+            <Button
+              variant="outline"
+              size="sm"
+              label={t('addPlant.searchDatabase')}
+              onPress={() => setSearchModalVisible(true)}
+            />
           </View>
-        )}
 
-        <View style={styles.divider} />
-
-        <Pressable style={styles.photoButton} onPress={pickImage}>
-          {photoUri ? (
-            <Image source={{ uri: photoUri }} style={styles.photo} />
-          ) : (
-            <View style={styles.photoPlaceholder}>
-              <Text style={styles.photoPlaceholderEmoji}>📷</Text>
-              <Text style={styles.photoPlaceholderText}>{t('addPlant.addPhoto')}</Text>
+          {autoFilled && (
+            <View style={styles.autoFilledBadge}>
+              <Text style={styles.autoFilledText}>{t('addPlant.autoFilled')}</Text>
             </View>
           )}
-        </Pressable>
 
-        <Text style={styles.sectionHeader}>{t('addPlant.plantInfo')}</Text>
+          {/* Photo picker */}
+          {photoUri ? (
+            <View style={styles.photoPicker}>
+              <Image source={{ uri: photoUri }} style={styles.photoImage} />
+              <View style={styles.photoOverlay}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  label={t('addPlant.changePhoto')}
+                  icon={Camera}
+                  onPress={pickImage}
+                  style={{ borderRadius: borderRadius.lg }}
+                />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  label={t('addPlant.removePhoto')}
+                  icon={X}
+                  onPress={() => setPhotoUri(null)}
+                  style={{ borderRadius: borderRadius.lg }}
+                />
+              </View>
+            </View>
+          ) : (
+            <Animated.View style={{ transform: [{ scale: photoScale }] }}>
+              <Pressable
+                style={styles.photoEmpty}
+                onPress={pickImage}
+                onPressIn={() =>
+                  Animated.spring(photoScale, { toValue: 0.98, useNativeDriver: true, speed: 50, bounciness: 0 }).start()
+                }
+                onPressOut={() =>
+                  Animated.spring(photoScale, { toValue: 1, useNativeDriver: true, speed: 50, bounciness: 0 }).start()
+                }
+              >
+                <View style={styles.uploadIconCircle}>
+                  <Upload size={24} stroke={colors.green} />
+                </View>
+                <Text style={styles.uploadLabel}>{t('addPlant.uploadPhoto')}</Text>
+                <Text style={styles.uploadHint}>{t('addPlant.tapToSelect')}</Text>
+              </Pressable>
+            </Animated.View>
+          )}
 
-        <Text style={styles.label}>{t('addPlant.nameLabel')}</Text>
-        <TextInput
-          style={[styles.input, autoFilled && styles.inputAutoFilled]}
-          value={name}
-          onChangeText={handleNameChange}
-          placeholder={t('addPlant.namePlaceholder')}
-          placeholderTextColor={colors.textMuted}
-        />
+          {/* Name */}
+          <Text style={styles.label}>{t('addPlant.nameLabel')}</Text>
+          <TextInput
+            style={inputStyle('name')}
+            value={name}
+            onChangeText={handleNameChange}
+            placeholder={t('addPlant.namePlaceholder')}
+            placeholderTextColor={colors.textMuted}
+            onFocus={() => setFocusedField('name')}
+            onBlur={() => setFocusedField(null)}
+          />
 
-        <Text style={styles.label}>{t('addPlant.speciesLabel')}</Text>
-        <TextInput
-          style={[styles.input, autoFilled && styles.inputAutoFilled]}
-          value={species}
-          onChangeText={setSpecies}
-          placeholder={t('addPlant.speciesPh')}
-          placeholderTextColor={colors.textMuted}
-        />
+          {/* Species */}
+          <Text style={[styles.label, styles.labelTop]}>{t('addPlant.speciesLabel')}</Text>
+          <TextInput
+            style={inputStyle('species')}
+            value={species}
+            onChangeText={setSpecies}
+            placeholder={t('addPlant.speciesPh')}
+            placeholderTextColor={colors.textMuted}
+            onFocus={() => setFocusedField('species')}
+            onBlur={() => setFocusedField(null)}
+          />
 
-        <Text style={styles.label}>{t('addPlant.acquisitionDate')}</Text>
-        <TextInput
-          style={styles.input}
-          value={acquiredAt}
-          onChangeText={setAcquiredAt}
-          placeholder={t('addPlant.datePlaceholder')}
-          placeholderTextColor={colors.textMuted}
-          keyboardType="numbers-and-punctuation"
-          maxLength={10}
-        />
+          {/* Acquisition Date */}
+          <Text style={[styles.label, styles.labelTop]}>{t('addPlant.acquisitionDate')}</Text>
+          <TextInput
+            style={inputStyle('acquiredAt')}
+            value={acquiredAt}
+            onChangeText={setAcquiredAt}
+            placeholder={t('addPlant.datePlaceholder')}
+            placeholderTextColor={colors.textMuted}
+            keyboardType="numbers-and-punctuation"
+            maxLength={10}
+            onFocus={() => setFocusedField('acquiredAt')}
+            onBlur={() => setFocusedField(null)}
+          />
 
-        <Text style={styles.sectionHeader}>{t('addPlant.careSchedule')}</Text>
+          {/* Watering Interval */}
+          <Text style={[styles.label, styles.labelTop]}>{t('addPlant.waterEvery')}</Text>
+          <View style={styles.intervalRow}>
+            <TextInput
+              style={[inputStyle('interval'), styles.intervalInput]}
+              value={intervalDays}
+              onChangeText={setIntervalDays}
+              keyboardType="number-pad"
+              placeholder="7"
+              placeholderTextColor={colors.textMuted}
+              onFocus={() => setFocusedField('interval')}
+              onBlur={() => setFocusedField(null)}
+            />
+            <Text style={styles.intervalSuffix}>{t('addPlant.days')}</Text>
+          </View>
 
-        <Text style={styles.label}>{t('addPlant.wateringInterval')}</Text>
-        <TextInput
-          style={[styles.input, autoFilled && styles.inputAutoFilled]}
-          value={intervalDays}
-          onChangeText={setIntervalDays}
-          keyboardType="number-pad"
-          placeholder="7"
-          placeholderTextColor={colors.textMuted}
-        />
+          {/* Notes */}
+          <Text style={[styles.label, styles.labelTop]}>{t('addPlant.notesLabel')}</Text>
+          <TextInput
+            style={[inputStyle('notes'), styles.notesInput]}
+            value={notes}
+            onChangeText={setNotes}
+            placeholder={t('addPlant.notesPlaceholder')}
+            placeholderTextColor={colors.textMuted}
+            multiline
+            textAlignVertical="top"
+            onFocus={() => setFocusedField('notes')}
+            onBlur={() => setFocusedField(null)}
+          />
 
-        <Text style={styles.label}>{t('common.notes')}</Text>
-        <TextInput
-          style={[styles.input, styles.notesInput, autoFilled && styles.inputAutoFilled]}
-          value={notes}
-          onChangeText={setNotes}
-          placeholder={t('addPlant.notesPlaceholder')}
-          placeholderTextColor={colors.textMuted}
-          multiline
-          textAlignVertical="top"
-        />
+          {/* Care Summary (when auto-filled) */}
+          {careInfo && (
+            <View style={styles.careSummary}>
+              <Text style={styles.careSummaryTitle}>{t('addPlant.careSummary')}</Text>
+              {careInfo.sunlight ? (
+                <View style={styles.careRow}>
+                  <Text style={styles.careLabel}>{t('addPlant.careLight')}</Text>
+                  <Text style={styles.careValue}>{careInfo.sunlight}</Text>
+                </View>
+              ) : null}
+              {careInfo.poisonous_to_pets !== null ? (
+                <>
+                  <View style={styles.careDivider} />
+                  <View style={styles.careRow}>
+                    <Text style={styles.careLabel}>{t('addPlant.carePetSafe')}</Text>
+                    <Text style={styles.careValue}>
+                      {careInfo.poisonous_to_pets ? t('common.no') : t('common.yes')}
+                    </Text>
+                  </View>
+                </>
+              ) : null}
+            </View>
+          )}
 
-        <Pressable
-          style={[styles.saveButton, saving && styles.saveButtonDisabled]}
-          onPress={handleSave}
-          disabled={saving}
-        >
-          <Text style={styles.saveButtonText}>
-            {saving ? t('addPlant.saving') : t('addPlant.savePlant')}
-          </Text>
-        </Pressable>
-      </ScrollView>
+          {/* Action Buttons */}
+          <View style={styles.actions}>
+            <Button
+              variant="outline"
+              size="lg"
+              label={t('common.cancel')}
+              onPress={() => router.navigate('/(tabs)')}
+              style={styles.actionButton}
+            />
+            <Button
+              variant="green"
+              size="lg"
+              label={saving ? t('addPlant.saving') : t('addPlant.savePlant')}
+              onPress={handleSave}
+              disabled={!name.trim() || saving}
+              loading={saving}
+              style={styles.actionButton}
+            />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
 
       <PlantSearchModal
         visible={searchModalVisible}
         onClose={() => setSearchModalVisible(false)}
         onSelect={handleSearchSelect}
       />
-    </KeyboardAvoidingView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gradient: {
     flex: 1,
-    backgroundColor: colors.background,
+  },
+  flex: {
+    flex: 1,
   },
   scroll: {
-    padding: spacing.lg,
+    paddingHorizontal: spacing.md,
+    paddingTop: spacing.lg,
+    paddingBottom: spacing.xl,
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 672,
   },
-  searchButton: {
+  titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1.5,
-    borderColor: colors.primary,
-    borderRadius: borderRadius.md,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    gap: spacing.xs,
-    marginBottom: spacing.sm,
+    justifyContent: 'space-between',
+    marginBottom: spacing.lg,
   },
-  searchButtonIcon: {
-    fontSize: fontSize.md,
-  },
-  searchButtonText: {
-    color: colors.primary,
-    fontSize: fontSize.md,
+  pageTitle: {
+    fontSize: fontSize.xl,
     fontWeight: fontWeight.semibold,
+    color: colors.text,
   },
   autoFilledBadge: {
-    backgroundColor: colors.successLight,
+    backgroundColor: colors.greenLight,
     borderRadius: borderRadius.md,
     paddingVertical: spacing.xs,
     paddingHorizontal: spacing.sm,
-    alignSelf: 'center',
-    marginBottom: spacing.sm,
+    alignSelf: 'flex-start',
+    marginBottom: spacing.md,
   },
   autoFilledText: {
-    color: colors.success,
+    color: colors.green,
     fontSize: fontSize.sm,
     fontWeight: fontWeight.medium,
   },
-  divider: {
-    height: 1,
-    backgroundColor: colors.divider,
-    marginVertical: spacing.md,
+  photoPicker: {
+    height: 256,
+    borderRadius: borderRadius.lg,
+    overflow: 'hidden',
+    marginBottom: spacing.md,
+    position: 'relative',
   },
-  photoButton: {
-    alignSelf: 'center',
-    marginBottom: spacing.lg,
+  photoImage: {
+    width: '100%',
+    height: 256,
+    resizeMode: 'cover',
   },
-  photo: {
-    width: 120,
-    height: 120,
-    borderRadius: borderRadius.xl,
-  },
-  photoPlaceholder: {
-    width: 120,
-    height: 120,
-    borderRadius: borderRadius.xl,
-    backgroundColor: colors.surfaceElevated,
-    borderWidth: 2,
-    borderColor: colors.border,
-    borderStyle: 'dashed',
+  photoOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
     justifyContent: 'center',
+    gap: 12,
+    paddingVertical: 12,
+    backgroundColor: 'rgba(0,0,0,0.45)',
+  },
+  photoEmpty: {
+    height: 192,
+    backgroundColor: '#F3F4F6',
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderColor: '#D1D5DB',
+    borderRadius: borderRadius.lg,
+    marginBottom: spacing.md,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  photoPlaceholderEmoji: {
-    fontSize: 32,
-    marginBottom: spacing.xs,
+  uploadIconCircle: {
+    width: 64,
+    height: 64,
+    borderRadius: 9999,
+    backgroundColor: colors.greenLight,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  photoPlaceholderText: {
-    fontSize: fontSize.xs,
-    color: colors.textMuted,
+  uploadLabel: {
+    fontSize: fontSize.md,
+    fontWeight: fontWeight.medium,
+    color: colors.text,
+    marginTop: 12,
   },
-  sectionHeader: {
+  uploadHint: {
     fontSize: fontSize.sm,
-    fontWeight: fontWeight.bold,
-    color: colors.textSecondary,
-    letterSpacing: 0.8,
-    textTransform: 'uppercase',
-    marginTop: spacing.md,
-    marginBottom: spacing.xs,
+    color: colors.textMuted,
+    marginTop: 4,
   },
   label: {
     fontSize: fontSize.sm,
-    fontWeight: fontWeight.semibold,
+    fontWeight: fontWeight.medium,
     color: colors.text,
-    marginBottom: spacing.xs,
+    marginBottom: 6,
+  },
+  labelTop: {
     marginTop: spacing.md,
   },
   input: {
-    backgroundColor: colors.surface,
+    height: 48,
+    backgroundColor: '#F3F4F6',
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
+    borderRadius: borderRadius.lg,
+    paddingHorizontal: 12,
     fontSize: fontSize.md,
     color: colors.text,
   },
+  inputFocused: {
+    borderWidth: 2,
+    borderColor: colors.green,
+  },
   inputAutoFilled: {
-    backgroundColor: colors.successLight,
-    borderColor: colors.accent,
+    backgroundColor: colors.greenLight,
+    borderColor: colors.green,
+  },
+  intervalRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  intervalInput: {
+    width: 80,
+  },
+  intervalSuffix: {
+    fontSize: fontSize.md,
+    color: colors.textSecondary,
   },
   notesInput: {
+    height: undefined,
     minHeight: 80,
+    paddingTop: 12,
+    paddingBottom: 12,
+    textAlignVertical: 'top',
   },
-  saveButton: {
-    backgroundColor: colors.primary,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    alignItems: 'center',
+  careSummary: {
+    backgroundColor: '#F0FDF4',
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
+    marginTop: spacing.md,
+  },
+  careSummaryTitle: {
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.semibold,
+    color: colors.green,
+    marginBottom: spacing.sm,
+  },
+  careRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 6,
+  },
+  careDivider: {
+    height: 1,
+    backgroundColor: colors.divider,
+  },
+  careLabel: {
+    fontSize: fontSize.sm,
+    color: colors.textSecondary,
+  },
+  careValue: {
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.medium,
+    color: colors.text,
+  },
+  actions: {
+    flexDirection: 'row',
+    gap: 12,
     marginTop: spacing.xl,
   },
-  saveButtonDisabled: {
-    opacity: 0.6,
-  },
-  saveButtonText: {
-    color: colors.textLight,
-    fontSize: fontSize.lg,
-    fontWeight: fontWeight.semibold,
+  actionButton: {
+    flex: 1,
   },
 });

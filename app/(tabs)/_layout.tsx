@@ -1,53 +1,61 @@
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { Text } from 'react-native';
-import { colors } from '../../src/ui/theme';
-import { AppLogo } from '../../src/ui/AppLogo';
+import { Ionicons } from '@expo/vector-icons';
+import { colors, fontSize, fontWeight } from '../../src/ui/theme';
 import { LanguageToggle } from '../../src/ui/LanguageToggle';
-
-function TabIcon({ emoji, focused }: { emoji: string; focused: boolean }) {
-  return (
-    <Text style={{ fontSize: 22, opacity: focused ? 1 : 0.5 }}>{emoji}</Text>
-  );
-}
 
 export default function TabLayout() {
   const { t } = useTranslation();
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.primary,
+        tabBarActiveTintColor: colors.green,
         tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
           backgroundColor: colors.surface,
+          borderTopWidth: 1,
           borderTopColor: colors.border,
         },
-        headerStyle: { backgroundColor: colors.primary },
-        headerTintColor: colors.textLight,
-        headerTitleStyle: { fontWeight: '600' },
+        tabBarLabelStyle: {
+          fontSize: fontSize.xs,
+          fontWeight: fontWeight.medium,
+        },
+        headerStyle: { backgroundColor: 'rgba(255,255,255,0.92)' },
+        headerShadowVisible: true,
+        headerTintColor: colors.text,
+        headerTitleStyle: {
+          fontSize: fontSize.lg,
+          fontWeight: fontWeight.semibold,
+          color: colors.text,
+        },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: t('tabs.myPlants'),
-          headerTitle: () => <AppLogo size="sm" layout="horizontal" light />,
           headerRight: () => <LanguageToggle />,
-          tabBarIcon: ({ focused }) => <TabIcon emoji="🌿" focused={focused} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="leaf-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="schedule"
         options={{
           title: t('tabs.schedule'),
-          tabBarIcon: ({ focused }) => <TabIcon emoji="💧" focused={focused} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="water-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="add"
         options={{
           title: t('tabs.addPlant'),
-          tabBarIcon: ({ focused }) => <TabIcon emoji="➕" focused={focused} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="add-circle-outline" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>
