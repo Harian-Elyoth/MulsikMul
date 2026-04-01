@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DatabaseProvider } from '../src/db/provider';
 import { LanguageProvider } from '../src/i18n/LanguageProvider';
-import { colors } from '../src/ui/theme';
+import { colors, fontSize, fontWeight } from '../src/ui/theme';
 
 export default function RootLayout() {
   const router = useRouter();
@@ -46,20 +46,25 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <DatabaseProvider>
         <LanguageProvider>
-        <Stack
-          screenOptions={{
-            headerStyle: { backgroundColor: colors.primary },
-            headerTintColor: colors.textLight,
-            headerTitleStyle: { fontWeight: '600' },
-            contentStyle: { backgroundColor: colors.background },
-          }}
-        >
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="plant/[id]"
-            options={{ title: t('plantDetail.title') }}
-          />
-        </Stack>
+          <Stack
+            screenOptions={{
+              headerStyle: { backgroundColor: 'rgba(255,255,255,0.92)' },
+              headerShadowVisible: true,
+              headerTintColor: colors.text,
+              headerTitleStyle: {
+                fontSize: fontSize.lg,
+                fontWeight: fontWeight.semibold,
+                color: colors.text,
+              },
+              headerBackTitle: '',
+            }}
+          >
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="plant/[id]"
+              options={{ headerShown: false }}
+            />
+          </Stack>
         </LanguageProvider>
       </DatabaseProvider>
     </SafeAreaProvider>

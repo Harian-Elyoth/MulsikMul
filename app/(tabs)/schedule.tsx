@@ -1,13 +1,9 @@
 import { useCallback, useState } from 'react';
-import {
-  FlatList,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Droplet } from 'lucide-react-native';
 import { useDatabase } from '../../src/db/provider';
 import { getAllPlantsWithSchedule, updateLastWatered } from '../../src/db/queries';
 import {
@@ -16,23 +12,24 @@ import {
   scheduleWateringNotification,
 } from '../../src/notifications/scheduler';
 import { PlantWithSchedule } from '../../src/types/plant';
-import {
-  formatDaysUntilWatering,
-  getDaysUntilWatering,
-  getWateringStatus,
-} from '../../src/utils/watering';
+import { getDaysUntilWatering, getWateringStatus } from '../../src/utils/watering';
 import { EmptyState } from '../../src/ui/EmptyState';
-import { borderRadius, colors, fontSize, fontWeight, spacing } from '../../src/ui/theme';
-
-const statusColors = {
-  overdue: colors.overdue,
-  due_soon: colors.dueSoon,
-  ok: colors.ok,
-};
+import { FAB } from '../../src/ui/FAB';
+import { Button } from '../../src/ui/Button';
+import {
+  borderRadius,
+  colors,
+  fontSize,
+  fontWeight,
+  shadows,
+  spacing,
+} from '../../src/ui/theme';
+import { useRouter } from 'expo-router';
 
 export default function ScheduleScreen() {
   const db = useDatabase();
   const { t } = useTranslation();
+  const router = useRouter();
   const [plants, setPlants] = useState<PlantWithSchedule[]>([]);
 
   const loadPlants = useCallback(async () => {
@@ -65,7 +62,6 @@ export default function ScheduleScreen() {
     if (plant.notification_id) {
       await cancelNotification(plant.notification_id);
     }
-
     const now = Date.now();
     let notificationId: string | null = null;
     const granted = await requestPermissions();
@@ -77,101 +73,144 @@ export default function ScheduleScreen() {
         now
       );
     }
-
     await updateLastWatered(db, plant.id, now, notificationId);
     await loadPlants();
   }
 
-  if (plants.length === 0) {
-    return (
-      <View style={styles.container}>
-        <EmptyState
-          title={t('schedule.emptyTitle')}
-          message={t('schedule.emptyMessage')}
-        />
-      </View>
-    );
+  function getUrgencyText(plant: PlantWithSchedule): { text: string; color: string } {
+    const schedule = {
+      id: plant.schedule_id!,
+      plant_id: plant.id,
+      interval_days: plant.interval_days!,
+      last_watered_at: plant.last_watered_at,
+      notification_id: plant.notification_id,
+    };
+    const status = getWateringStatus(schedule);
+    const days = getDaysUntilWatering(schedule);
+    switch (status) {
+      case 'overdue':
+        return { text: t('schedule.overdue'), color: colors.danger };
+      case 'due_soon':
+        return { text: t('schedule.dueSoon', { days: Math.abs(days) }), color: colors.orange };
+      default:
+        return { text: t('schedule.nextIn', { days }), color: colors.green };
+    }
   }
 
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={plants}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.list}
-        renderItem={({ item }) => {
-          const schedule = {
-            id: item.schedule_id!,
-            plant_id: item.id,
-            interval_days: item.interval_days!,
-            last_watered_at: item.last_watered_at,
-            notification_id: item.notification_id,
-          };
-          const status = getWateringStatus(schedule);
-
-          return (
-            <View style={styles.row}>
-              <View style={styles.rowInfo}>
-                <Text style={styles.plantName} numberOfLines={1}>{item.name}</Text>
-                <Text style={[styles.statusText, { color: statusColors[status] }]}>
-                  {formatDaysUntilWatering(schedule, t)}
-                </Text>
-              </View>
-              <Pressable
-                style={styles.waterButton}
-                onPress={() => handleWaterNow(item)}
-              >
-                <Text style={styles.waterButtonText}>💧</Text>
-              </Pressable>
-            </View>
-          );
-        }}
-      />
+  const ListHeader = (
+    <View style={styles.header}>
+      <Text style={styles.pageTitle}>{t('tabs.schedule')}</Text>
+      <Text style={styles.pageSubtitle}>{t('schedule.subtitle')}</Text>
     </View>
+  );
+
+  return (
+    <LinearGradient
+      colors={colors.backgroundGradient}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.gradient}
+    >
+      <View style={styles.container}>
+        {plants.length === 0 ? (
+          <View style={styles.emptyWrapper}>
+            {ListHeader}
+            <EmptyState
+              title={t('schedule.emptyTitle')}
+              message={t('schedule.emptyMessage')}
+            />
+          </View>
+        ) : (
+          <FlatList
+            data={plants}
+            keyExtractor={(item) => item.id.toString()}
+            ListHeaderComponent={ListHeader}
+            contentContainerStyle={styles.list}
+            renderItem={({ item }) => {
+              const { text, color } = getUrgencyText(item);
+              return (
+                <View style={styles.row}>
+                  <View style={styles.rowInfo}>
+                    <Text style={styles.plantName} numberOfLines={1}>{item.name}</Text>
+                    <Text style={[styles.urgencyText, { color }]}>{text}</Text>
+                  </View>
+                  <Button
+                    variant="waterOutline"
+                    size="sm"
+                    label={t('plantDetail.water')}
+                    icon={Droplet}
+                    onPress={() => handleWaterNow(item)}
+                  />
+                </View>
+              );
+            }}
+          />
+        )}
+        <FAB onPress={() => router.push('/(tabs)/add')} />
+      </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    position: 'relative',
+  },
+  emptyWrapper: {
+    flex: 1,
+  },
+  header: {
+    paddingHorizontal: spacing.md,
+    paddingTop: spacing.lg,
+    paddingBottom: spacing.md,
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 672,
   },
   list: {
-    paddingVertical: spacing.sm,
+    paddingBottom: 96,
+    paddingHorizontal: spacing.md,
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 672,
+  },
+  pageTitle: {
+    fontSize: fontSize.xxxl,
+    fontWeight: fontWeight.bold,
+    color: colors.text,
+    marginBottom: 4,
+  },
+  pageSubtitle: {
+    fontSize: fontSize.md,
+    color: colors.textSecondary,
+    marginBottom: spacing.md,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.surface,
-    marginHorizontal: spacing.md,
-    marginVertical: spacing.xs,
-    padding: spacing.md,
-    borderRadius: borderRadius.lg,
     borderWidth: 1,
     borderColor: colors.border,
+    borderRadius: borderRadius.xl,
+    padding: spacing.md,
+    marginBottom: spacing.md,
+    ...shadows.sm,
   },
   rowInfo: {
     flex: 1,
+    marginRight: spacing.sm,
   },
   plantName: {
     fontSize: fontSize.md,
     fontWeight: fontWeight.semibold,
     color: colors.text,
   },
-  statusText: {
+  urgencyText: {
     fontSize: fontSize.sm,
     marginTop: 2,
-  },
-  waterButton: {
-    width: 44,
-    height: 44,
-    borderRadius: borderRadius.full,
-    backgroundColor: colors.primaryLight,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: spacing.md,
-  },
-  waterButtonText: {
-    fontSize: 20,
   },
 });

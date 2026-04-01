@@ -18,7 +18,7 @@ const sizeMap = {
 
 export function AppLogo({ size = 'md', layout = 'horizontal', light = false }: AppLogoProps) {
   const { image: imageSize, text: textSize } = sizeMap[size];
-  const textColor = light ? colors.textLight : colors.primaryDark;
+  const textColor = light ? colors.textLight : colors.green;
   const gap = size === 'sm' ? spacing.xs : spacing.sm;
 
   return (
