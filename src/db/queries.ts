@@ -14,10 +14,11 @@ export async function insertPlant(
   plant: Omit<LocalPlant, 'id'>
 ): Promise<number> {
   const result = await db.runAsync(
-    `INSERT INTO plants (name, species, perenual_id, photo_uri, notes, acquired_at, created_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO plants (name, nickname, species, perenual_id, photo_uri, notes, acquired_at, created_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       plant.name,
+      plant.nickname ?? null,
       plant.species ?? null,
       plant.perenual_id ?? null,
       plant.photo_uri ?? null,
@@ -27,6 +28,32 @@ export async function insertPlant(
     ]
   );
   return result.lastInsertRowId;
+}
+
+export async function updatePlant(
+  db: SQLiteDatabase,
+  id: number,
+  data: {
+    name: string;
+    nickname?: string | null;
+    species?: string | null;
+    notes?: string | null;
+    photo_uri?: string | null;
+    acquired_at?: number | null;
+  }
+): Promise<void> {
+  await db.runAsync(
+    `UPDATE plants SET name=?, nickname=?, species=?, notes=?, photo_uri=?, acquired_at=? WHERE id=?`,
+    [
+      data.name,
+      data.nickname ?? null,
+      data.species ?? null,
+      data.notes ?? null,
+      data.photo_uri ?? null,
+      data.acquired_at ?? null,
+      id,
+    ]
+  );
 }
 
 export async function deletePlant(db: SQLiteDatabase, id: number): Promise<void> {

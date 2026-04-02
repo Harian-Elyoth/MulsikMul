@@ -30,7 +30,7 @@ const ko = {
     poisonousForPets: '반려동물 독성',
     tips: '관리 팁',
     water: '물주기',
-    waterNow: '💧 물주기',
+    waterNow: '물주기',
     watering: '물주는 중...',
     edit: '수정',
     deletePlant: '식물 삭제',
@@ -70,6 +70,8 @@ const ko = {
     plantInfo: '식물 정보',
     nameLabel: '식물 이름 *',
     namePlaceholder: '예: 몬스테라 델리시오사',
+    nicknameLabel: '별명 (선택)',
+    nicknamePlaceholder: '예: 프레디',
     speciesLabel: '종',
     speciesPh: '예: Monstera deliciosa',
     acquisitionDate: '취득 날짜',
@@ -83,7 +85,6 @@ const ko = {
     careSummary: '관리 요약',
     careLight: '빛',
     careWater: '물',
-    carePetSafe: '반려동물 안전',
     savePlant: '식물 추가',
     saving: '저장 중...',
     errors: {
@@ -96,6 +97,11 @@ const ko = {
       saveError: '오류',
       saveErrorMsg: '식물을 저장할 수 없습니다. 다시 시도하세요.',
     },
+  },
+  editPlant: {
+    title: '식물 수정',
+    save: '저장',
+    saving: '저장 중...',
   },
   watering: {
     overdue: '{{days}}일 지연',

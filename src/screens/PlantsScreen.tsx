@@ -1,19 +1,24 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useDatabase } from '../../src/db/provider';
-import { getAllPlantsWithSchedule, updateLastWatered } from '../../src/db/queries';
-import { cancelNotification, requestPermissions, scheduleWateringNotification } from '../../src/notifications/scheduler';
-import { PlantWithSchedule, WateringSchedule } from '../../src/types/plant';
-import { PlantCard } from '../../src/ui/PlantCard';
-import { EmptyState } from '../../src/ui/EmptyState';
-import { FAB } from '../../src/ui/FAB';
-import { colors, fontSize, fontWeight, spacing } from '../../src/ui/theme';
+import { useDatabase } from '../db/provider';
+import { getAllPlantsWithSchedule, updateLastWatered } from '../db/queries';
+import { cancelNotification, requestPermissions, scheduleWateringNotification } from '../notifications/scheduler';
+import { PlantWithSchedule, WateringSchedule } from '../types/plant';
+import { PlantCard } from '../ui/PlantCard';
+import { EmptyState } from '../ui/EmptyState';
+import { FAB } from '../ui/FAB';
+import { colors, fontSize, fontWeight, spacing } from '../ui/theme';
 
-export default function MyPlantsScreen() {
+interface Props {
+  onNavigateToAdd: () => void;
+  refreshKey: number;
+  topInset?: number;
+}
+
+export default function PlantsScreen({ onNavigateToAdd, refreshKey, topInset = 0 }: Props) {
   const db = useDatabase();
   const router = useRouter();
   const { t } = useTranslation();
@@ -24,11 +29,9 @@ export default function MyPlantsScreen() {
     setPlants(all);
   }, [db]);
 
-  useFocusEffect(
-    useCallback(() => {
-      loadPlants();
-    }, [loadPlants])
-  );
+  useEffect(() => {
+    loadPlants();
+  }, [loadPlants, refreshKey]);
 
   function toSchedule(plant: PlantWithSchedule): WateringSchedule | null {
     if (plant.schedule_id == null) return null;
@@ -74,18 +77,18 @@ export default function MyPlantsScreen() {
     >
       <View style={styles.container}>
         {plants.length === 0 ? (
-          <ScrollView contentContainerStyle={styles.scrollEmpty}>
+          <ScrollView contentContainerStyle={[styles.scrollEmpty, { paddingTop: spacing.lg + topInset }]}>
             <Text style={styles.pageTitle}>{t('tabs.myPlants')}</Text>
             <Text style={styles.pageSubtitle}>{subtitle}</Text>
             <EmptyState
               title={t('myPlants.emptyTitle')}
               message={t('myPlants.emptyMessage')}
               ctaLabel={t('myPlants.addFirstPlant')}
-              onCta={() => router.push('/(tabs)/add')}
+              onCta={onNavigateToAdd}
             />
           </ScrollView>
         ) : (
-          <ScrollView contentContainerStyle={styles.scroll}>
+          <ScrollView contentContainerStyle={[styles.scroll, { paddingTop: spacing.lg + topInset }]}>
             <Text style={styles.pageTitle}>{t('tabs.myPlants')}</Text>
             <Text style={styles.pageSubtitle}>{subtitle}</Text>
             {plants.map((item) => (
@@ -99,7 +102,7 @@ export default function MyPlantsScreen() {
             ))}
           </ScrollView>
         )}
-        <FAB onPress={() => router.push('/(tabs)/add')} />
+        <FAB onPress={onNavigateToAdd} />
       </View>
     </LinearGradient>
   );

@@ -62,8 +62,10 @@ export function PlantCard({ plant, schedule, onPress, onWater }: PlantCardProps)
 
         {/* Info */}
         <View style={styles.info}>
-          <Text style={styles.name} numberOfLines={1}>{plant.name}</Text>
-          {plant.species ? (
+          <Text style={styles.name} numberOfLines={1}>{plant.nickname ?? plant.name}</Text>
+          {plant.nickname ? (
+            <Text style={styles.species} numberOfLines={1}>{plant.name}</Text>
+          ) : plant.species ? (
             <Text style={styles.species} numberOfLines={1}>{plant.species}</Text>
           ) : null}
           <View style={styles.bottomRow}>

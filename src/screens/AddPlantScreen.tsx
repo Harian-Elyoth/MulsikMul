@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Alert,
   Animated,
@@ -12,21 +12,35 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system/legacy';
 import { Camera, Upload, X } from 'lucide-react-native';
-import { useDatabase } from '../../src/db/provider';
-import { insertPlant, insertPlantCareInfo, upsertWateringSchedule } from '../../src/db/queries';
+import { useDatabase } from '../db/provider';
+import { insertPlant, insertPlantCareInfo, upsertWateringSchedule } from '../db/queries';
 import {
   requestPermissions,
   scheduleWateringNotification,
-} from '../../src/notifications/scheduler';
-import { borderRadius, colors, fontSize, fontWeight, spacing } from '../../src/ui/theme';
-import PlantSearchModal, { PlantSearchResult } from '../../src/ui/PlantSearchModal';
-import { Button } from '../../src/ui/Button';
+} from '../notifications/scheduler';
+import { borderRadius, colors, fontSize, fontWeight, spacing } from '../ui/theme';
+import PlantSearchModal, { PlantSearchResult } from '../ui/PlantSearchModal';
+import { Button } from '../ui/Button';
+
+interface Props {
+  onSaved: () => void;
+  onCancel: () => void;
+  isActive?: boolean;
+  topInset?: number;
+}
+
+function todayDDMMYYYY(): string {
+  const d = new Date();
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yyyy = d.getFullYear();
+  return `${dd}/${mm}/${yyyy}`;
+}
 
 function parseDateDDMMYYYY(value: string): number | null {
   const match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
@@ -37,12 +51,12 @@ function parseDateDDMMYYYY(value: string): number | null {
   return date.getTime();
 }
 
-export default function AddPlantScreen() {
+export default function AddPlantScreen({ onSaved, onCancel, isActive, topInset = 0 }: Props) {
   const db = useDatabase();
-  const router = useRouter();
   const { t } = useTranslation();
 
   const [name, setName] = useState('');
+  const [nickname, setNickname] = useState('');
   const [species, setSpecies] = useState('');
   const [notes, setNotes] = useState('');
   const [photoUri, setPhotoUri] = useState<string | null>(null);
@@ -51,7 +65,7 @@ export default function AddPlantScreen() {
   const [searchModalVisible, setSearchModalVisible] = useState(false);
   const [perenualId, setPerenualId] = useState<number | null>(null);
   const [autoFilled, setAutoFilled] = useState(false);
-  const [acquiredAt, setAcquiredAt] = useState('');
+  const [acquiredAt, setAcquiredAt] = useState(todayDDMMYYYY);
   const [careInfo, setCareInfo] = useState<{
     sunlight: string | null;
     poisonous_to_pets: boolean | null;
@@ -60,6 +74,26 @@ export default function AddPlantScreen() {
   } | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const photoScale = useRef(new Animated.Value(1)).current;
+
+  function resetForm() {
+    setName('');
+    setNickname('');
+    setSpecies('');
+    setNotes('');
+    setPhotoUri(null);
+    setIntervalDays('7');
+    setAcquiredAt(todayDDMMYYYY());
+    setPerenualId(null);
+    setAutoFilled(false);
+    setCareInfo(null);
+    setFocusedField(null);
+  }
+
+  useEffect(() => {
+    if (isActive) {
+      resetForm();
+    }
+  }, [isActive]);
 
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -140,6 +174,7 @@ export default function AddPlantScreen() {
       const now = Date.now();
       const plantId = await insertPlant(db, {
         name: trimmedName,
+        nickname: nickname.trim() || null,
         species: species.trim() || null,
         perenual_id: perenualId,
         photo_uri: photoUri,
@@ -179,7 +214,7 @@ export default function AddPlantScreen() {
         });
       }
 
-      router.navigate('/(tabs)');
+      onSaved();
     } catch {
       Alert.alert(t('addPlant.errors.saveError'), t('addPlant.errors.saveErrorMsg'));
     } finally {
@@ -207,7 +242,7 @@ export default function AddPlantScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
         <ScrollView
-          contentContainerStyle={styles.scroll}
+          contentContainerStyle={[styles.scroll, { paddingTop: spacing.lg + topInset }]}
           keyboardShouldPersistTaps="handled"
         >
           {/* Title + Search row */}
@@ -283,6 +318,18 @@ export default function AddPlantScreen() {
             onBlur={() => setFocusedField(null)}
           />
 
+          {/* Nickname */}
+          <Text style={[styles.label, styles.labelTop]}>{t('addPlant.nicknameLabel')}</Text>
+          <TextInput
+            style={inputStyle('nickname')}
+            value={nickname}
+            onChangeText={setNickname}
+            placeholder={t('addPlant.nicknamePlaceholder')}
+            placeholderTextColor={colors.textMuted}
+            onFocus={() => setFocusedField('nickname')}
+            onBlur={() => setFocusedField(null)}
+          />
+
           {/* Species */}
           <Text style={[styles.label, styles.labelTop]}>{t('addPlant.speciesLabel')}</Text>
           <TextInput
@@ -353,9 +400,9 @@ export default function AddPlantScreen() {
                 <>
                   <View style={styles.careDivider} />
                   <View style={styles.careRow}>
-                    <Text style={styles.careLabel}>{t('addPlant.carePetSafe')}</Text>
+                    <Text style={styles.careLabel}>{t('plantDetail.poisonousForPets')}</Text>
                     <Text style={styles.careValue}>
-                      {careInfo.poisonous_to_pets ? t('common.no') : t('common.yes')}
+                      {careInfo.poisonous_to_pets ? t('common.yes') : t('common.no')}
                     </Text>
                   </View>
                 </>
@@ -369,7 +416,7 @@ export default function AddPlantScreen() {
               variant="outline"
               size="lg"
               label={t('common.cancel')}
-              onPress={() => router.navigate('/(tabs)')}
+              onPress={onCancel}
               style={styles.actionButton}
             />
             <Button
@@ -413,12 +460,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
     marginBottom: spacing.lg,
   },
   pageTitle: {
-    fontSize: fontSize.xl,
-    fontWeight: fontWeight.semibold,
+    fontSize: fontSize.xxxl,
+    fontWeight: fontWeight.bold,
     color: colors.text,
+    flexShrink: 1,
   },
   autoFilledBadge: {
     backgroundColor: colors.greenLight,

@@ -1,79 +1,83 @@
+#!/usr/bin/env node
 /**
- * Generates minimal solid-color PNG placeholder icons for Expo.
+ * Generates all required app icons from assets/logo.svg
+ * Uses @resvg/resvg-js for SVG→PNG conversion
+ *
  * Run with: node scripts/generate-icons.js
  */
-const zlib = require('zlib');
+
+const { Resvg } = require('@resvg/resvg-js');
 const fs = require('fs');
 const path = require('path');
 
-function crc32(buf) {
-  const table = new Uint32Array(256);
-  for (let i = 0; i < 256; i++) {
-    let c = i;
-    for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
-    table[i] = c;
-  }
-  let crc = 0xFFFFFFFF;
-  for (let i = 0; i < buf.length; i++) crc = table[(crc ^ buf[i]) & 0xFF] ^ (crc >>> 8);
-  return (crc ^ 0xFFFFFFFF) >>> 0;
+const svgPath = path.join(__dirname, '../assets/logo.svg');
+const svgContent = fs.readFileSync(svgPath, 'utf8');
+
+// Variant: add solid green background rect behind everything (for opaque icons)
+const svgWithBg = svgContent.replace(
+  '<path d="M0 0 C337.92 0 675.84 0 1024 0 C1024 337.92 1024 675.84 1024 1024 C686.08 1024 348.16 1024 0 1024 C0 686.08 0 348.16 0 0 Z " fill="#FDFDFD"',
+  '<rect width="1024" height="1024" fill="#49C872"/>\n<path d="M0 0 C337.92 0 675.84 0 1024 0 C1024 337.92 1024 675.84 1024 1024 C686.08 1024 348.16 1024 0 1024 C0 686.08 0 348.16 0 0 Z " fill="#FDFDFD"'
+);
+
+// Android adaptive background: solid green square
+const svgBgOnly = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">
+<rect width="1024" height="1024" fill="#49C872"/>
+</svg>`;
+
+// Android monochrome: all paths forced to white
+const svgMono = svgContent
+  .replace(/fill="#FDFDFD"/g, 'fill="#FFFFFF"')
+  .replace(/fill="#FAFBFA"/g, 'fill="#FFFFFF"')
+  .replace(/fill="#48C873"/g, 'fill="#FFFFFF"')
+  .replace(/fill="#A2E57D"/g, 'fill="#FFFFFF"')
+  .replace(/fill="#4AB984"/g, 'fill="#FFFFFF"')
+  .replace(/fill="#5DC285"/g, 'fill="#FFFFFF"')
+  .replace(/fill="#4DBF8A"/g, 'fill="#FFFFFF"');
+
+function renderPng(svgStr, size) {
+  const resvg = new Resvg(svgStr, {
+    fitTo: { mode: 'width', value: size },
+  });
+  return resvg.render().asPng();
 }
 
-function makeChunk(type, data) {
-  const lenBuf = Buffer.alloc(4);
-  lenBuf.writeUInt32BE(data.length);
-  const typeBuf = Buffer.from(type, 'ascii');
-  const crcBuf = Buffer.alloc(4);
-  crcBuf.writeUInt32BE(crc32(Buffer.concat([typeBuf, data])));
-  return Buffer.concat([lenBuf, typeBuf, data, crcBuf]);
+function write(outPath, png) {
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, png);
+  const rel = path.relative(path.join(__dirname, '..'), outPath);
+  console.log(`✓ ${rel}  (${(png.length / 1024).toFixed(1)} KB)`);
 }
 
-function makePNG(w, h, r, g, b) {
-  const sig = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+const assets = path.join(__dirname, '../assets');
 
-  const ihdrData = Buffer.alloc(13);
-  ihdrData.writeUInt32BE(w, 0);
-  ihdrData.writeUInt32BE(h, 4);
-  ihdrData[8] = 8;  // bit depth
-  ihdrData[9] = 2;  // color type: RGB
-  // compression, filter, interlace = 0
+// Main icon (green bg, 1024×1024)
+write(`${assets}/icon.png`,         renderPng(svgWithBg, 1024));
 
-  const rows = [];
-  for (let y = 0; y < h; y++) {
-    const row = Buffer.alloc(1 + w * 3);
-    row[0] = 0; // filter: None
-    for (let x = 0; x < w; x++) {
-      row[1 + x * 3] = r;
-      row[2 + x * 3] = g;
-      row[3 + x * 3] = b;
-    }
-    rows.push(row);
-  }
+// Splash screen
+write(`${assets}/splash-icon.png`,  renderPng(svgWithBg, 1024));
 
-  const compressed = zlib.deflateSync(Buffer.concat(rows));
+// Web favicon
+write(`${assets}/favicon.png`,      renderPng(svgWithBg, 48));
 
-  return Buffer.concat([
-    sig,
-    makeChunk('IHDR', ihdrData),
-    makeChunk('IDAT', compressed),
-    makeChunk('IEND', Buffer.alloc(0)),
-  ]);
-}
+// Store listings
+write(`${assets}/appstore.png`,     renderPng(svgWithBg, 1024));
+write(`${assets}/playstore.png`,    renderPng(svgWithBg, 512));
 
-const assets = path.join(__dirname, '..', 'assets');
-const green = [0x2D, 0x6A, 0x4F];   // #2D6A4F brand primary
-const white = [0xFF, 0xFF, 0xFF];
+// Android adaptive icon layers
+write(`${assets}/android-icon-foreground.png`,  renderPng(svgContent, 1024));
+write(`${assets}/android-icon-background.png`,  renderPng(svgBgOnly,  1024));
+write(`${assets}/android-icon-monochrome.png`,  renderPng(svgMono,    1024));
 
-const files = [
-  { name: 'icon.png',                    size: [1024, 1024], color: green },
-  { name: 'splash-icon.png',             size: [200,  200],  color: green },
-  { name: 'favicon.png',                 size: [48,   48],   color: green },
-  { name: 'android-icon-foreground.png', size: [432,  432],  color: green },
-  { name: 'android-icon-background.png', size: [432,  432],  color: green },
-  { name: 'android-icon-monochrome.png', size: [432,  432],  color: white },
+// Android mipmap launcher icons
+const mipmaps = [
+  { dir: 'mipmap-mdpi',    size: 48  },
+  { dir: 'mipmap-hdpi',    size: 72  },
+  { dir: 'mipmap-xhdpi',   size: 96  },
+  { dir: 'mipmap-xxhdpi',  size: 144 },
+  { dir: 'mipmap-xxxhdpi', size: 192 },
 ];
-
-for (const { name, size: [w, h], color: [r, g, b] } of files) {
-  const dest = path.join(assets, name);
-  fs.writeFileSync(dest, makePNG(w, h, r, g, b));
-  console.log(`Created ${name} (${w}×${h})`);
+for (const { dir, size } of mipmaps) {
+  write(`${assets}/android/${dir}/ic_launcher.png`, renderPng(svgWithBg, size));
 }
+
+console.log('\nAll icons generated successfully.');

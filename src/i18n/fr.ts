@@ -30,7 +30,7 @@ const fr = {
     poisonousForPets: 'Toxique pour animaux',
     tips: 'Conseils',
     water: 'Arroser',
-    waterNow: '💧 Arroser',
+    waterNow: 'Arroser',
     watering: 'Arrosage...',
     edit: 'Modifier',
     deletePlant: 'Supprimer la plante',
@@ -70,6 +70,8 @@ const fr = {
     plantInfo: 'Infos de la plante',
     nameLabel: 'Nom de la plante *',
     namePlaceholder: 'ex. Monstera Deliciosa',
+    nicknameLabel: 'Surnom (optionnel)',
+    nicknamePlaceholder: 'ex. Freddie',
     speciesLabel: 'Espèce',
     speciesPh: 'ex. Monstera deliciosa',
     acquisitionDate: "Date d'acquisition",
@@ -83,7 +85,6 @@ const fr = {
     careSummary: 'Résumé des soins',
     careLight: 'Lumière',
     careWater: 'Eau',
-    carePetSafe: 'Sans danger pour animaux',
     savePlant: 'Ajouter la plante',
     saving: 'Enregistrement...',
     errors: {
@@ -96,6 +97,11 @@ const fr = {
       saveError: 'Erreur',
       saveErrorMsg: "Impossible d'enregistrer la plante. Veuillez réessayer.",
     },
+  },
+  editPlant: {
+    title: 'Modifier la plante',
+    save: 'Enregistrer',
+    saving: 'Enregistrement...',
   },
   watering: {
     overdue: '{{days}}j de retard',

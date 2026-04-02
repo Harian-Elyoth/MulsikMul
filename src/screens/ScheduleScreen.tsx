@@ -1,21 +1,20 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Droplet } from 'lucide-react-native';
-import { useDatabase } from '../../src/db/provider';
-import { getAllPlantsWithSchedule, updateLastWatered } from '../../src/db/queries';
+import { useDatabase } from '../db/provider';
+import { getAllPlantsWithSchedule, updateLastWatered } from '../db/queries';
 import {
   cancelNotification,
   requestPermissions,
   scheduleWateringNotification,
-} from '../../src/notifications/scheduler';
-import { PlantWithSchedule } from '../../src/types/plant';
-import { getDaysUntilWatering, getWateringStatus } from '../../src/utils/watering';
-import { EmptyState } from '../../src/ui/EmptyState';
-import { FAB } from '../../src/ui/FAB';
-import { Button } from '../../src/ui/Button';
+} from '../notifications/scheduler';
+import { PlantWithSchedule } from '../types/plant';
+import { getDaysUntilWatering, getWateringStatus } from '../utils/watering';
+import { EmptyState } from '../ui/EmptyState';
+import { FAB } from '../ui/FAB';
+import { Button } from '../ui/Button';
 import {
   borderRadius,
   colors,
@@ -23,10 +22,16 @@ import {
   fontWeight,
   shadows,
   spacing,
-} from '../../src/ui/theme';
+} from '../ui/theme';
 import { useRouter } from 'expo-router';
 
-export default function ScheduleScreen() {
+interface Props {
+  onNavigateToAdd: () => void;
+  refreshKey: number;
+  topInset?: number;
+}
+
+export default function ScheduleScreen({ onNavigateToAdd, refreshKey, topInset = 0 }: Props) {
   const db = useDatabase();
   const { t } = useTranslation();
   const router = useRouter();
@@ -52,11 +57,9 @@ export default function ScheduleScreen() {
     setPlants(sorted);
   }, [db]);
 
-  useFocusEffect(
-    useCallback(() => {
-      loadPlants();
-    }, [loadPlants])
-  );
+  useEffect(() => {
+    loadPlants();
+  }, [loadPlants, refreshKey]);
 
   async function handleWaterNow(plant: PlantWithSchedule) {
     if (plant.notification_id) {
@@ -98,7 +101,7 @@ export default function ScheduleScreen() {
   }
 
   const ListHeader = (
-    <View style={styles.header}>
+    <View style={[styles.header, { paddingTop: spacing.lg + topInset }]}>
       <Text style={styles.pageTitle}>{t('tabs.schedule')}</Text>
       <Text style={styles.pageSubtitle}>{t('schedule.subtitle')}</Text>
     </View>
@@ -146,7 +149,7 @@ export default function ScheduleScreen() {
             }}
           />
         )}
-        <FAB onPress={() => router.push('/(tabs)/add')} />
+        <FAB onPress={onNavigateToAdd} />
       </View>
     </LinearGradient>
   );

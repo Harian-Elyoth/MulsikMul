@@ -18,15 +18,20 @@ export function LanguageToggle() {
 
 const styles = StyleSheet.create({
   button: {
-    marginRight: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 9999,
     borderWidth: 1,
-    borderColor: colors.textLight,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    elevation: 2,
+    shadowColor: colors.shadow,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 2,
   },
   label: {
-    color: colors.textLight,
+    color: colors.text,
     fontSize: 13,
     fontWeight: '600',
   },

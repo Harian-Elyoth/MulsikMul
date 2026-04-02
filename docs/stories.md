@@ -27,6 +27,16 @@
 | **Priorité** | **Must** |
 | **Status** | Done |
 
+### CICD-3 : Résoudre les problèmes de dépendances npm
+| | |
+|---|---|
+| **Story** | En tant que développeur, je veux résoudre les avertissements et dépendances obsolètes dans le pipeline de build afin de garantir des installations npm fiables et sécurisées |
+| **Critères d'acceptation** | 1. Le build local EAS ne doit plus afficher des warnings critiques de dépendances obsolètes comme `inflight`, `whatwg-encoding`, `rimraf@3`, `abab`, `glob@7.2.3`, `domexception` · 2. `npm ci --include=dev` réussit proprement dans l'environnement de build local · 3. Les dépendances peuvent être mises à jour ou résolues via des remplacements de versions ou un lockfile stable · 4. Les modifications sont documentées dans `package.json` / `package-lock.json` |
+| **Complexité** | M |
+| **Dépendances** | CICD-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
 ---
 
 ## Epic PLANT — Gestion des plantes
@@ -233,17 +243,17 @@
 | **Complexité** | XS |
 | **Dépendances** | I18N-2 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### BUG-UI-2 : Bouton "Modifier" non cliquable (détail plante)
 | | |
 |---|---|
-| **Story** | En tant qu'utilisateur, je veux pouvoir cliquer sur le bouton modifier afin d'éditer une plante |
-| **Critères d'acceptation** | 1. Le bouton est cliquable (z-index / overlay corrigé) · 2. La navigation vers l'écran d’édition fonctionne · 3. Aucun conflit avec d'autres composants |
+| **Story** | En tant qu’utilisateur, je veux pouvoir cliquer sur le bouton modifier afin d’éditer une plante |
+| **Critères d’acceptation** | 1. Le bouton est cliquable (z-index / overlay corrigé) · 2. La navigation vers l’écran d’édition fonctionne · 3. Aucun conflit avec d’autres composants |
 | **Complexité** | S |
 | **Dépendances** | PLANT-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### BUG-UI-3 : Texte "Arroser" invisible en français
 | | |
@@ -263,7 +273,7 @@
 | **Complexité** | M |
 | **Dépendances** | I18N-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ---
 
@@ -277,7 +287,7 @@
 | **Complexité** | L |
 | **Dépendances** | UI-2 |
 | **Priorité** | **Should** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### UX-2 : Reset du formulaire lors de l’ajout d’une plante
 | | |
@@ -287,7 +297,7 @@
 | **Complexité** | S |
 | **Dépendances** | PLANT-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### UX-3 : Date par défaut = aujourd’hui
 | | |
@@ -297,7 +307,7 @@
 | **Complexité** | XS |
 | **Dépendances** | PLANT-1 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### UX-4 : Remplacer "safe pour animaux" par "toxique pour animaux"
 | | |
@@ -317,7 +327,7 @@
 | **Complexité** | M |
 | **Dépendances** | PLANT-1, CARE-2 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### UX-6 : Conserver les infos de soin même si le nom change
 | | |
@@ -327,7 +337,7 @@
 | **Complexité** | M |
 | **Dépendances** | UX-5 |
 | **Priorité** | **Must** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ### UX-7 : Simplification du header (suppression menu top)
 | | |
@@ -337,7 +347,7 @@
 | **Complexité** | M |
 | **Dépendances** | UI-1 |
 | **Priorité** | **Should** |
-| **Status** | Todo |
+| **Status** | Done |
 
 ---
 
@@ -345,5 +355,5 @@
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 17 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, BUG-1, BUG-2, BUG-3, BUG-4 |
-| **Todo** | 13 | UI-1, UI-2, BUG-UI-1, BUG-UI-2, BUG-UI-3, BUG-UI-4, UX-1, UX-2, UX-3, UX-4, UX-5, UX-6, UX-7 |
+| **Done** | 24 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, BUG-1, BUG-2, BUG-3, BUG-4, UX-1, UX-2, UX-3, UX-5, UX-6, UX-7, BUG-UI-4 |
+| **Todo** | 6 | UI-1, UI-2, BUG-UI-1, BUG-UI-2, BUG-UI-3, UX-4 |

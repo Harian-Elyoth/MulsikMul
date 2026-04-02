@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   Animated,
   Image,
@@ -50,6 +51,7 @@ export default function PlantDetailScreen() {
   const db = useDatabase();
   const router = useRouter();
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
 
   const [plant, setPlant] = useState<LocalPlant | null>(null);
   const [schedule, setSchedule] = useState<WateringSchedule | null>(null);
@@ -198,15 +200,17 @@ export default function PlantDetailScreen() {
                 <Leaf size={64} stroke="rgba(255,255,255,0.7)" />
               </LinearGradient>
             )}
-            <Pressable style={styles.backButton} onPress={() => router.back()}>
+            <Pressable style={[styles.backButton, { top: insets.top + 12 }]} onPress={() => router.back()}>
               <ArrowLeft size={20} stroke={colors.text} />
             </Pressable>
           </View>
 
           {/* Content */}
           <View style={styles.content}>
-            <Text style={styles.plantName}>{plant.name}</Text>
-            {plant.species ? (
+            <Text style={styles.plantName}>{plant.nickname ?? plant.name}</Text>
+            {plant.nickname ? (
+              <Text style={styles.plantSpecies}>{plant.name}</Text>
+            ) : plant.species ? (
               <Text style={styles.plantSpecies}>{plant.species}</Text>
             ) : null}
 
@@ -228,7 +232,8 @@ export default function PlantDetailScreen() {
                 size="lg"
                 label={t('plantDetail.edit')}
                 icon={Pencil}
-                disabled
+                onPress={() => router.push(`/plant-edit/${plant?.id}`)}
+                disabled={!plant}
                 style={styles.actionButton}
               />
             </View>

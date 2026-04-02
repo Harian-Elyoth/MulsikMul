@@ -8,6 +8,8 @@ export interface HouseplantEntry {
   notes_ko: string;
   thumbnail: string | null;
   sunlight: string;
+  sunlight_fr: string;
+  sunlight_ko: string;
   poisonous_to_pets: boolean;
 }
 
@@ -23,6 +25,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 밝은 간접광과 높은 습도를 좋아합니다. 가끔 잎을 닦아 먼지를 제거하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -35,6 +39,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 고르게 촉촉하게 유지하되 과습은 피하세요. 밝은 간접광과 타고 오를 지지대를 좋아합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -47,6 +53,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙의 표면이 건조해지면 물을 주세요. 밝은 간접광과 높은 습도를 좋아합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -59,6 +67,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '매우 강인한 식물입니다. 물 주기 사이에 흙이 건조해지도록 두세요. 낮은 광도도 견디지만 밝은 환경에서 더 빨리 자랍니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -71,6 +81,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '골든 포토스와 비슷하게 관리하되 무늬 유지를 위해 조금 더 밝은 빛이 필요합니다. 물 주기 사이에 흙이 건조해지도록 하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -83,6 +95,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '밝은 황록색 잎은 좋은 간접광에서 더욱 선명해집니다. 흙 위 2~3cm가 건조해지면 물을 주세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -95,6 +109,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '성숙하면 잎에 구멍이 생기는 은청색 잎을 가지고 있습니다. 밝은 간접광과 배수가 잘 되는 흙을 좋아합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -107,6 +123,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 부분적으로 건조해지도록 두세요. 밝은 간접광에서 은빛 무늬가 더욱 뚜렷해집니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -119,6 +137,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 중간~밝은 간접광에서 잘 자라며 성장이 빠릅니다.',
     thumbnail: null,
     sunlight: 'medium to bright indirect light',
+    sunlight_fr: 'lumière indirecte moyenne à vive',
+    sunlight_ko: '중간~밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -131,6 +151,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '하트잎 필로덴드론과 같이 관리하되 노란-초록 무늬를 선명하게 유지하려면 더 밝은 빛이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -143,6 +165,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2cm가 건조해지면 물을 주세요. 밝은 간접광이 형광빛 색상을 유지시켜 줍니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -155,6 +179,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하고 높은 습도가 필요합니다. 느리게 자라지만 벨벳 같은 잎이 아름답습니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -167,6 +193,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '충분히 물을 준 후 흙의 윗절반이 건조해지도록 두세요. 밝은 간접광과 넓은 공간을 좋아합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -179,6 +207,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '분홍빛 무늬를 만들려면 밝은 간접광이 필요합니다. 흙 위 2cm가 건조해지면 물을 주세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -191,6 +221,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '식물이 살짝 처지거나 흙 위 2~3cm가 건조해지면 물을 주세요. 낮은 광도도 견딥니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -203,6 +235,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '가장 건조에 강한 실내 식물 중 하나입니다. 흙이 완전히 건조해질 때만 물을 주세요. 방치와 낮은 광도도 견딥니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -215,6 +249,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 고르게 촉촉하게 유지하되 과습은 피하세요. 높은 습도와 밝은 간접광이 필요합니다. 겨울에는 휴면기에 들어갑니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -227,6 +263,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2cm가 건조해지면 물을 주세요. 눈에 띄는 얼룩무늬 줄기는 밝은 간접광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -239,6 +277,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '밝은 간접광과 지속적인 수분이 필요합니다. 높은 습도가 잎의 갈변을 예방합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -251,6 +291,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '생장기에는 흙을 고르게 촉촉하게 유지하세요. 가을에 휴면기에 들어가면 물 주기를 줄이세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -263,6 +305,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 밝은 간접광과 높은 습도를 좋아합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -275,6 +319,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 낮은 광도도 견디지만 중간 광도에서 더 빨리 자랍니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -287,6 +333,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 밝은 간접광을 좋아합니다. 주의: 수액이 독성이 있으니 반려동물과 어린이를 멀리하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -299,6 +347,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '매우 적응력이 강합니다. 낮은 광도와 불규칙한 물 주기도 견딥니다. 흙 위 2~3cm가 건조해지면 물을 주세요.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -311,6 +361,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '가장 큰 스파티필럼 품종입니다. 잎이 살짝 처지거나 흙이 건조해지면 물을 주세요. 훌륭한 공기 정화 식물입니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
 
@@ -325,6 +377,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '적당히 물을 주고 물 주기 사이에 흙이 약간 건조해지도록 두세요. 관리가 매우 쉽고 많은 새끼 식물을 만들어냅니다.',
     thumbnail: null,
     sunlight: 'medium indirect light',
+    sunlight_fr: 'lumière indirecte moyenne',
+    sunlight_ko: '중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -337,6 +391,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하되 과습은 피하세요. 서늘한 온도와 밝은 간접광을 좋아합니다.',
     thumbnail: null,
     sunlight: 'medium to bright indirect light',
+    sunlight_fr: 'lumière indirecte moyenne à vive',
+    sunlight_ko: '중간~밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -349,6 +405,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 밝은 간접광이 보라색을 선명하게 유지시켜 줍니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -361,6 +419,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '다육 식물입니다. 물을 적게 주고 물 주기 사이에 흙이 완전히 건조해지도록 두세요. 밝은 빛이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -373,6 +433,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 완전히 건조해지도록 두세요. 밝은 간접광에서 잘 자라는 덩굴성 다육 식물입니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -385,6 +447,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙의 윗절반이 건조해지면 물을 주세요. 과습에 민감하니 배수가 잘 되는 흙을 사용하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -397,6 +461,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '건조에 강한 다육 식물입니다. 충분히 물을 준 후 흙이 완전히 건조해지도록 두세요. 잎이 쉽게 떨어지니 조심히 다루세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -409,6 +475,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 개화를 위해서는 밝은 간접광이 필요합니다. 높은 습도가 도움이 됩니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -421,6 +489,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 고르게 촉촉하게 유지하세요. 밝은 간접광에서 잘 자랍니다. 풍성한 성장을 위해 순을 잘라주세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
 
@@ -435,6 +505,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '충분히 물을 준 후 다시 물을 주기 전에 흙이 완전히 건조해지도록 두세요. 밝은 직사광을 견딥니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: true,
   },
   {
@@ -447,6 +519,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '매우 건조에 강합니다. 흙의 윗절반이 건조해지면 물을 주세요. 잘 자라려면 밝은 빛이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: true,
   },
   {
@@ -459,6 +533,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '로제트를 피해 밑동에 물을 주세요. 물 주기 사이에 흙이 완전히 건조해지도록 두세요. 직사광이 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -471,6 +547,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '대부분의 다육 식물보다 그늘을 잘 견딥니다. 흙이 완전히 건조해지면 물을 주세요. 강한 직사광은 피하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -483,6 +561,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '방치와 낮은 광도도 견딥니다. 흙이 완전히 건조해지면 물을 주세요. 초보자에게 좋은 다육 식물입니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -495,6 +575,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 건조해지도록 두세요. 재개화를 위해서는 밝은 빛이 필요합니다. 꽃에 물이 닿지 않도록 하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -507,6 +589,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '극도로 건조에 강합니다. 물을 적게 주고 흙이 완전히 건조해지도록 두세요. 실외에서 잘 자라지만 실내도 견딥니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -519,6 +603,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '충분히 물을 준 후 흙이 완전히 건조해지도록 두세요. 밝은 빛에서 파스텔 로제트가 분홍/노랑으로 물듭니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: false,
   },
   {
@@ -531,6 +617,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '사막 환경을 모방하세요. 잎이 주름질 때만 매우 드물게 물을 주세요. 가을부터 봄까지는 물을 주지 마세요.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -543,6 +631,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙이 완전히 건조해질 때만 최소한으로 물을 주세요. 과습에 매우 민감합니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: false,
   },
   {
@@ -555,6 +645,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '솜털 잎에 물이 닿지 않도록 하세요. 흙이 완전히 건조해지면 밑동에 물을 주세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
 
@@ -569,6 +661,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '봄과 여름에는 물을 적게 주고 가을과 겨울에는 물을 주지 마세요. 직사광이 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -581,6 +675,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 완전히 건조해지도록 두세요. 밝은 직사광이 이상적입니다. 작은 가시(글로키드)가 피부를 자극할 수 있습니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -593,6 +689,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '진짜 선인장보다 수분이 더 필요합니다. 흙 위 2~3cm가 건조해지면 물을 주세요. 개화 후에는 물 주기를 줄이세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -605,6 +703,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙이 완전히 건조해지면 물을 주세요. 직사광과 배수가 매우 잘 되는 흙이 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -617,6 +717,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '대부분의 선인장과 달리 수분을 좋아합니다. 흙의 표면이 건조해지면 물을 주세요. 낮은 광도도 견딥니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
 
@@ -631,6 +733,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '극도로 건조에 강합니다. 흙이 완전히 건조해질 때만 물을 주세요. 낮은 광도와 방치도 견딥니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -643,6 +747,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '일반 스네이크 플랜트와 같이 관리하세요. 노란 테두리를 유지하려면 조금 더 밝은 빛이 필요합니다.',
     thumbnail: null,
     sunlight: 'medium to bright indirect light',
+    sunlight_fr: 'lumière indirecte moyenne à vive',
+    sunlight_ko: '중간~밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -655,6 +761,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 낮은 광도도 견딥니다. 수돗물의 불소가 잎 끝을 갈변시킬 수 있습니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -667,6 +775,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙의 윗절반이 건조해지도록 두세요. 낮은 광도도 견디지만 밝은 간접광을 선호합니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -679,6 +789,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물에 키울 때: 7~10일마다 물을 교체하세요. 흙에 키울 때: 약간 촉촉하게 유지하세요. 간접광만 필요합니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -691,6 +803,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '가장 튼튼한 실내 식물입니다. 방치, 낮은 광도, 불규칙한 물 주기도 견딥니다. 흙이 건조해지면 물을 주세요.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
 
@@ -705,6 +819,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2cm가 건조해지면 물을 주세요. 밝은 간접광과 일관성이 필요합니다. 자리를 옮기는 것을 싫어합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -717,6 +833,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙의 윗절반이 건조해지도록 두세요. 축축한 천으로 잎을 닦아 광택을 유지하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -729,6 +847,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '일반 고무나무와 같이 관리하세요. 밝은 간접광에서 짙은 빨간 잎이 더욱 선명해집니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -741,6 +861,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '크림과 녹색 무늬를 위해 밝은 빛이 필요합니다. 물 주기 사이에 흙이 부분적으로 건조해지도록 두세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -753,6 +875,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 고르게 촉촉하게 유지하세요. 바람과 자리 이동에 민감합니다. 이사 후 잎 떨어짐은 흔한 현상입니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
 
@@ -767,6 +891,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '봄/여름에는 흙을 촉촉하게 유지하고 가을/겨울에는 물 주기를 줄이세요. 밝은 간접광이 잘 맞습니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -779,6 +905,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 낮은 광도 실내에 가장 적합한 야자 식물 중 하나입니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -791,6 +919,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '극도로 건조에 강합니다. 팽창된 줄기에 물을 저장합니다. 물을 적게 주고 흙이 완전히 건조해지도록 두세요.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: false,
   },
   {
@@ -803,6 +933,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 약간 건조해지도록 두세요. 실내 낮은 광도에 가장 잘 견디는 야자 식물 중 하나입니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -815,6 +947,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '충분히 물을 준 후 흙이 건조해지도록 두세요. 주의: 반려동물에게 매우 독성이 강합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: true,
   },
 
@@ -829,6 +963,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하고 높은 습도가 필요합니다. 매일 분무하거나 자갈 쟁반을 사용하세요. 간접광을 선호합니다.',
     thumbnail: null,
     sunlight: 'medium indirect light',
+    sunlight_fr: 'lumière indirecte moyenne',
+    sunlight_ko: '중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -841,6 +977,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 촉촉하게 유지하되 과습은 피하세요. 중앙 로제트에 물을 붓지 마세요. 낮은~중간 광도에 적합합니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -853,6 +991,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하고 매우 높은 습도가 필요합니다. 가장 섬세한 고사리입니다. 건조해지지 않도록 주의하세요.',
     thumbnail: null,
     sunlight: 'medium indirect light',
+    sunlight_fr: 'lumière indirecte moyenne',
+    sunlight_ko: '중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -865,6 +1005,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '충분히 적시거나 분무한 후 건조해지도록 두세요. 종종 나무판에 고정해 키웁니다. 밝은 간접광을 선호합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -877,6 +1019,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '생장기에는 흙을 촉촉하게 유지하고 겨울에는 물 주기를 줄이세요. 습도 유지를 위해 정기적으로 분무하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
 
@@ -891,6 +1035,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙의 절반이 건조해지도록 두세요. 과습에 민감합니다. 밝은 간접광이 이상적입니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -903,6 +1049,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '건조에 강한 잎이 수분을 저장합니다. 흙의 윗절반이 건조해지면 물을 주세요. 낮은 광도도 견딥니다.',
     thumbnail: null,
     sunlight: 'medium to bright indirect light',
+    sunlight_fr: 'lumière indirecte moyenne à vive',
+    sunlight_ko: '중간~밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -915,6 +1063,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 건조해지도록 두세요. 주름진 잎에 물이 닿지 않도록 하세요. 중간 간접광이 적합합니다.',
     thumbnail: null,
     sunlight: 'medium indirect light',
+    sunlight_fr: 'lumière indirecte moyenne',
+    sunlight_ko: '중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -927,6 +1077,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 낮은 광도도 견디지만 밝은 간접광에서 더 잘 자랍니다.',
     thumbnail: null,
     sunlight: 'medium to bright indirect light',
+    sunlight_fr: 'lumière indirecte moyenne à vive',
+    sunlight_ko: '중간~밝은 간접광',
     poisonous_to_pets: false,
   },
 
@@ -941,6 +1093,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 완전히 건조해지도록 두세요. 밝은 간접광이 향기로운 꽃을 피우는 데 도움이 됩니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -953,6 +1107,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙이 건조해지면 물을 주세요. 말린 잎이 수분을 저장합니다. 밝은 간접광에서 방치해도 잘 자랍니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -965,6 +1121,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '매우 건조에 강합니다. 흙이 완전히 건조해지면 물을 주세요. 밝은 간접광에서 건강하게 자랍니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -977,6 +1135,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 건조해지도록 두세요. 밝은 간접광에서 쉽게 꽃을 피우는 빠르게 자라는 호야입니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
 
@@ -991,6 +1151,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하세요. 불소에 민감하니 가능하면 정수된 물이나 증류수를 사용하세요.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1003,6 +1165,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 높은 습도와 정수된 물을 선호합니다. 직사광을 피하세요.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1015,6 +1179,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '과습 없이 지속적으로 촉촉하게 유지하세요. 밤에는 잎을 올리고 낮에는 내립니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1027,6 +1193,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 촉촉하게 유지하고 높은 습도를 제공하세요. 밤에는 잎이 기도하는 손처럼 접힙니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1039,6 +1207,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 촉촉하게 유지하고 습도를 높게 유지하세요. 잎 반점 예방을 위해 정수된 물을 사용하세요. 직사광을 피하세요.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
 
@@ -1053,6 +1223,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 잎을 건조하게 유지하기 위해 아래에서 물을 주세요. 높은 습도를 선호합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1065,6 +1237,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙 위 2~3cm가 건조해지도록 두세요. 밝은 간접광이 개화를 촉진합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1077,6 +1251,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 표면이 건조해지면 물을 주세요. 햇빛과 그늘 모두 견딥니다. 매우 키우기 쉬운 꽃식물입니다.',
     thumbnail: null,
     sunlight: 'bright indirect to direct light',
+    sunlight_fr: 'lumière vive direct ou indirect',
+    sunlight_ko: '밝은 간접광~직사광선',
     poisonous_to_pets: true,
   },
 
@@ -1091,6 +1267,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '화분을 물에 담갔다가 완전히 배수되도록 두세요. 물 주기 사이에 뿌리가 약간 건조해지도록 두세요. 직사광을 피하세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1103,6 +1281,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '생장기에는 충분히 물을 주고 겨울에는 줄이세요. 밝은 간접광과 좋은 공기 순환이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1115,6 +1295,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '배지가 거의 건조해지면 충분히 물을 주세요. 개화를 위해서는 밝은 간접광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
 
@@ -1129,6 +1311,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '주 1회 20~30분 물에 담그거나 주 2~3회 분무하세요. 여분의 물을 털어내고 4시간 이내에 건조시키세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1141,6 +1325,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '중앙 컵에 물을 채워두세요. 흙에는 물을 적게 주세요. 밝은 간접광이 이상적입니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1153,6 +1339,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 건조해지도록 두세요. 중앙 컵이 있다면 거기에 물을 주세요. 매우 밝은 빛이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: false,
   },
 
@@ -1167,6 +1355,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 균일한 성장을 위해 정기적으로 방향을 돌려주세요. 밝은 간접광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1179,6 +1369,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 촉촉하게 유지하되 배수가 잘 되어야 합니다. 높은 습도가 주름진 잎을 최상으로 유지시켜 줍니다.',
     thumbnail: null,
     sunlight: 'medium indirect light',
+    sunlight_fr: 'lumière indirecte moyenne',
+    sunlight_ko: '중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1191,6 +1383,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 은빛 무늬는 낮은 광도에서 흐려집니다. 밝은 간접광을 선호합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
 
@@ -1205,6 +1399,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '화분을 물이 담긴 받침 위에 올려 아래에서 물을 주세요. 잎에 물이 닿지 않도록 하세요. 개화를 위해 밝은 간접광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1217,6 +1413,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 촉촉하게 유지하되 과습은 피하세요. 줄기 썩음 방지를 위해 아래에서 물을 주세요. 밝은 간접광이 개화를 촉진합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1229,6 +1427,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '구근 썩음 방지를 위해 아래에서 물을 주세요. 서늘한 온도(13~18°C)와 밝은 간접광을 선호합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
 
@@ -1243,6 +1443,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하세요. 선명한 색상 유지를 위해 매우 밝은 빛(약간의 직사광 포함)이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: true,
   },
   {
@@ -1255,6 +1457,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 고르게 촉촉하게 유지하세요. 밝은 간접광이 분홍/빨간 반점을 유지시켜 줍니다. 풍성한 성장을 위해 순을 잘라주세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1267,6 +1471,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하고 매우 높은 습도가 필요합니다. 목이 마르면 극적으로 처지지만 빨리 회복됩니다.',
     thumbnail: null,
     sunlight: 'medium indirect light',
+    sunlight_fr: 'lumière indirecte moyenne',
+    sunlight_ko: '중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1279,6 +1485,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하세요. 무지개빛 보라색 광택을 유지하려면 밝은 간접광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1291,6 +1499,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 햇빛이 많을수록 색상이 선명해집니다. 풍성한 잎을 위해 꽃봉오리를 잘라주세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1303,6 +1513,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙 위 2~3cm가 건조해지도록 두세요. 여름에 휴면기에 들어갑니다. 잎이 죽으면 물 주기를 줄이세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
 
@@ -1317,6 +1529,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 낮은 광도도 견디지만 밝은 간접광을 선호합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1329,6 +1543,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙의 표면이 건조해지면 물을 주세요. 밝은 간접광과 가끔 가지치기가 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1341,6 +1557,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 충분히 물을 주세요. 종종 줄기를 엮어 키웁니다. 밝은 간접광을 주세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
 
@@ -1355,6 +1573,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '개화기에는 흙을 촉촉하게 유지하세요. 꽃을 피우려면 서늘한 밤과 밝은 빛이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect to direct light',
+    sunlight_fr: 'lumière vive direct ou indirect',
+    sunlight_ko: '밝은 간접광~직사광선',
     poisonous_to_pets: false,
   },
   {
@@ -1367,6 +1587,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 개화 후 휴면기에 들어갑니다. 새 싹이 나올 때까지 물 주기를 줄이세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1379,6 +1601,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 매우 밝은 간접광, 심지어 약간의 직사광도 필요합니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: true,
   },
   {
@@ -1391,6 +1615,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙의 윗절반이 건조해지면 물을 주세요. 꽃봉오리 형성을 위해 겨울에 서늘하고 건조한 휴식기가 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1403,6 +1629,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2cm가 건조해지면 물을 주세요. 잘 자라려면 높은 습도와 밝은 간접광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1415,6 +1643,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 표면이 건조해지면 물을 주세요. 바람과 온도 변화를 피하세요. 재개화를 위해 어둠이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
 
@@ -1429,6 +1659,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물을 적게 주세요. 건조에 강한 다육 수목입니다. 직사광과 뛰어난 배수가 필수입니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: true,
   },
   {
@@ -1441,6 +1673,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 완전히 건조해지도록 두세요. 직사광과 최소한의 물 주기가 연중 개화를 유지시켜 줍니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: true,
   },
   {
@@ -1453,6 +1687,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '봄/여름에는 물을 적게 주고 가을/겨울에는 거의 주지 마세요. 직사광과 뛰어난 배수가 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -1465,6 +1701,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙이 완전히 건조해지면 물을 주세요. 밝은 빛이 로제트를 촘촘하게 유지시켜 줍니다. 배수가 잘 되는 흙이 필수입니다.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: false,
   },
 
@@ -1479,6 +1717,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하세요. 건조해지면 빨리 시듭니다. 하루에 최소 6시간의 직사광이 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -1491,6 +1731,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하세요. 반그늘에서 잘 자랍니다. 공격적으로 자라니 별도 화분에 키우는 것이 좋습니다.',
     thumbnail: null,
     sunlight: 'medium indirect light',
+    sunlight_fr: 'lumière indirecte moyenne',
+    sunlight_ko: '중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1503,6 +1745,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 건조해지도록 두세요. 자리를 잡으면 건조에 강합니다. 직사광이 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -1515,6 +1759,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 건조해지도록 두세요. 직사광(6시간 이상)이 필요합니다. 훌륭한 방향제이자 관리가 쉽습니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -1527,6 +1773,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 최대한의 햇빛과 감귤류 전용 비료가 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: true,
   },
 
@@ -1541,6 +1789,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 밤과 어두운 곳에서 잎을 접습니다. 매우 매력적인 식물입니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1553,6 +1803,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 보라색 벨벳 효과는 밝은 간접광에서 더욱 강해집니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1565,6 +1817,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 대부분의 덩굴 식물보다 낮은 광도를 잘 견딥니다.',
     thumbnail: null,
     sunlight: 'low to medium indirect light',
+    sunlight_fr: 'lumière indirecte faible à moyenne',
+    sunlight_ko: '약한~중간 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1577,6 +1831,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 빠르게 자라고 강인합니다. 밝은 간접광이 가장 좋습니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1589,6 +1845,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '보라색 잎이 선명하게 유지되려면 밝은 간접광이 필요합니다. 물 주기 사이에 흙이 약간 건조해지도록 두세요.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1601,6 +1859,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '생장기에는 정기적으로 물을 주고 겨울에는 줄이세요. 직사광이 필요합니다. 매우 독성이 강하니 주의하여 다루세요.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: true,
   },
   {
@@ -1609,10 +1869,12 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     scientific_name: 'Cyperus alternifolius',
     interval_days: 3,
     notes: 'Loves water — keep the pot standing in a saucer of water at all times. Bright indirect to direct light.',
-    notes_fr: 'Adore l\'eau — garder le pot dans une soucoupe d\'eau en permanence. Lumière indirecte à directe vive.',
+    notes_fr: 'Adore l\'eau — garder le pot dans une soucoupe d\'eau en permanence. lumière vive direct ou indirect.',
     notes_ko: '물을 매우 좋아합니다. 항상 화분을 물이 담긴 받침 위에 올려두세요. 밝은 간접~직사광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect to direct light',
+    sunlight_fr: 'lumière vive direct ou indirect',
+    sunlight_ko: '밝은 간접광~직사광선',
     poisonous_to_pets: false,
   },
   {
@@ -1625,6 +1887,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙을 지속적으로 촉촉하게 유지하세요. 만지면 잎이 접히는 것으로 유명합니다. 밝은 간접광이 필요합니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: true,
   },
   {
@@ -1637,6 +1901,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '증류수나 빗물만 사용하세요. 수돗물은 절대 안 됩니다. 받침에 항상 물을 채워두세요. 직사광이 필요합니다.',
     thumbnail: null,
     sunlight: 'full sun',
+    sunlight_fr: 'plein soleil',
+    sunlight_ko: '직사광선 (전일조)',
     poisonous_to_pets: false,
   },
   {
@@ -1649,6 +1915,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '흙 위 2~3cm가 건조해지면 물을 주세요. 밝은 간접광과 높은 습도가 주황색 꽃을 피우는 데 도움이 됩니다.',
     thumbnail: null,
     sunlight: 'bright indirect light',
+    sunlight_fr: 'lumière indirecte vive',
+    sunlight_ko: '밝은 간접광',
     poisonous_to_pets: false,
   },
   {
@@ -1661,6 +1929,8 @@ export const HOUSEPLANTS: HouseplantEntry[] = [
     notes_ko: '물 주기 사이에 흙이 약간 건조해지도록 두세요. 과습과 뿌리 썩음에 매우 민감합니다. 남쪽이나 서쪽 창가처럼 밝은 직사광이 이상적입니다. 배수가 잘 되는 약산성 흙을 사용하세요. 건조한 공기는 견디지만 과습 환경은 피하세요.',
     thumbnail: null,
     sunlight: 'bright direct light',
+    sunlight_fr: 'lumière directe vive',
+    sunlight_ko: '밝은 직사광선',
     poisonous_to_pets: false,
   },
 ];

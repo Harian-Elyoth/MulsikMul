@@ -79,6 +79,7 @@ export interface PerenualListResponse<T> {
 export interface LocalPlant {
   id: number;
   name: string;
+  nickname: string | null;
   species: string | null;
   perenual_id: number | null;
   photo_uri: string | null;
