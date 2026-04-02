@@ -21,6 +21,7 @@ describe('LocalPlant', () => {
       notes: 'Loves indirect light',
       acquired_at: 1700000000000,
       created_at: 1700000000000,
+      nickname: null,
     };
     expect(plant.id).toBe(1);
     expect(plant.name).toBe('Monstera');
@@ -37,6 +38,7 @@ describe('LocalPlant', () => {
       notes: null,
       acquired_at: null,
       created_at: 1700000000001,
+      nickname: null,
     };
     expect(plant.species).toBeNull();
     expect(plant.perenual_id).toBeNull();

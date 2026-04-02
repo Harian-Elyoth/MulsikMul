@@ -101,7 +101,7 @@ describe('CREATE_PLANT_CARE_INFO_TABLE', () => {
 describe('MIGRATIONS', () => {
   it('is an array with six entries', () => {
     expect(Array.isArray(MIGRATIONS)).toBe(true);
-    expect(MIGRATIONS).toHaveLength(6);
+    expect(MIGRATIONS).toHaveLength(7);
   });
 
   it('first migration is CREATE_PLANTS_TABLE', () => {

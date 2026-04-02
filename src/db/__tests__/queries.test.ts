@@ -20,6 +20,7 @@ const mockPlant: LocalPlant = {
   notes: 'Loves indirect light',
   acquired_at: 1700000000000,
   created_at: 1700000000000,
+  nickname: null,
 };
 
 const mockSchedule: WateringSchedule = {
@@ -85,6 +86,7 @@ describe('insertPlant', () => {
       expect.stringContaining('INSERT INTO plants'),
       [
         plantWithoutId.name,
+        plantWithoutId.nickname,
         plantWithoutId.species,
         plantWithoutId.perenual_id,
         plantWithoutId.photo_uri,
@@ -106,6 +108,7 @@ describe('insertPlant', () => {
       notes: null,
       acquired_at: null,
       created_at: 1700000000000,
+      nickname: null,
     };
     await insertPlant(db, minimalPlant);
     const callArgs = db.runAsync.mock.calls[0][1];
