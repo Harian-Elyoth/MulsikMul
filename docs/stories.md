@@ -223,9 +223,127 @@
 
 ---
 
+## Epic BUG-UI — UI & UX fixes
+
+### BUG-UI-1 : Toggle langue invisible (même couleur que le fond)
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux voir clairement le bouton de changement de langue afin de pouvoir l'utiliser facilement |
+| **Critères d'acceptation** | 1. Le toggle a un contraste suffisant avec le fond · 2. Respect des guidelines d’accessibilité (WCAG AA) · 3. Visible en mode clair et sombre |
+| **Complexité** | XS |
+| **Dépendances** | I18N-2 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### BUG-UI-2 : Bouton "Modifier" non cliquable (détail plante)
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux pouvoir cliquer sur le bouton modifier afin d'éditer une plante |
+| **Critères d'acceptation** | 1. Le bouton est cliquable (z-index / overlay corrigé) · 2. La navigation vers l'écran d’édition fonctionne · 3. Aucun conflit avec d'autres composants |
+| **Complexité** | S |
+| **Dépendances** | PLANT-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### BUG-UI-3 : Texte "Arroser" invisible en français
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux voir le texte du bouton "Arroser" en français afin de comprendre l'action |
+| **Critères d'acceptation** | 1. Le texte "💧 Arroser" est visible · 2. Contraste corrigé (couleur texte vs background) · 3. Aucun impact sur la version coréenne |
+| **Complexité** | XS |
+| **Dépendances** | BUG-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### BUG-UI-4 : Layout cassé en français (Add Plant)
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux que l'UI ne déborde pas de l'écran en français afin d’avoir une expérience correcte |
+| **Critères d'acceptation** | 1. Aucun texte ne sort de l’écran · 2. Responsive corrigé (flex / wrap / scroll) · 3. Testé sur différents devices |
+| **Complexité** | M |
+| **Dépendances** | I18N-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+---
+
+## Epic UX — Expérience utilisateur
+
+### UX-1 : Remplacer la bottom navbar par navigation swipe
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux naviguer entre les pages avec un swipe afin d’avoir une expérience plus fluide |
+| **Critères d'acceptation** | 1. Swipe horizontal entre les écrans principaux · 2. Suppression de la bottom navbar · 3. Animation fluide et performante |
+| **Complexité** | L |
+| **Dépendances** | UI-2 |
+| **Priorité** | **Should** |
+| **Status** | Todo |
+
+### UX-2 : Reset du formulaire lors de l’ajout d’une plante
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux que le formulaire soit vide quand j’ajoute une nouvelle plante afin d’éviter les erreurs |
+| **Critères d'acceptation** | 1. Aucun champ pré-rempli depuis une plante précédente · 2. Reset après validation · 3. Reset lors de l’ouverture de l’écran |
+| **Complexité** | S |
+| **Dépendances** | PLANT-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### UX-3 : Date par défaut = aujourd’hui
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux que la date d’acquisition soit automatiquement aujourd’hui afin de gagner du temps |
+| **Critères d'acceptation** | 1. Champ date pré-rempli avec la date du jour · 2. Format respecté (JJ/MM/AAAA) · 3. Modifiable manuellement |
+| **Complexité** | XS |
+| **Dépendances** | PLANT-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### UX-4 : Remplacer "safe pour animaux" par "toxique pour animaux"
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux voir si une plante est toxique pour les animaux afin d’éviter toute confusion |
+| **Critères d'acceptation** | 1. Nouveau champ toxicForPets utilisé · 2. Texte affiché : "Toxique pour animaux : Oui/Non" · 3. Ancienne logique supprimée |
+| **Complexité** | M |
+| **Dépendances** | CARE-1 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### UX-5 : Support des surnoms de plantes
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux donner un surnom à ma plante afin de la personnaliser |
+| **Critères d'acceptation** | 1. Champ "nickname" ajouté · 2. Le surnom est affiché dans la liste et détail · 3. Les infos de soin restent liées à l’espèce |
+| **Complexité** | M |
+| **Dépendances** | PLANT-1, CARE-2 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### UX-6 : Conserver les infos de soin même si le nom change
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux garder les conseils de soin même si je change le nom afin de ne pas perdre les infos utiles |
+| **Critères d'acceptation** | 1. Les care tips sont liés à l’espèce et non au nom · 2. Modifier le nom n’efface rien · 3. Fonctionne avec nickname |
+| **Complexité** | M |
+| **Dépendances** | UX-5 |
+| **Priorité** | **Must** |
+| **Status** | Todo |
+
+### UX-7 : Simplification du header (suppression menu top)
+| | |
+|---|---|
+| **Story** | En tant qu'utilisateur, je veux une interface minimaliste afin de me concentrer sur mes plantes |
+| **Critères d'acceptation** | 1. Suppression du menu top (Mes plantes / Calendrier / Ajouter / Toggle) · 2. Ajout d’un bouton toggle langue rond en haut · 3. Position fixe et accessible |
+| **Complexité** | M |
+| **Dépendances** | UI-1 |
+| **Priorité** | **Should** |
+| **Status** | Todo |
+
+---
+
 ## Summary
 
 | Status | Count | Stories |
 |--------|-------|---------|
-| **Done** | 19 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, BUG-1, BUG-2, BUG-3, BUG-4, UI-1, UI-2 |
-| **Todo** | 0 | — |
+| **Done** | 17 | CICD-1, CICD-2, PLANT-1, PLANT-2, PLANT-3, PLANT-4, WATER-1, WATER-2, CARE-1, CARE-2, CARE-3, I18N-1, I18N-2, BUG-1, BUG-2, BUG-3, BUG-4 |
+| **Todo** | 13 | UI-1, UI-2, BUG-UI-1, BUG-UI-2, BUG-UI-3, BUG-UI-4, UX-1, UX-2, UX-3, UX-4, UX-5, UX-6, UX-7 |
