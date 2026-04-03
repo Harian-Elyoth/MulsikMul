@@ -53,7 +53,7 @@ function parseDateDDMMYYYY(value: string): number | null {
 
 export default function AddPlantScreen({ onSaved, onCancel, isActive, topInset = 0 }: Props) {
   const db = useDatabase();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [name, setName] = useState('');
   const [nickname, setNickname] = useState('');
@@ -68,6 +68,8 @@ export default function AddPlantScreen({ onSaved, onCancel, isActive, topInset =
   const [acquiredAt, setAcquiredAt] = useState(todayDDMMYYYY);
   const [careInfo, setCareInfo] = useState<{
     sunlight: string | null;
+    sunlight_fr: string | null;
+    sunlight_ko: string | null;
     poisonous_to_pets: boolean | null;
     notes_fr: string | null;
     notes_ko: string | null;
@@ -116,11 +118,14 @@ export default function AddPlantScreen({ onSaved, onCancel, isActive, topInset =
     setName(data.name);
     setSpecies(data.species);
     setIntervalDays(String(data.intervalDays));
-    setNotes(data.notes);
+    const lang = i18n.language;
+    setNotes(lang === 'ko' ? data.notes_ko : lang === 'fr' ? data.notes_fr : data.notes);
     setPerenualId(data.perenualId);
     setAutoFilled(true);
     setCareInfo({
       sunlight: data.sunlight,
+      sunlight_fr: data.sunlight_fr,
+      sunlight_ko: data.sunlight_ko,
       poisonous_to_pets: data.poisonous_to_pets,
       notes_fr: data.notes_fr,
       notes_ko: data.notes_ko,
@@ -393,7 +398,13 @@ export default function AddPlantScreen({ onSaved, onCancel, isActive, topInset =
               {careInfo.sunlight ? (
                 <View style={styles.careRow}>
                   <Text style={styles.careLabel}>{t('addPlant.careLight')}</Text>
-                  <Text style={styles.careValue}>{careInfo.sunlight}</Text>
+                  <Text style={styles.careValue}>
+                    {i18n.language === 'ko'
+                      ? (careInfo.sunlight_ko ?? careInfo.sunlight)
+                      : i18n.language === 'fr'
+                        ? (careInfo.sunlight_fr ?? careInfo.sunlight)
+                        : careInfo.sunlight}
+                  </Text>
                 </View>
               ) : null}
               {careInfo.poisonous_to_pets !== null ? (
